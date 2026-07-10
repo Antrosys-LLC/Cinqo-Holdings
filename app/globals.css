@@ -69,13 +69,6 @@
   --glass-blur-strong: 28px;
 }
 
-/* Base custom font */
-@font-face {
-  font-family: "Cinqo Sans";
-  src: local("Helvetica Neue"), local("Arial");
-  font-display: swap;
-}
-
 @layer base {
   html {
     scroll-behavior: auto; /* Lenis takes over smooth scrolling */
