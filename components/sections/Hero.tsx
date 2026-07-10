@@ -1,30 +1,54 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { heroSlidesData } from "@/data/hero.data";
+import Button from "@/components/ui/Button";
 
-const SLIDE_DURATION = 6000; // ms per slide
+const SLIDE_DURATION = 6000;
 
-/**
- * Full-bleed hero with a crossfading background carousel.
- * Each active slide gets a slow Ken Burns zoom-in; GSAP fades the
- * headline/subtext in on mount.
- */
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const headlineRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Carousel autoplay
-  useEffect(() => {
-    const interval = setInterval(() => {
+  const startAutoplay = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % heroSlidesData.length);
     }, SLIDE_DURATION);
-    return () => clearInterval(interval);
   }, []);
 
-  // Intro text animation
+  const goToSlide = useCallback(
+    (index: number) => {
+      setActiveIndex(index);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      startAutoplay();
+    },
+    [startAutoplay]
+  );
+
+  useEffect(() => {
+    startAutoplay();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [startAutoplay]);
+
+  // Play active video, pause others
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === activeIndex) {
+        video.currentTime = 0;
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeIndex]);
+
   useEffect(() => {
     if (!headlineRef.current) return;
     const ctx = gsap.context(() => {
@@ -48,34 +72,53 @@ export default function Hero() {
             key={slide.id}
             className={`absolute inset-0 transition-opacity duration-[1.2s] ease-in-out ${i === activeIndex ? "opacity-100" : "opacity-0"}`}
           >
-            <Image
-              src={slide.image}
-              alt=""
-              fill
-              priority={i === 0}
-              className={`object-cover animate-[kenburns_8s_ease-in-out_infinite_alternate] ${i === activeIndex ? "[animation-play-state:running]" : "[animation-play-state:paused]"}`}
+            <video
+              ref={(el) => { videoRefs.current[i] = el; }}
+              src={slide.video}
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         ))}
         <div className="bg-overlay" />
       </div>
 
-      <div className="container relative z-20 pb-24 flex flex-col gap-6 max-w-[900px]" ref={headlineRef}>
-        <h1 className="text-hero leading-[1.05]">
+      <div className="container relative z-20 pb-24 flex flex-col gap-6 !pl-[10px]" ref={headlineRef}>
+        <h1 className="text-white text-4xl md:text-5xl lg:text-[4rem] font-bold leading-[1.1] tracking-tight">
           BUILT ON COMMITMENT.
           <br />
           DRIVEN BY PERFORMANCE.
         </h1>
-        <p className="max-w-[620px] text-muted-light">
+        <p className="max-w-[850px] text-white/85 text-base md:text-lg font-normal leading-relaxed">
           Built on over two decades of operational excellence, Cinqo Holding
           is a diversified Bahrain-based group operating across construction,
           technical distribution, specialist coatings, facilities management,
           interior fit-out and strategic investments.
         </p>
-        <div>
-          <a href="#about" className="btn btn-primary">
-            Get in Touch
-          </a>
+        <div className="flex items-center mt-2">
+          <Button 
+            href="#about" 
+            className="bg-transparent border border-white text-white px-5 py-2 rounded-none uppercase text-xs font-semibold tracking-widest hover:bg-white/10 transition-colors"
+          >
+            Get in Touch &gt;
+          </Button>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+          {heroSlidesData.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToSlide(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === activeIndex
+                  ? "bg-white scale-110"
+                  : "bg-white/50 hover:bg-white/80"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
