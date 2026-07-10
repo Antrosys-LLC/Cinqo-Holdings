@@ -71,7 +71,7 @@ export default function Footer() {
         muted
         loop
         playsInline
-        preload="none"
+        preload="metadata"
       />
       <div className="bg-overlay" />
 
