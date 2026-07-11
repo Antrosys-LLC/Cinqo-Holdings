@@ -47,5 +47,5 @@ export interface GuidingPrinciple {
 
 export interface HeroSlide {
   id: string;
-  image: string;
+  video: string;
 }

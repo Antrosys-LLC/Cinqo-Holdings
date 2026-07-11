@@ -6,7 +6,7 @@ export default function AboutUs() {
       <div className="w-full flex flex-col items-center">
         
         {/* Section Heading */}
-        <h2 className="text-black font-semibold text-[24px] mb-8 tracking-wide font-[var(--font-ibm-plex)]">
+        <h2 className="text-black font-semibold text-[24px] mb-4 tracking-wide font-[var(--font-ibm-plex)]">
           About Us
         </h2>
 
@@ -41,20 +41,20 @@ export default function AboutUs() {
         {/* Vision & Mission Card */}
         <div className="relative w-full bg-gradient-to-br from-[#FCF5F6] via-[#FCF5F6] to-[#fbf0f2] border border-[#FAD8DB] rounded-[6px] p-8 md:p-10 text-left shadow-[0_4px_24px_rgba(250,216,219,0.2)] overflow-hidden">
           
-          <div className="relative pl-5 border-l-2 border-[#e2432b]/20 mb-8">
-            <h3 className="font-semibold text-black text-[21px] mb-2 tracking-[0.08em] uppercase font-[var(--font-ibm-plex)]">
+          <div className="relative pl-5 border-l-2 border-[#e2432b]/20 mb-5">
+            <h3 className="font-semibold text-black text-[20px] mb-2 tracking-[0.08em] uppercase font-[var(--font-ibm-plex)]">
               Vision
             </h3>
-            <p className="text-black/85 text-[21px] leading-[1.7] font-[var(--font-ibm-plex)]">
+            <p className="text-black/85 text-[20px] leading-[1.7] font-[var(--font-ibm-plex)]">
               To build a group of enduring businesses recognized for performance, trust and sustainable growth.
             </p>
           </div>
 
           <div className="relative pl-5 border-l-2 border-[#e2432b]/20">
-            <h3 className="font-semibold text-black text-[20px] mb-2 tracking-[0.08em] uppercase font-['Inter',_sans-serif]">
+            <h3 className="font-semibold text-black text-[18px] mb-2 tracking-[0.08em] uppercase font-['Inter',_sans-serif]">
               Mission
             </h3>
-            <p className="text-black/85 text-[20px] leading-[1.7] font-['Inter',_sans-serif]">
+            <p className="text-black/85 text-[18px] leading-[1.7] font-['Inter',_sans-serif]">
               To build and operate each business within the Group to a standard that retains clients, protects capital and delivers consistent results across market conditions — while fostering an environment where our teams are developed, empowered and held to the same standard of excellence.
             </p>
           </div>
