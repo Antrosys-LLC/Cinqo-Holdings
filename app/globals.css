@@ -173,8 +173,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   
-  /* The distinct salmon/red accent line at the very top of the reference image */
-  border-top: 2px solid #ce7a71; 
+
   
   /* The subtle dark edge at the bottom */
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
