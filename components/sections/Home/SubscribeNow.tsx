@@ -20,8 +20,8 @@ export default function SubscribeNow() {
       className="relative overflow-hidden bg-[url('/images/subscribe/bg.jpg')] bg-center bg-cover bg-no-repeat text-cream-50 text-center mx-[50px] mt-[10px] mb-[70px]"
     >
       <div className="relative px-4 py-24 flex flex-col items-center gap-6">
-        <h2>Join M+ Readers Who Never Miss A Headline</h2>
-        <p>Stay informed wherever you are. Join our community of <br />readers across social media platforms.</p>
+        <h2>Get Latest News Updates</h2>
+        <p>Stay informed wherever you are. Join our community of readers <br />and followers across social media platforms.</p>
 
         <form className="flex gap-2 flex-col min-[600px]:flex-row mx-auto" onSubmit={handleSubmit}>
           <input
