@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <section className="w-full pb-20 pt-8 md:pt-12 px-4 bg-white flex flex-col items-center">
+    <section className="w-full pb-12 pt-8 md:pt-12 px-4 bg-white flex flex-col items-center">
       <div className="w-full flex flex-col items-center">
         
         {/* Section Heading */}
@@ -38,24 +38,26 @@ export default function AboutUs() {
           </span>
         </div>
 
-        {/* Vision & Mission Card */}
-        <div className="relative w-full bg-gradient-to-br from-[#FCF5F6] via-[#FCF5F6] to-[#fbf0f2] border border-[#FAD8DB] rounded-[6px] p-8 md:p-10 text-left shadow-[0_4px_24px_rgba(250,216,219,0.2)] overflow-hidden">
+        {/* Vision & Mission */}
+        <div className="w-full text-center">
           
-          <div className="relative pl-5 border-l-2 border-[#e2432b]/20 mb-5">
-            <h3 className="font-semibold text-black text-[20px] mb-2 tracking-[0.08em] uppercase font-[var(--font-ibm-plex)]">
+          <div className="mb-6">
+            <h3 className="font-bold text-black text-[20px] mb-2 tracking-[0.08em] uppercase font-[var(--font-ibm-plex)]">
               Vision
             </h3>
-            <p className="text-black/85 text-[20px] leading-[1.7] font-[var(--font-ibm-plex)]">
+            <p className="text-black/85 text-[20px] leading-[1.7] font-[var(--font-ibm-plex)] whitespace-nowrap">
               To build a group of enduring businesses recognized for performance, trust and sustainable growth.
             </p>
           </div>
 
-          <div className="relative pl-5 border-l-2 border-[#e2432b]/20">
-            <h3 className="font-semibold text-black text-[18px] mb-2 tracking-[0.08em] uppercase font-['Inter',_sans-serif]">
+          <div>
+            <h3 className="font-bold text-black text-[18px] mb-2 tracking-[0.08em] uppercase font-['Inter',_sans-serif]">
               Mission
             </h3>
             <p className="text-black/85 text-[18px] leading-[1.7] font-['Inter',_sans-serif]">
-              To build and operate each business within the Group to a standard that retains clients, protects capital and delivers consistent results across market conditions — while fostering an environment where our teams are developed, empowered and held to the same standard of excellence.
+              To build and operate each business within the Group to a standard that retains clients, protects capital and<br />
+              delivers consistent results across market conditions — while fostering an environment where our teams are<br />
+              developed, empowered and held to the same standard of excellence.
             </p>
           </div>
           
