@@ -7,7 +7,7 @@ export default function About() {
           <p className="text-xl uppercase tracking-widest text-gray-500">Years of History</p>
         </div>
         <div>
-          <p className="text-lg leading-relaxed text-gray-700">
+          <p className="text-3xl leading-relaxed text-gray-700">
             Since its inception, Cinqo Holding has expanded from a construction focused business into a diversified group with a growing presence across the GCC.
           </p>
         </div>
