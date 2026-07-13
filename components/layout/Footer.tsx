@@ -89,6 +89,7 @@ export default function Footer() {
           alt=""
           fill
           className="bg-media object-cover"
+          quality={100}
           priority
         />
       )}
