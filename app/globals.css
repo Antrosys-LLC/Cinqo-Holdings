@@ -160,31 +160,66 @@
     color: var(--color-muted);
   }
 
-  /* Glassmorphism utilities */
-  .glass {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
+/* Glassmorphism utilities */
+.glass {
+  /* Replicates the specific blue-to-warm-gray-to-blue gradient in the image */
+  background: linear-gradient(
+    90deg, 
+    rgba(38, 77, 108, 0.75) 0%, 
+    rgba(142, 127, 128, 0.75) 50%, 
+    rgba(46, 82, 109, 0.75) 100%
+  );
+  
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* The distinct salmon/red accent line at the very top of the reference image */
+  border-top: 2px solid #ce7a71; 
+  
+  /* The subtle dark edge at the bottom */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  
+  /* Optional: Soft shadow to separate it from the page body */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
 
-  .glass-light {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
+.glass-dense {
+  background: linear-gradient(
+    90deg, 
+    rgba(38, 77, 108, 0.9) 0%, 
+    rgba(142, 127, 128, 0.9) 50%, 
+    rgba(46, 82, 109, 0.9) 100%
+  );
+}
 
-  .glass-frost-hover {
-    transition: backdrop-filter var(--dur-normal) var(--ease-out-expo),
-      background var(--dur-normal) var(--ease-out-expo);
-  }
+.glass-light {
+  background: linear-gradient(
+    90deg, 
+    rgba(38, 77, 108, 0.4) 0%, 
+    rgba(142, 127, 128, 0.4) 50%, 
+    rgba(46, 82, 109, 0.4) 100%
+  );
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 2px solid rgba(206, 122, 113, 0.6);
+}
 
-  .glass-frost-hover:hover {
-    backdrop-filter: blur(var(--glass-blur-strong));
-    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
-    background: rgba(255, 255, 255, 0.14);
-  }
+.glass-frost-hover {
+  transition: backdrop-filter var(--dur-normal) var(--ease-out-expo),
+    background var(--dur-normal) var(--ease-out-expo);
+}
+
+.glass-frost-hover:hover {
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  /* Slightly more opaque on hover */
+  background: linear-gradient(
+    90deg, 
+    rgba(38, 77, 108, 0.85) 0%, 
+    rgba(142, 127, 128, 0.85) 50%, 
+    rgba(46, 82, 109, 0.85) 100%
+  );
+}
 
   /* Buttons */
   .btn {
