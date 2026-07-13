@@ -77,9 +77,9 @@ export default function ContactForm() {
       <div className="w-full flex flex-col lg:flex-row min-h-screen">
         
         {/* LEFT COLUMN: Contact Form */}
-        <form onSubmit={handleSubmit} className="flex-1 py-10 pl-4 sm:pl-8 lg:pl-16 pr-8 pb-8 lg:pb-0">
+        <form onSubmit={handleSubmit} className="flex-1 pt-3 pl-4 pr-4 pb-8 lg:pb-0">
           
-          <h1 className="text-lg sm:text-xl leading-[1.2] font-normal text-[#1A1A1A] mb-6">
+          <h1 className="text-[30px] leading-[1.2] font-normal text-[#1A1A1A] mb-6">
             You can contact Cinqo via our secure form or through the contact details provided opposite.
           </h1>
 
@@ -223,7 +223,7 @@ export default function ContactForm() {
           
           {/* Top Cell */}
             <div className="border-t-0 pt-4 pr-5 pb-4 w-full flex-1 relative">
-            <Mail className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <Mail className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
             <h4 className="text-[11px] font-medium text-gray-600 pl-3">RFP Responses and Qualification Submissions</h4>
             <div className="absolute bottom-4 left-3 text-left">
                <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
@@ -235,7 +235,7 @@ export default function ContactForm() {
 
           {/* Business Hours Segment */}
           <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
-            <Clock className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <Clock className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
             <h4 className="text-[11px] font-medium text-gray-600 pl-3">Business Hours</h4>
             <div className="absolute bottom-4 left-3 text-left">
                <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
@@ -249,7 +249,7 @@ export default function ContactForm() {
 
           {/* Postal Address Segment */}
           <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
-            <Clock className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <Clock className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
             <h4 className="text-[11px] font-medium text-gray-600 pl-3">Postal Address:</h4>
             <div className="absolute bottom-4 left-3 text-left">
                <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
