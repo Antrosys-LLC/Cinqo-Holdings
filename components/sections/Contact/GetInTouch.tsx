@@ -77,7 +77,7 @@ export default function ContactForm() {
       <div className="w-full flex flex-col lg:flex-row min-h-screen">
         
         {/* LEFT COLUMN: Contact Form */}
-        <form onSubmit={handleSubmit} className="flex-1 pt-3 pl-4 pr-4 pb-8 lg:pb-0">
+        <form onSubmit={handleSubmit} className="flex-1 min-h-[820px] pt-3 pl-4 pr-4 pb-8 lg:pb-0">
           
           <h1 className="text-[30px] leading-[1.2] font-normal text-[#1A1A1A] mb-6">
             You can contact Cinqo via our secure form or through the contact details provided opposite.
