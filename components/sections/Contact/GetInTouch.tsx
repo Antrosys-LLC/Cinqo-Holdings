@@ -222,44 +222,44 @@ export default function ContactForm() {
         <div className="lg:w-[34%] w-full border-t lg:border-t-0 lg:border-l border-black flex flex-col">
           
           {/* Top Cell */}
-          <div className="border-t-0 pt-5 pr-5 pb-5 w-full flex-1 relative">
-            <Mail className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
-            <h4 className="text-[11px] font-medium text-gray-600 pl-6">RFP Responses and Qualification Submissions</h4>
-            <div className="absolute bottom-[36px] left-[24px] text-left">
-              <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
-              <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
-                <p>info@cinqo-me.com</p>
-              </div>
-            </div>
+            <div className="border-t-0 pt-4 pr-5 pb-4 w-full flex-1 relative">
+            <Mail className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600 pl-3">RFP Responses and Qualification Submissions</h4>
+            <div className="absolute bottom-4 left-3 text-left">
+               <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
+               <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
+                 <p>info@cinqo-me.com</p>
+               </div>
+             </div>
           </div>
 
           {/* Business Hours Segment */}
-          <div className="border-t border-black pt-5 pr-5 pb-5 w-full flex-1 relative">
-            <Clock className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
-            <h4 className="text-[11px] font-medium text-gray-600 pl-6">Business Hours</h4>
-            <div className="absolute bottom-[36px] left-[24px] text-left">
-              <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
-              <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
-                <p>Sat. - Wed. 8am to 5pm</p>
-                <p>Thu. 8am to 11am</p>
-                <p>Fri. Closed</p>
-              </div>
-            </div>
+          <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
+            <Clock className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600 pl-3">Business Hours</h4>
+            <div className="absolute bottom-4 left-3 text-left">
+               <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
+               <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
+                 <p>Sat. - Wed. 8am to 5pm</p>
+                 <p>Thu. 8am to 11am</p>
+                 <p>Fri. Closed</p>
+               </div>
+             </div>
           </div>
 
           {/* Postal Address Segment */}
-          <div className="border-t border-black pt-5 pr-5 pb-5 w-full flex-1 relative">
-            <Clock className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
-            <h4 className="text-[11px] font-medium text-gray-600 pl-6">Postal Address:</h4>
-            <div className="absolute bottom-[36px] left-[24px] text-left">
-              <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
-              <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
-                <p>YBAK TOWER,</p>
-                <p>Level 14, Entrance No. 143-144</p>
-                <p>Road 1703, Block 317.</p>
-                <p>Diplomatic Area, Kingdom of<br/>Bahrain.</p>
-              </div>
-            </div>
+          <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
+            <Clock className="absolute top-4 right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600 pl-3">Postal Address:</h4>
+            <div className="absolute bottom-4 left-3 text-left">
+               <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />
+               <div className="text-[21px] leading-[1] text-[#1A1A1A] font-medium">
+                 <p>YBAK TOWER,</p>
+                 <p>Level 14, Entrance No. 143-144</p>
+                 <p>Road 1703, Block 317.</p>
+                 <p>Diplomatic Area, Kingdom of<br/>Bahrain.</p>
+               </div>
+             </div>
           </div>
 
         </div>
