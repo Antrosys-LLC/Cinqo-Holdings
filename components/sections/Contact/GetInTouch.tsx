@@ -143,7 +143,7 @@ export default function ContactForm() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
               <h3 className="text-xs text-gray-700">Enquiries routed by purpose</h3>
               <p className="text-xs text-gray-500 sm:max-w-[50%] sm:text-right">
-                Select the route that most closely matches your enquiry and the office will direct it to the relevant division.
+                Select the route that most closely matches your enquiry <br />and the office will direct it to the relevant division.
               </p>
             </div>
 
@@ -152,43 +152,37 @@ export default function ContactForm() {
               {/* General Card */}
               <div
                 onClick={() => setEnquiryPurpose('general')}
-                className={`border-2 ${enquiryPurpose === 'general' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer flex flex-col justify-between min-h-[110px] rounded-none`}
+                className={`relative border-2 ${enquiryPurpose === 'general' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer min-h-[110px] rounded-none`}
               >
-                <Mail className="text-[#E03A3E] mb-2" size={18} strokeWidth={1.5} />
-                <div>
-                  <h4 className="text-xs font-bold text-[#1A1A1A] mb-1">General enquiries</h4>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">
-                    Corporate Information, Media requests, & General Communication for the Group Office
-                  </p>
-                </div>
+                <Mail className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={18} strokeWidth={1.5} />
+                <h4 className="text-[11px] font-bold text-[#1A1A1A] pr-10 mb-1">General enquiries</h4>
+                <p className="text-[11px] text-gray-500 leading-relaxed pr-10">
+                  Corporate Information, Media requests, & General Communication for the Group Office
+                </p>
               </div>
 
               {/* Partnerships Card */}
               <div
                 onClick={() => setEnquiryPurpose('partnerships')}
-                className={`border-2 ${enquiryPurpose === 'partnerships' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer flex flex-col justify-between min-h-[110px] rounded-none`}
+                className={`relative border-2 ${enquiryPurpose === 'partnerships' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer min-h-[110px] rounded-none`}
               >
-                <Building2 className="text-[#E03A3E] mb-2" size={18} strokeWidth={1.5} />
-                <div>
-                  <h4 className="text-xs font-bold text-[#1A1A1A] mb-1">Partnerships</h4>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">
-                    Introductions for strategic collaborations, suppliers relationships, and operating-companies opportunities
-                  </p>
-                </div>
+                <Building2 className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={18} strokeWidth={1.5} />
+                <h4 className="text-[11px] font-bold text-[#1A1A1A] pr-10 mb-1">Partnerships</h4>
+                <p className="text-[11px] text-gray-500 leading-relaxed pr-10">
+                  Introductions for strategic collaborations, suppliers relationships, and operating-companies opportunities
+                </p>
               </div>
 
               {/* Projects Card */}
               <div
                 onClick={() => setEnquiryPurpose('projects')}
-                className={`border-2 ${enquiryPurpose === 'projects' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer flex flex-col justify-between min-h-[110px] rounded-none`}
+                className={`relative border-2 ${enquiryPurpose === 'projects' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white p-3 cursor-pointer min-h-[110px] rounded-none`}
               >
-                <Compass className="text-[#E03A3E] mb-2" size={18} strokeWidth={1.5} />
-                <div>
-                  <h4 className="text-xs font-bold text-[#1A1A1A] mb-1">Projects Introductions</h4>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">
-                    Early-stage project discussions, Technical hand offs, and requests for division-level coordination.
-                  </p>
-                </div>
+                <Compass className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={18} strokeWidth={1.5} />
+                <h4 className="text-[11px] font-bold text-[#1A1A1A] pr-10 mb-1">Projects Introductions</h4>
+                <p className="text-[11px] text-gray-500 leading-relaxed pr-10">
+                  Early-stage project discussions, Technical hand offs, and requests for division-level coordination.
+                </p>
               </div>
             </div>
           </div>
@@ -228,18 +222,18 @@ export default function ContactForm() {
         <div className="lg:w-[34%] w-full border-t lg:border-t-0 lg:border-l border-gray-300 flex flex-col">
           
           {/* Top Cell */}
-          <div className="flex-1 w-full relative flex items-center justify-end p-5">
-            <Mail className="text-[#E03A3E]" size={16} strokeWidth={1.5} />
+          <div className="border-t-0 p-5 w-full flex-1 relative">
+            <Mail className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600">RFP Responses and Qualification Submissions</h4>
+            <ArrowDownRight className="text-gray-800 my-3" size={14} strokeWidth={1.5} />
           </div>
 
           {/* Business Hours Segment */}
-          <div className="border-t border-gray-300 p-5 w-full flex flex-col justify-center flex-1 items-end">
-            <div className="flex items-center justify-between w-full mb-3">
-              <span className="text-xs text-gray-600 font-medium">Business Hours</span>
-              <Clock className="text-[#E03A3E]" size={16} strokeWidth={1.5} />
-            </div>
-            <ArrowDownRight className="text-gray-800 mb-2" size={14} strokeWidth={1.5} />
-            <div className="text-sm space-y-1 text-[#1A1A1A] font-medium text-right">
+          <div className="border-t border-gray-300 p-5 w-full flex-1 relative">
+            <Clock className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600">Business Hours</h4>
+            <ArrowDownRight className="text-gray-800 my-3" size={14} strokeWidth={1.5} />
+            <div className="text-sm space-y-1 text-[#1A1A1A] font-medium">
               <p>Sat. - Wed. 8am to 5pm</p>
               <p>Thu. 8am to 11am</p>
               <p>Fri. Closed</p>
@@ -247,13 +241,11 @@ export default function ContactForm() {
           </div>
 
           {/* Postal Address Segment */}
-          <div className="border-t border-gray-300 p-5 w-full flex flex-col justify-center flex-1 items-end">
-            <div className="flex items-center justify-between w-full mb-3">
-              <span className="text-xs text-gray-600 font-medium">Postal Address:</span>
-              <Clock className="text-[#E03A3E]" size={16} strokeWidth={1.5} />
-            </div>
-            <ArrowDownRight className="text-gray-800 mb-2" size={14} strokeWidth={1.5} />
-            <div className="text-sm font-medium text-[#1A1A1A] leading-snug text-right">
+          <div className="border-t border-gray-300 p-5 w-full flex-1 relative">
+            <Clock className="absolute top-[36px] right-[36px] text-[#E03A3E]" size={16} strokeWidth={1.5} />
+            <h4 className="text-[11px] font-medium text-gray-600">Postal Address:</h4>
+            <ArrowDownRight className="text-gray-800 my-3" size={14} strokeWidth={1.5} />
+            <div className="text-sm font-medium text-[#1A1A1A] leading-snug">
               <p>YBAK TOWER,</p>
               <p>Level 14, Entrance No. 143-144</p>
               <p>Road 1703, Block 317.</p>
