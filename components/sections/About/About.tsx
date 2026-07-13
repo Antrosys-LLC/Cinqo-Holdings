@@ -47,19 +47,20 @@ export default function About() {
     if (!section || spans.length === 0) return;
 
     const ctx = gsap.context(() => {
-      const stagger = 0.03;
+      const stagger = 0.25;
+      const scrollDistance = stagger * words.length * 400;
 
       gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: `+=${window.innerHeight * 0.3}`,
+          end: `+=${scrollDistance}`,
           pin: true,
-          scrub: 3,
+          scrub: 0.5,
         },
       })
-      .to(spans, { fontWeight: 600, stagger, duration: stagger, ease: "power1.out" })
-      .to(spans, { fontWeight: 400, stagger, duration: stagger, ease: "power1.in" }, stagger);
+      .to(spans, { fontWeight: 600, stagger, duration: 0.05, ease: "power1.out" })
+      .to(spans, { fontWeight: 400, stagger, duration: 0.05, ease: "power1.in" }, stagger * 3);
     }, section);
 
     return () => ctx.revert();
