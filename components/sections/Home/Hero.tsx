@@ -1,10 +1,10 @@
 import Hero from "@/components/sections/reusable/Hero";
-import { heroSlidesData } from "@/data/hero.data";
+import { homeHeroSlidesData } from "@/data/hero.data";
 
 export default function HomeHero() {
   return (
     <Hero
-      slides={heroSlidesData}
+      slides={homeHeroSlidesData}
       headline={
         <>
           BUILT ON COMMITMENT.

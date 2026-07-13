@@ -101,6 +101,7 @@ export default function Hero({ slides, headline, subtitle, cta, id = "hero", sho
               alt={slide.alt}
               fill
               priority={i === 0}
+              quality={100}
               className="object-cover"
               sizes="100vw"
             />
@@ -110,7 +111,7 @@ export default function Hero({ slides, headline, subtitle, cta, id = "hero", sho
       </div>
 
       <div className="container relative z-20 pb-24 flex flex-col gap-6 !pl-[40px]" ref={headlineRef}>
-        <h1 className="text-white text-4xl md:text-5xl lg:text-[4rem] font-bold leading-[1.1] tracking-tight">
+        <h1 className="text-white text-4xl md:text-5xl lg:text-[4rem] font-semibold leading-[1.1] tracking-tight">
           {headline}
         </h1>
         {subtitle && (
