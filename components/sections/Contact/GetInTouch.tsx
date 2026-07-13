@@ -1,6 +1,6 @@
 export default function GetInTouch() {
   return (
-    <section className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto">
+    <section className="min-h-[800px] py-20 px-6 md:px-12 max-w-[1440px] mx-auto">
       <div className="grid md:grid-cols-[2fr_1fr] gap-12">
         <div>
           <h2 className="text-2xl font-bold mb-8">You can contact Cinqo via our secure form or through the contact details provided opposite.</h2>
@@ -9,26 +9,26 @@ export default function GetInTouch() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold mb-2">First Name</label>
-                <input type="text" className="w-full border border-red-500 p-3 rounded" />
+                <input type="text" className="w-full border border-[#E03A3E] p-3 rounded" />
               </div>
               <div>
                 <label className="block text-sm font-semibold mb-2">Last Name</label>
-                <input type="text" className="w-full border border-red-500 p-3 rounded" />
+                <input type="text" className="w-full border border-[#E03A3E] p-3 rounded" />
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold mb-2">Email</label>
-                <input type="email" className="w-full border border-red-500 p-3 rounded" />
+                <input type="email" className="w-full border border-[#E03A3E] p-3 rounded" />
               </div>
               <div>
                 <label className="block text-sm font-semibold mb-2">Phone Number</label>
                 <div className="flex gap-2">
-                   <select className="border border-red-500 p-3 rounded w-1/3">
+                   <select className="border border-[#E03A3E] p-3 rounded w-1/3">
                       <option>BH +973</option>
                    </select>
-                   <input type="tel" className="w-2/3 border border-red-500 p-3 rounded" />
+                   <input type="tel" className="w-2/3 border border-[#E03A3E] p-3 rounded" />
                 </div>
               </div>
             </div>
@@ -36,13 +36,13 @@ export default function GetInTouch() {
             <div>
               <label className="block text-sm font-semibold mb-2">Inquiries routed by purpose</label>
               <div className="grid grid-cols-3 gap-4">
-                 <div className="border border-red-500 p-4 rounded text-center cursor-pointer">
+                 <div className="border border-[#E03A3E] p-4 rounded text-center cursor-pointer">
                     <p className="font-bold text-sm">General enquiries</p>
                  </div>
-                 <div className="border border-red-500 p-4 rounded text-center cursor-pointer">
+                 <div className="border border-[#E03A3E] p-4 rounded text-center cursor-pointer">
                     <p className="font-bold text-sm">Partnerships</p>
                  </div>
-                 <div className="border border-red-500 p-4 rounded text-center cursor-pointer">
+                 <div className="border border-[#E03A3E] p-4 rounded text-center cursor-pointer">
                     <p className="font-bold text-sm">Projects / Innovations</p>
                  </div>
               </div>
@@ -50,10 +50,10 @@ export default function GetInTouch() {
 
             <div>
                <label className="block text-sm font-semibold mb-2">Message *</label>
-               <textarea rows={4} className="w-full border border-red-500 p-3 rounded" placeholder="Message (250 characters max)"></textarea>
+               <textarea rows={4} className="w-full border border-[#E03A3E] p-3 rounded" placeholder="Message (250 characters max)"></textarea>
             </div>
 
-            <button className="border border-red-500 text-red-500 px-8 py-3 font-semibold uppercase tracking-wider rounded">Submit now</button>
+            <button className="border border-[#E03A3E] text-[#E03A3E] px-8 py-3 font-semibold uppercase tracking-wider rounded">Submit now</button>
           </form>
         </div>
 
