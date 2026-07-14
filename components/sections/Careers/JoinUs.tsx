@@ -1,22 +1,126 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface JoinCinqoProps {
   /** Submission event handler */
   onSubmit?: (data: any) => void;
 }
 
+const countryCodes = [
+  { code: 'AF', label: 'AF', dial: '+93' }, { code: 'AL', label: 'AL', dial: '+355' },
+  { code: 'DZ', label: 'DZ', dial: '+213' }, { code: 'AD', label: 'AD', dial: '+376' },
+  { code: 'AO', label: 'AO', dial: '+244' }, { code: 'AG', label: 'AG', dial: '+1-268' },
+  { code: 'AR', label: 'AR', dial: '+54' }, { code: 'AM', label: 'AM', dial: '+374' },
+  { code: 'AU', label: 'AU', dial: '+61' }, { code: 'AT', label: 'AT', dial: '+43' },
+  { code: 'AZ', label: 'AZ', dial: '+994' }, { code: 'BS', label: 'BS', dial: '+1-242' },
+  { code: 'BH', label: 'BH', dial: '+973' }, { code: 'BD', label: 'BD', dial: '+880' },
+  { code: 'BB', label: 'BB', dial: '+1-246' }, { code: 'BY', label: 'BY', dial: '+375' },
+  { code: 'BE', label: 'BE', dial: '+32' }, { code: 'BZ', label: 'BZ', dial: '+501' },
+  { code: 'BJ', label: 'BJ', dial: '+229' }, { code: 'BT', label: 'BT', dial: '+975' },
+  { code: 'BO', label: 'BO', dial: '+591' }, { code: 'BA', label: 'BA', dial: '+387' },
+  { code: 'BW', label: 'BW', dial: '+267' }, { code: 'BR', label: 'BR', dial: '+55' },
+  { code: 'BN', label: 'BN', dial: '+673' }, { code: 'BG', label: 'BG', dial: '+359' },
+  { code: 'BF', label: 'BF', dial: '+226' }, { code: 'BI', label: 'BI', dial: '+257' },
+  { code: 'KH', label: 'KH', dial: '+855' }, { code: 'CM', label: 'CM', dial: '+237' },
+  { code: 'CA', label: 'CA', dial: '+1' }, { code: 'CV', label: 'CV', dial: '+238' },
+  { code: 'CF', label: 'CF', dial: '+236' }, { code: 'TD', label: 'TD', dial: '+235' },
+  { code: 'CL', label: 'CL', dial: '+56' }, { code: 'CN', label: 'CN', dial: '+86' },
+  { code: 'CO', label: 'CO', dial: '+57' }, { code: 'KM', label: 'KM', dial: '+269' },
+  { code: 'CG', label: 'CG', dial: '+242' }, { code: 'CR', label: 'CR', dial: '+506' },
+  { code: 'CI', label: 'CI', dial: '+225' }, { code: 'HR', label: 'HR', dial: '+385' },
+  { code: 'CU', label: 'CU', dial: '+53' }, { code: 'CY', label: 'CY', dial: '+357' },
+  { code: 'CZ', label: 'CZ', dial: '+420' }, { code: 'DK', label: 'DK', dial: '+45' },
+  { code: 'DJ', label: 'DJ', dial: '+253' }, { code: 'DM', label: 'DM', dial: '+1-767' },
+  { code: 'DO', label: 'DO', dial: '+1-809' }, { code: 'EC', label: 'EC', dial: '+593' },
+  { code: 'EG', label: 'EG', dial: '+20' }, { code: 'SV', label: 'SV', dial: '+503' },
+  { code: 'GQ', label: 'GQ', dial: '+240' }, { code: 'ER', label: 'ER', dial: '+291' },
+  { code: 'EE', label: 'EE', dial: '+372' }, { code: 'SZ', label: 'SZ', dial: '+268' },
+  { code: 'ET', label: 'ET', dial: '+251' }, { code: 'FJ', label: 'FJ', dial: '+679' },
+  { code: 'FI', label: 'FI', dial: '+358' }, { code: 'FR', label: 'FR', dial: '+33' },
+  { code: 'GA', label: 'GA', dial: '+241' }, { code: 'GM', label: 'GM', dial: '+220' },
+  { code: 'GE', label: 'GE', dial: '+995' }, { code: 'DE', label: 'DE', dial: '+49' },
+  { code: 'GH', label: 'GH', dial: '+233' }, { code: 'GR', label: 'GR', dial: '+30' },
+  { code: 'GD', label: 'GD', dial: '+1-473' }, { code: 'GT', label: 'GT', dial: '+502' },
+  { code: 'GN', label: 'GN', dial: '+224' }, { code: 'GW', label: 'GW', dial: '+245' },
+  { code: 'GY', label: 'GY', dial: '+592' }, { code: 'HT', label: 'HT', dial: '+509' },
+  { code: 'HN', label: 'HN', dial: '+504' }, { code: 'HK', label: 'HK', dial: '+852' },
+  { code: 'HU', label: 'HU', dial: '+36' }, { code: 'IS', label: 'IS', dial: '+354' },
+  { code: 'IN', label: 'IN', dial: '+91' }, { code: 'ID', label: 'ID', dial: '+62' },
+  { code: 'IR', label: 'IR', dial: '+98' }, { code: 'IQ', label: 'IQ', dial: '+964' },
+  { code: 'IE', label: 'IE', dial: '+353' }, { code: 'IL', label: 'IL', dial: '+972' },
+  { code: 'IT', label: 'IT', dial: '+39' }, { code: 'JM', label: 'JM', dial: '+1-876' },
+  { code: 'JP', label: 'JP', dial: '+81' }, { code: 'JO', label: 'JO', dial: '+962' },
+  { code: 'KZ', label: 'KZ', dial: '+7' }, { code: 'KE', label: 'KE', dial: '+254' },
+  { code: 'KI', label: 'KI', dial: '+686' }, { code: 'KP', label: 'KP', dial: '+850' },
+  { code: 'KR', label: 'KR', dial: '+82' }, { code: 'KW', label: 'KW', dial: '+965' },
+  { code: 'KG', label: 'KG', dial: '+996' }, { code: 'LA', label: 'LA', dial: '+856' },
+  { code: 'LV', label: 'LV', dial: '+371' }, { code: 'LB', label: 'LB', dial: '+961' },
+  { code: 'LS', label: 'LS', dial: '+266' }, { code: 'LR', label: 'LR', dial: '+231' },
+  { code: 'LY', label: 'LY', dial: '+218' }, { code: 'LI', label: 'LI', dial: '+423' },
+  { code: 'LT', label: 'LT', dial: '+370' }, { code: 'LU', label: 'LU', dial: '+352' },
+  { code: 'MG', label: 'MG', dial: '+261' }, { code: 'MW', label: 'MW', dial: '+265' },
+  { code: 'MY', label: 'MY', dial: '+60' }, { code: 'MV', label: 'MV', dial: '+960' },
+  { code: 'ML', label: 'ML', dial: '+223' }, { code: 'MT', label: 'MT', dial: '+356' },
+  { code: 'MH', label: 'MH', dial: '+692' }, { code: 'MR', label: 'MR', dial: '+222' },
+  { code: 'MU', label: 'MU', dial: '+230' }, { code: 'MX', label: 'MX', dial: '+52' },
+  { code: 'FM', label: 'FM', dial: '+691' }, { code: 'MD', label: 'MD', dial: '+373' },
+  { code: 'MC', label: 'MC', dial: '+377' }, { code: 'MN', label: 'MN', dial: '+976' },
+  { code: 'ME', label: 'ME', dial: '+382' }, { code: 'MA', label: 'MA', dial: '+212' },
+  { code: 'MZ', label: 'MZ', dial: '+258' }, { code: 'MM', label: 'MM', dial: '+95' },
+  { code: 'NA', label: 'NA', dial: '+264' }, { code: 'NR', label: 'NR', dial: '+674' },
+  { code: 'NP', label: 'NP', dial: '+977' }, { code: 'NL', label: 'NL', dial: '+31' },
+  { code: 'NZ', label: 'NZ', dial: '+64' }, { code: 'NI', label: 'NI', dial: '+505' },
+  { code: 'NE', label: 'NE', dial: '+227' }, { code: 'NG', label: 'NG', dial: '+234' },
+  { code: 'NO', label: 'NO', dial: '+47' }, { code: 'OM', label: 'OM', dial: '+968' },
+  { code: 'PK', label: 'PK', dial: '+92' }, { code: 'PW', label: 'PW', dial: '+680' },
+  { code: 'PS', label: 'PS', dial: '+970' }, { code: 'PA', label: 'PA', dial: '+507' },
+  { code: 'PG', label: 'PG', dial: '+675' }, { code: 'PY', label: 'PY', dial: '+595' },
+  { code: 'PE', label: 'PE', dial: '+51' }, { code: 'PH', label: 'PH', dial: '+63' },
+  { code: 'PL', label: 'PL', dial: '+48' }, { code: 'PT', label: 'PT', dial: '+351' },
+  { code: 'QA', label: 'QA', dial: '+974' }, { code: 'RO', label: 'RO', dial: '+40' },
+  { code: 'RU', label: 'RU', dial: '+7' }, { code: 'RW', label: 'RW', dial: '+250' },
+  { code: 'KN', label: 'KN', dial: '+1-869' }, { code: 'LC', label: 'LC', dial: '+1-758' },
+  { code: 'VC', label: 'VC', dial: '+1-784' }, { code: 'WS', label: 'WS', dial: '+685' },
+  { code: 'SM', label: 'SM', dial: '+378' }, { code: 'ST', label: 'ST', dial: '+239' },
+  { code: 'SA', label: 'SA', dial: '+966' }, { code: 'SN', label: 'SN', dial: '+221' },
+  { code: 'RS', label: 'RS', dial: '+381' }, { code: 'SC', label: 'SC', dial: '+248' },
+  { code: 'SL', label: 'SL', dial: '+232' }, { code: 'SG', label: 'SG', dial: '+65' },
+  { code: 'SK', label: 'SK', dial: '+421' }, { code: 'SI', label: 'SI', dial: '+386' },
+  { code: 'SB', label: 'SB', dial: '+677' }, { code: 'SO', label: 'SO', dial: '+252' },
+  { code: 'ZA', label: 'ZA', dial: '+27' }, { code: 'SS', label: 'SS', dial: '+211' },
+  { code: 'ES', label: 'ES', dial: '+34' }, { code: 'LK', label: 'LK', dial: '+94' },
+  { code: 'SD', label: 'SD', dial: '+249' }, { code: 'SR', label: 'SR', dial: '+597' },
+  { code: 'SE', label: 'SE', dial: '+46' }, { code: 'CH', label: 'CH', dial: '+41' },
+  { code: 'SY', label: 'SY', dial: '+963' }, { code: 'TW', label: 'TW', dial: '+886' },
+  { code: 'TJ', label: 'TJ', dial: '+992' }, { code: 'TZ', label: 'TZ', dial: '+255' },
+  { code: 'TH', label: 'TH', dial: '+66' }, { code: 'TL', label: 'TL', dial: '+670' },
+  { code: 'TG', label: 'TG', dial: '+228' }, { code: 'TO', label: 'TO', dial: '+676' },
+  { code: 'TT', label: 'TT', dial: '+1-868' }, { code: 'TN', label: 'TN', dial: '+216' },
+  { code: 'TR', label: 'TR', dial: '+90' }, { code: 'TM', label: 'TM', dial: '+993' },
+  { code: 'TV', label: 'TV', dial: '+688' }, { code: 'UG', label: 'UG', dial: '+256' },
+  { code: 'UA', label: 'UA', dial: '+380' }, { code: 'AE', label: 'AE', dial: '+971' },
+  { code: 'GB', label: 'GB', dial: '+44' }, { code: 'US', label: 'US', dial: '+1' },
+  { code: 'UY', label: 'UY', dial: '+598' }, { code: 'UZ', label: 'UZ', dial: '+998' },
+  { code: 'VU', label: 'VU', dial: '+678' }, { code: 'VA', label: 'VA', dial: '+379' },
+  { code: 'VE', label: 'VE', dial: '+58' }, { code: 'VN', label: 'VN', dial: '+84' },
+  { code: 'YE', label: 'YE', dial: '+967' }, { code: 'ZM', label: 'ZM', dial: '+260' },
+  { code: 'ZW', label: 'ZW', dial: '+263' }
+];
+
 export default function JoinCinqo({
   onSubmit
 }: JoinCinqoProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [fileName, setFileName] = useState<string>('');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [search, setSearch] = useState('');
   
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    countryCode: '+973',
+    countryCode: 'BH',
     phoneNumber: '',
     currentLocation: '',
     countryState: '',
@@ -27,14 +131,39 @@ export default function JoinCinqo({
     professionalSummary: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+        setSearch('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (!dropdownOpen) setSearch('');
+  }, [dropdownOpen]);
+
+  const filteredCountries = countryCodes.filter(c =>
+    c.dial.includes(search) || c.code.toLowerCase().includes(search.toLowerCase()) || c.label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const selectedCountry = countryCodes.find(c => c.code === formData.countryCode);
+
+  const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
+    if (!dropdownOpen) return;
+    if (e.key === 'Backspace') { setSearch(s => s.slice(0, -1)); return; }
+    if (e.key === 'Escape') { setDropdownOpen(false); return; }
+    if (e.key.length === 1) {
+      setSearch(s => s + e.key);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,25 +252,37 @@ export default function JoinCinqo({
                 <label className="text-[10px] font-normal leading-tight text-black/64">
                   Phone Number
                 </label>
-                <div className="flex h-[41px] bg-white border border-[rgba(251,51,62,0.8)]">
-                  {/* Custom Split Dropdown Area */}
-                  <div className="w-[85px] h-full flex items-center justify-between px-2.5 border-r border-[rgba(251,51,62,0.8)] relative bg-transparent">
-                    <span className="text-[10px] text-black/64">BH</span>
-                    <span className="text-[10px] text-black font-normal">{formData.countryCode}</span>
-                    <svg className="w-2.5 h-2.5 text-[#5C5C5C] ml-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                    <select
-                      name="countryCode"
-                      value={formData.countryCode}
-                      onChange={handleChange}
-                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                    >
-                      <option value="+973">+973</option>
-                      <option value="+1">+1</option>
-                      <option value="+44">+44</option>
-                    </select>
+                <div className="flex h-[41px] bg-white border border-[rgba(251,51,62,0.8)] relative" ref={dropdownRef}>
+                  <div
+                    tabIndex={0}
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    onKeyDown={handleDropdownKeyDown}
+                    className="flex items-center gap-1 border-r border-[rgba(251,51,62,0.8)] px-3 bg-white text-[10px] text-black cursor-pointer select-none shrink-0 focus:outline-none"
+                  >
+                    <span className={`fi fi-${selectedCountry?.code?.toLowerCase() ?? ''}`}></span>
+                    <span className="font-semibold text-[10px]">{selectedCountry?.dial}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="m6 9 6 6 6-6" /></svg>
                   </div>
+                  {dropdownOpen && (
+                    <div className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-300 shadow-lg z-50 max-h-[200px] flex flex-col">
+                      <ul className="overflow-y-auto flex-1">
+                        {filteredCountries.map(c => (
+                          <li
+                            key={c.code}
+                            onClick={() => { setFormData(prev => ({ ...prev, countryCode: c.code })); setDropdownOpen(false); }}
+                            className={`flex items-center gap-2 px-3 py-1.5 text-[10px] cursor-pointer hover:bg-gray-100 ${c.code === formData.countryCode ? 'bg-gray-50' : ''}`}
+                          >
+                            <span className={`fi fi-${c.code.toLowerCase()}`}></span>
+                            <span className="font-medium">{c.label}</span>
+                            <span className="text-gray-500 ml-auto">{c.dial}</span>
+                          </li>
+                        ))}
+                        {filteredCountries.length === 0 && (
+                          <li className="px-3 py-2 text-[10px] text-gray-400">No results</li>
+                        )}
+                      </ul>
+                    </div>
+                  )}
                   <input
                     type="tel"
                     name="phoneNumber"
@@ -326,10 +467,10 @@ export default function JoinCinqo({
             {/* Legal Disclaimers */}
             <div className="pt-2 space-y-1">
               <p className="text-[10px] leading-[18px] text-black/64">
-                By submitting this form,you agree to the processing of your personal data in accordance with our privacy policy
+                By submitting this form, you agree to the processing of your personal data in accordance with our privacy policy
               </p>
               <p className="text-[10px] leading-[18px] text-black/64">
-                By submitting this form,you agree that all information provided is authentic
+                By submitting this form, you agree that all information provided is authentic
               </p>
             </div>
 
