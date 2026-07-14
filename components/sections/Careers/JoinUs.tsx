@@ -57,10 +57,10 @@ export default function JoinCinqo({
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full bg-[rgba(0,0,0,0.02)] text-black font-display antialiased gap-4">
+    <div className="flex flex-col lg:flex-row w-full bg-[rgba(0,0,0,0.02)] text-black font-display antialiased">
       
       {/* LEFT COLUMN: Form Body (White background matching instructions) */}
-      <div className="w-full lg:w-[67%] py-12 pr-2.5 flex flex-col justify-center">
+      <div className="w-full lg:w-[69%] py-12 flex flex-col justify-center">
         <div className="w-full max-w-[792px] mx-auto">
           
           {/* Header & Subtitle Section */}
@@ -74,7 +74,7 @@ export default function JoinCinqo({
           </div>
 
           {/* Form Element */}
-          <form onSubmit={handleFormSubmit} className="space-y-3 text-[10px] mx-4">
+          <form onSubmit={handleFormSubmit} className="space-y-3 text-[10px]">
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
               
@@ -337,7 +337,7 @@ export default function JoinCinqo({
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-[153px] h-[41px] border border-[rgba(251,51,62,0.8)] bg-transparent text-[#231F20] text-[14px] font-normal tracking-wide flex items-center justify-center hover:opacity-60 active:opacity-40 transition-all focus:outline-none"
+                className="w-[153px] h-[41px] border border-[rgba(251,51,62,0.8)] bg-transparent text-[#231F20] text-[14px] font-normal tracking-wide flex items-center justify-center hover:bg-[#F5333F]/10 active:bg-[#F5333F]/20 transition-all focus:outline-none"
               >
                 Submit Now
               </button>
@@ -348,7 +348,7 @@ export default function JoinCinqo({
       </div>
 
       {/* RIGHT COLUMN: Image */}
-      <div className="w-full lg:w-[29%] relative min-h-[600px] border-l border-neutral-100">
+      <div className="w-full lg:w-[31%] relative min-h-[600px] border-l border-neutral-100">
         <img
           src="/images/careers/image.png"
           alt="Careers"
