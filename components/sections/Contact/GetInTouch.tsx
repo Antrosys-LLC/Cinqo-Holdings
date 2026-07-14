@@ -151,7 +151,6 @@ export default function ContactForm() {
   const [countryCode, setCountryCode] = useState('BH');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const searchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -182,8 +181,6 @@ export default function ContactForm() {
     if (e.key === 'Escape') { setDropdownOpen(false); return; }
     if (e.key.length === 1) {
       setSearch(s => s + e.key);
-      if (searchTimeout.current) clearTimeout(searchTimeout.current);
-      searchTimeout.current = setTimeout(() => setSearch(''), 3000);
     }
   };
 
