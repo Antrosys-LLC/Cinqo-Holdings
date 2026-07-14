@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export default function ContactUs() {
   return (
-    <section className="bg-white py-20 px-6 md:px-12 max-w-[1440px] mx-auto">
+    <section className="bg-white pt-20 px-6 md:px-12 max-w-[1440px] mx-auto h-[800px] flex flex-col">
       <div className="grid md:grid-cols-[auto_1fr] gap-12 mb-16">
         <div className="shrink-0">
           <h2 className="text-[24px] font-medium whitespace-nowrap" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>Get In Touch</h2>
@@ -12,12 +14,14 @@ export default function ContactUs() {
         </div>
       </div>
       
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
+      <div className="flex mt-auto items-center gap-12">
+        <div className="shrink-0">
           <h2 className="text-[48px] font-medium leading-tight mb-8" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>Got Plans?<br/>let&apos;s turn them<br/>into something<br/>real</h2>
           <p className="text-gray-500 text-[16px] font-normal" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>Tell us what&apos;s on your mind</p>
         </div>
-        <div className="bg-gray-200 min-h-[400px] rounded-lg"></div>
+        <div className="ml-auto -mr-6 md:-mr-12 shrink-0">
+          <Image src="/images/contactus/image.webp" alt="Contact" width={812} height={450} />
+        </div>
       </div>
     </section>
   );
