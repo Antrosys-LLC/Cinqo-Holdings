@@ -290,7 +290,6 @@
     );
   }
 }
-
 /* Animations from components */
 @keyframes kenburns {
   0% { transform: scale(1.15); }
