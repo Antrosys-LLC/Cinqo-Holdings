@@ -204,7 +204,7 @@ export const businesses: BusinessData[] = [
   },
   {
     slug: "cinqo-fitout",
-    name: "CINQO FITOUT",
+    name: "THC FITOUT",
     heroImage: "/images/companies/c3.JPG",
     introText: "Coming soon...",
     definesUs: [],
@@ -213,7 +213,7 @@ export const businesses: BusinessData[] = [
   },
   {
     slug: "cinqo-flooring-coating-technologies",
-    name: "CINQO FLOORING & COATING",
+    name: "CINQO FLOORING & COATING TECHNOLOGIES",
     heroImage: "/images/companies/c5.png",
     introText: "Coming soon...",
     definesUs: [],
