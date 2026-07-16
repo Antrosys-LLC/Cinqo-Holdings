@@ -50,18 +50,8 @@ export default function About() {
       })
       .to(overlay, { opacity: 0.15, duration: 0.48, ease: "power2.inOut" }, "<")
 
-      // Brief hold at fullscreen
-      .to({}, { duration: 0.04 })
-
-      // Zoom out: scale back, restore corners, restore shadow, fade overlay out
-      .to(wrap, {
-        scale: 1,
-        borderRadius: "16px",
-        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
-        duration: 0.48,
-        ease: "power2.inOut",
-      })
-      .to(overlay, { opacity: 0, duration: 0.48, ease: "power2.inOut" }, "<");
+      // We removed the zoom-out steps here so the image stays full-screen 
+      // as the user continues scrolling down.
     }, section);
 
     return () => ctx.revert();

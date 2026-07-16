@@ -5,8 +5,6 @@ export default function AboutHero() {
   return (
     <Hero
       slides={aboutHeroSlidesData}
-      headline="ABOUT CINQO"
-      showDots={false}
     />
   );
 }

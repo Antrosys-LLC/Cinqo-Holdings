@@ -39,7 +39,7 @@ const governanceCards = [
 export default function GovernanceGrid() {
   return (
     <section className="bg-white py-24 md:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full mx-auto px-2 sm:px-6 lg:px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export default function GovernanceGrid() {
             className="relative min-h-[280px] lg:min-h-[90vh] rounded-md overflow-hidden"
           >
             <Image
-              src="/images/about/tower.png"
+              src="/images/about/YusafBinKanoo.jpg"
               alt="Cinqo Tower"
               fill
               className="object-cover"
