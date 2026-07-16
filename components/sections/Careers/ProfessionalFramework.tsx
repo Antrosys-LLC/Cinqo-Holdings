@@ -22,14 +22,14 @@ export default function ProfessionalFramework() {
   return (
     <section className="bg-white overflow-hidden">
       {/* Top Text Section */}
-      <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-start">
+      <div className="container mx-auto px-4 md:px-4 py-16 md:py-24">
+        <div className="grid md:grid-cols-2 gap-2 lg:gap-4 items-start">
           <motion.h2 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, margin: "-100px" }}
             variants={fadeUp}
-            className="text-4xl md:text-5xl lg:text-[4rem] font-bold uppercase text-black leading-[1.05] tracking-tight"
+            className="text-xl md:text-2xl lg:text-[2.5rem] font-bold uppercase text-black leading-[1.05] tracking-tight"
           >
             SHAPE YOUR <br className="hidden md:block" />
             PROFESSIONAL <br className="hidden md:block" />
@@ -99,23 +99,23 @@ export default function ProfessionalFramework() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[1px] bg-[var(--color-coral-600)] z-0 hidden md:block origin-center"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[0.25px] bg-[var(--color-coral-100)] z-0 hidden md:block origin-center"
           ></motion.div>
           
           {/* Cards Container */}
-          <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <div className="container mx-auto px-2 md:px-2 relative z-10">
             <motion.div 
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={staggerContainer}
-              className="grid md:grid-cols-3 gap-8"
+              className="grid md:grid-cols-3 gap-4"
             >
               {/* Card 1 */}
-              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-xl overflow-hidden border border-[var(--color-coral-600)] bg-white group shadow-lg">
+              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-sm overflow-hidden border border-[var(--color-coral-100)] bg-white group shadow-lg">
                 <Image src="/images/careers/pillar1.jpg" alt="Operational Ownership" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-5 md:p-6 text-white w-full">
+                <div className="absolute bottom-0 left-0 p-4 md:p-4 text-white w-full">
                   <h4 className="text-xl font-bold mb-2">Operational Ownership</h4>
                   <p className="text-sm text-gray-200 leading-relaxed">
                     We seek driven individuals who take absolute ownership of their outcomes, value professional excellence, and execute with discipline across every project lifecycle.
@@ -124,10 +124,10 @@ export default function ProfessionalFramework() {
               </motion.div>
 
               {/* Card 2 */}
-              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-xl overflow-hidden border border-[var(--color-coral-600)] bg-white group shadow-lg">
+              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-sm overflow-hidden border border-[var(--color-coral-100)] bg-white group shadow-lg">
                 <Image src="/images/careers/pillar2.jpg" alt="Strategic Advancement" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-5 md:p-6 text-white w-full">
+                <div className="absolute bottom-0 left-0 p-4 md:p-4 text-white w-full">
                   <h4 className="text-xl font-bold mb-2">Strategic Advancement</h4>
                   <p className="text-sm text-gray-200 leading-relaxed">
                     Expand your engineering, technology, and technical expertise through structured military capabilities and high-exposure regional project deployments.
@@ -136,10 +136,10 @@ export default function ProfessionalFramework() {
               </motion.div>
 
               {/* Card 3 */}
-              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-xl overflow-hidden border border-[var(--color-coral-600)] bg-white group shadow-lg">
+              <motion.div variants={fadeUp} className="relative h-[350px] md:h-[450px] rounded-sm overflow-hidden border border-[var(--color-coral-100)] bg-white group shadow-lg">
                 <Image src="/images/careers/pillar3.jpg" alt="Regional Impact" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-5 md:p-6 text-white w-full">
+                <div className="absolute bottom-0 left-0 p-4 md:p-4 text-white w-full">
                   <h4 className="text-xl font-bold mb-2">Regional Impact</h4>
                   <p className="text-sm text-gray-200 leading-relaxed">
                     As a proud Bahraini organization, we are actively committed to developing local talent and deploying professionals to shape the future of our local scope.

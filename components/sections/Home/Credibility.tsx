@@ -66,7 +66,7 @@ export default function Credibility() {
 
   return (
     <section
-      className="relative overflow-hidden text-cream-50 min-h-screen flex items-center justify-center py-24 font-body"
+      className="relative overflow-hidden text-cream-50 min-h-[50vh] flex items-center justify-center py-24 font-body"
       ref={sectionRef}
     >
       {/* Uses global .bg-media class for absolute positioning, object-cover, and z-index */}
@@ -86,7 +86,7 @@ export default function Credibility() {
       {/* Uses global .container class for max-width and responsive padding */}
       <div className="container relative z-10">
         {/* Reduced gap from gap-8 to gap-6 (or gap-4) to give each column MORE width */}
-        <div className="grid gap-6 grid-cols-2 min-[1024px]:grid-cols-5 border-y-2 border-line-dark py-10">
+        <div className="grid gap-6 grid-cols-2 min-[1024px]:grid-cols-5 border-y-2 border-line-dark py-16">
           {STATS.map((stat, index) => (
             <div
               className={`stat-item mt-3 flex flex-col gap-2 ${
