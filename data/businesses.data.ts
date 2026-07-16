@@ -155,20 +155,25 @@ export const businesses: BusinessData[] = [
     ],
     capabilities: [
       {
-        title: "PREVENTIVE MAINTENANCE PROGRAMMES",
-        description: "Comprehensive maintenance coverage including scheduled inspections, servicing and performance monitoring.",
+        title: "Asset Preservation",
+        description: "Maintenance programmes are designed to maximise asset lifespan, reliability and operational performance.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "MEP SERVICING AND MAINTENANCE",
-        description: "Expert maintenance of mechanical, electrical and plumbing systems.",
+        title: "Operational Continuity",
+        description: "Systems are monitored and maintained to minimise downtime and support uninterrupted operations.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "ON DEMAND CORRECTIVE MAINTENANCE",
-        description: "Rapid response repairs and issue resolution.",
+        title: "Lifecycle Focus",
+        description: "Maintenance decisions are guided by long-term asset performance and total cost of ownership.",
         image: "/images/capabilities/HAWAR.jpg"
-      }
+      },
+      {
+        title: "Transparent Reporting",
+        description: "Clients benefit from clear visibility across maintenance activities, compliance requirements and asset performance.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
     ],
     sectors: [
       {
