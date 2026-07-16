@@ -11,7 +11,27 @@ const cardStyle: React.CSSProperties = {
   borderRadius: '5px'
 };
 
-export default function Page({ sectorFirstCardImage }: { sectorFirstCardImage?: string }) {
+export default function Page({ 
+  sectorFirstCardImage, 
+  sectorFirstCardTitle, 
+  sectorFirstCardDescription,
+  sectorSecondCardTitle,
+  sectorSecondCardDescription,
+  sectorThirdCardTitle,
+  sectorThirdCardDescription,
+  sectorFourthCardTitle,
+  sectorFourthCardDescription
+}: { 
+  sectorFirstCardImage?: string;
+  sectorFirstCardTitle?: string;
+  sectorFirstCardDescription?: string;
+  sectorSecondCardTitle?: string;
+  sectorSecondCardDescription?: string;
+  sectorThirdCardTitle?: string;
+  sectorThirdCardDescription?: string;
+  sectorFourthCardTitle?: string;
+  sectorFourthCardDescription?: string;
+}) {
   return (
     <div className="min-h-screen bg-white text-ink font-sans p-4 md:p-8 pb-0 md:pb-0">
       <div className="max-w-[1200px] mx-auto">
@@ -31,8 +51,18 @@ export default function Page({ sectorFirstCardImage }: { sectorFirstCardImage?: 
              <img src={idx === 0 && sectorFirstCardImage ? sectorFirstCardImage : s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover" style={{ transform: 'scale(1.014)' }} />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" style={{ transform: 'scale(1.014)' }}></div>
             <div className="absolute bottom-0 left-0 px-[14px] pt-4 pb-[15px] md:px-[22px] md:pt-5 md:pb-[23px] text-white">
-              <h2 className="font-['Inter'] text-lg font-medium uppercase tracking-wider mb-2">{s.title}</h2>
-              <p className="font-['Inter'] text-sm font-normal leading-snug opacity-90">{s.description}</p>
+              <h2 className="font-['Inter'] text-lg font-medium uppercase tracking-wider mb-2">
+                {idx === 0 && sectorFirstCardTitle ? sectorFirstCardTitle : 
+                 idx === 1 && sectorSecondCardTitle ? sectorSecondCardTitle :
+                 idx === 2 && sectorThirdCardTitle ? sectorThirdCardTitle :
+                 idx === 3 && sectorFourthCardTitle ? sectorFourthCardTitle : s.title}
+              </h2>
+              <p className="font-['Inter'] text-sm font-normal leading-snug opacity-90">
+                {idx === 0 && sectorFirstCardDescription ? sectorFirstCardDescription : 
+                 idx === 1 && sectorSecondCardDescription ? sectorSecondCardDescription :
+                 idx === 2 && sectorThirdCardDescription ? sectorThirdCardDescription :
+                 idx === 3 && sectorFourthCardDescription ? sectorFourthCardDescription : s.description}
+              </p>
             </div>
           </div>
           ))}

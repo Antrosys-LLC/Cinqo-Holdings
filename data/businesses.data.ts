@@ -24,6 +24,14 @@ export interface BusinessData {
   capabilities: CapabilityItem[];
   sectors: SectorItem[];
   sectorFirstCardImage?: string;
+  sectorFirstCardTitle?: string;
+  sectorFirstCardDescription?: string;
+  sectorSecondCardTitle?: string;
+  sectorSecondCardDescription?: string;
+  sectorThirdCardTitle?: string;
+  sectorThirdCardDescription?: string;
+  sectorFourthCardTitle?: string;
+  sectorFourthCardDescription?: string;
 }
 
 export interface SectorsPageData {
@@ -130,7 +138,15 @@ export const businesses: BusinessData[] = [
         image: "/images/businesses/sector-healthcare.jpg"
       }
     ],
-    sectorFirstCardImage: "/images/sectors/card-1_contract.webp"
+    sectorFirstCardImage: "/images/sectors/card-1_contract.webp",
+    sectorFirstCardTitle: "HIGH-END RESIDENTIAL VILLAS & COMPOUNDS",
+    sectorFirstCardDescription: "Delivery of luxury villas and gated communities with a focus on quality, coordination and finishing excellence.",
+    sectorSecondCardTitle: "RESIDENTIAL & COMMERCIAL TOWERS",
+    sectorSecondCardDescription: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
+    sectorThirdCardTitle: "COMMERCIAL MALLS & MIXED-USE DEVELOPMENTS",
+    sectorThirdCardDescription: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
+    sectorFourthCardTitle: "WAREHOUSES & INDUSTRIAL FACILITIES",
+    sectorFourthCardDescription: "Development of industrial structures incorporating utility integration, fire safety systems and operational infrastructure.",
   },
   {
     slug: "thc-facilities-management",
@@ -189,7 +205,15 @@ export const businesses: BusinessData[] = [
         description: "Keeping retail environments safe and pristine.",
         image: "/images/businesses/sector-retail.jpg"
       }
-    ]
+    ],
+    sectorFirstCardTitle: "HOSPITALITY",
+    sectorFirstCardDescription: "Facilities management solutions supporting hotels and serviced residences where uninterrupted operations are essential.",
+    sectorSecondCardTitle: "RESIDENTIAL TOWERS & COMPOUNDS",
+    sectorSecondCardDescription: "Maintenance of HVAC, fire systems, lifts and shared infrastructure to ensure consistent building performance.",
+    sectorThirdCardTitle: "OFFICE BUILDINGS",
+    sectorThirdCardDescription: "Preventive maintenance and system optimisation for corporate environments focused on uptime and efficiency.",
+    sectorFourthCardTitle: "INDUSTRIAL FACILITIES",
+    sectorFourthCardDescription: "Technical servicing of operational assets and infrastructure aligned with compliance and productivity requirements.",
   },
   {
     slug: "cinqo-trading",

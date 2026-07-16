@@ -37,7 +37,17 @@ export default async function BusinessPage({
       <Capabilities capabilities={business.capabilities} />
       
       {/* Sectors grid */}
-      <Sectors sectorFirstCardImage={business.sectorFirstCardImage} />
+      <Sectors 
+        sectorFirstCardImage={business.sectorFirstCardImage}
+        sectorFirstCardTitle={business.sectorFirstCardTitle}
+        sectorFirstCardDescription={business.sectorFirstCardDescription}
+        sectorSecondCardTitle={business.sectorSecondCardTitle}
+        sectorSecondCardDescription={business.sectorSecondCardDescription}
+        sectorThirdCardTitle={business.sectorThirdCardTitle}
+        sectorThirdCardDescription={business.sectorThirdCardDescription}
+        sectorFourthCardTitle={business.sectorFourthCardTitle}
+        sectorFourthCardDescription={business.sectorFourthCardDescription}
+      />
 
       <News/>
     </main>
