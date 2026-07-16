@@ -65,64 +65,64 @@ export default function Page() {
           </div>
         </div>
         </div>
+      </div>
 
-        {/* Showcase Section */}
-        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 -mt-3">
-          <div className="w-full md:w-[25%] flex flex-col justify-between">
-            <p className="text-sm md:text-base leading-relaxed text-gray-800 font-medium">
+      {/* Showcase Section - full width */}
+      <div className="-mx-4 md:-mx-8 mb-4">
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 -mt-3 pl-3">
+          <div className="w-full md:max-w-[308px] flex flex-col justify-between">
+            <p className="font-['Inter'] font-light text-[20px] leading-relaxed text-gray-800">
               A showcase of absolute accountability in execution. We measure the success of these works by the frequency of repeat client engagement and a commitment to honoring obligations long after final handover.
             </p>
-            <div className="mt-12">
-              <ul className="space-y-1.5 mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase">
+            <div className="ml-3">
+              <ul className="space-y-1.5 mb-3 font-[var(--font-ibm-plex)] font-medium text-[15px] tracking-widest uppercase">
                 <li>J003 FONTANA INFINITY</li>
                 <li>J003 FONTANA INFINITY</li>
                 <li>J003 FONTANA INFINITY</li>
               </ul>
-              <button className="border border-gray-400 px-8 py-2.5 text-[10px] font-bold tracking-widest uppercase hover:bg-gray-100 transition-colors">
+              <button className="border border-gray-400 font-[var(--font-ibm-plex)] font-normal text-[16px] tracking-widest uppercase hover:bg-gray-100 transition-colors h-[34px] w-[170px] flex items-center justify-center py-0">
                 CONTACT
               </button>
             </div>
           </div>
-          <div className="w-full md:w-[75%]">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Showcase building" className="w-full h-full object-cover min-h-[300px] md:min-h-[450px]" />
+          <div style={{ width: '972px', height: '693px', flexShrink: 0 }} className="-ml-1">
+            <img src="/images/sectors/sector-1.webp" alt="Showcase building" className="w-full h-full object-cover" />
           </div>
         </div>
+      </div>
 
-        {/* Aerial View Section */}
-        <div className="w-full">
-          <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1600&q=80" alt="Aerial view of overwater villas" className="w-full h-auto object-cover min-h-[300px] md:min-h-[500px]" />
+      {/* Aerial View Section - full width */}
+      <div className="-mr-4 md:-mr-8 flex justify-end mb-4">
+        <div style={{ width: '972px', height: '693px' }}>
+          <img src="/images/sectors/sector-2.webp" alt="Aerial view" className="w-full h-full object-cover" />
         </div>
+      </div>
 
-        {/* Bottom Composite Section */}
-        <div className="w-full flex flex-col">
-          {/* Top part (Sky/Building) */}
-          <div className="relative w-full h-48 md:h-64">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Skyline" className="w-full h-full object-cover" />
-            <h2 className="absolute top-4 left-4 md:top-6 md:left-6 text-xs md:text-sm font-bold tracking-widest uppercase text-black">
-              J003 FONTANA INFINITY
-            </h2>
+      {/* Bottom Composite Section - full width */}
+      <div className="-mr-4 md:-mr-8 flex justify-end">
+        <div className="relative" style={{ width: '1006px', height: '705px' }}>
+          <img src="/images/sectors/sector-3.jpg" alt="Composite" className="w-full h-full object-cover" />
+          <h2 className="absolute top-[18px] left-[18px] font-[var(--font-ibm-plex)] font-normal text-[20px] tracking-widest uppercase text-white">
+            J003 FONTANA INFINITY
+          </h2>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2" style={{ width: '227px', height: '157px' }}>
+            <img src="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?auto=format&fit=crop&w=400&q=80" alt="" className="w-full h-full object-cover" />
           </div>
-          
-          {/* 4 Thumbnails Strip */}
-          <div className="grid grid-cols-4 gap-1 w-full bg-white py-1">
-             <img src="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?auto=format&fit=crop&w=400&q=80" alt="Parking area 1" className="w-full h-24 md:h-36 object-cover" />
-             <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=400&q=80" alt="Parking area 2" className="w-full h-24 md:h-36 object-cover" />
-             <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=400&q=80" alt="Parking area 3" className="w-full h-24 md:h-36 object-cover" />
-             <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?auto=format&fit=crop&w=400&q=80" alt="Parking area 4" className="w-full h-24 md:h-36 object-cover" />
-          </div>
-
-          {/* Bottom part (Ground/Text) */}
-          <div className="relative w-full h-48 md:h-72">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Ground plaza view" className="w-full h-full object-cover" />
-            <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
-              <p className="text-[10px] md:text-xs font-bold text-black max-w-[90%] leading-tight bg-white/30 backdrop-blur-sm p-2 md:p-0 md:bg-transparent md:backdrop-blur-none">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              </p>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex gap-1" style={{ marginLeft: '227px' }}>
+              <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
+              <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
+              <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
             </div>
           </div>
+          <div className="absolute bottom-[18px] left-[18px]">
+            <p className="font-[var(--font-ibm-plex)] font-medium text-[18px] text-white">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
         </div>
-
       </div>
+
     </div>
   );
 }
