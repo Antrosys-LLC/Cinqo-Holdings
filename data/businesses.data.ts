@@ -277,3 +277,121 @@ export const businesses: BusinessData[] = [
     ],
   }
 ];
+
+// ─── Brand Portfolio ────────────────────────────────────────────────────────────
+
+export interface BrandPortfolioItem {
+  name: string;
+  logo: string;
+  title: string;
+  description: string;
+  layout: "grid" | "wide";
+}
+
+export interface BrandPortfolioCategory {
+  category: string;
+  items: BrandPortfolioItem[];
+}
+
+export const brandPortfolio: BrandPortfolioCategory[] = [
+  {
+    category: "PAINTS & SPECIALIZED COATINGS",
+    items: [
+      {
+        name: "Dulux",
+        logo: "/workedwith/logo-1.png",
+        title: "Decorative Paints",
+        description:
+          "Premium decorative paints and coatings for residential and commercial interiors, providing lasting beauty and protection.",
+        layout: "grid",
+      },
+      {
+        name: "Crayco",
+        logo: "/workedwith/logo-2.png",
+        title: "Floor Coatings & Pavement Preservation",
+        description:
+          "High-performance floor coatings and pavement preservation solutions for industrial, commercial, and infrastructure applications.",
+        layout: "wide",
+      },
+      {
+        name: "Sikkens",
+        logo: "/workedwith/logo-3.png",
+        title: "Wood Coatings",
+        description:
+          "Professional wood coating systems that deliver exceptional durability, color retention, and protection against the elements.",
+        layout: "grid",
+      },
+      {
+        name: "Spay",
+        logo: "/workedwith/logo-4.png",
+        title: "Wood Coatings",
+        description:
+          "Specialized wood coating solutions designed for demanding environments with superior finish and long-lasting performance.",
+        layout: "wide",
+      },
+    ],
+  },
+  {
+    category: "BUILDING MATERIALS",
+    items: [
+      {
+        name: "Gyproc Saint-Gobain",
+        logo: "/workedwith/logo-5.png",
+        title: "Interior & Exterior Construction Systems",
+        description:
+          "Innovative drywall, plasterboard, and ceiling systems for complete interior and exterior building solutions.",
+        layout: "grid",
+      },
+      {
+        name: "Ecophon Saint-Gobain",
+        logo: "/workedwith/logo-6.png",
+        title: "Acoustic Ceiling Systems",
+        description:
+          "High-performance acoustic ceiling solutions that enhance sound quality, comfort, and aesthetics in any space.",
+        layout: "wide",
+      },
+    ],
+  },
+  {
+    category: "CONSTRUCTION CHEMICALS",
+    items: [
+      {
+        name: "Sika",
+        logo: "/workedwith/logo-7.png",
+        title: "Construction Chemicals",
+        description:
+          "World-leading construction chemical solutions for sealing, bonding, reinforcing, and protecting structures.",
+        layout: "grid",
+      },
+      {
+        name: "Master Builders Solutions",
+        logo: "/workedwith/logo-8.png",
+        title: "Construction Chemicals",
+        description:
+          "Advanced admixtures, concrete treatments, and chemical solutions that enhance construction performance and durability.",
+        layout: "wide",
+      },
+      {
+        name: "Apple Chemie",
+        logo: "/workedwith/logo-1.png",
+        title: "Construction Chemicals",
+        description:
+          "Specialty chemical products for construction, including waterproofing, surface treatments, and protective coatings.",
+        layout: "grid",
+      },
+    ],
+  },
+  {
+    category: "INFRASTRUCTURE",
+    items: [
+      {
+        name: "Flovac",
+        logo: "/workedwith/logo-2.png",
+        title: "Vacuum Sewerage Systems",
+        description:
+          "Innovative vacuum sewerage technology for efficient, reliable, and cost-effective wastewater collection in challenging terrains.",
+        layout: "wide",
+      },
+    ],
+  },
+];
