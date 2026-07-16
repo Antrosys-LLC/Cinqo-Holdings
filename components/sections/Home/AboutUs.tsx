@@ -84,16 +84,8 @@ export default function AboutUs() {
             <h3 className="font-bold text-black text-[20px] mb-4 tracking-[0.12em] uppercase font-['Inter',_sans-serif] transition-colors duration-300 group-hover:text-neutral-700">
               Mission
             </h3>
-            <p className="text-black/85 text-[18px] leading-[1.8] font-['Inter',_sans-serif] max-w-4xl mx-auto">
-              <span className={hoverSpanClass}>To build and operate </span>{" "}
-              <span className={hoverSpanClass}>each business within the Group </span>{" "}
-              <span className={hoverSpanClass}>to a standard that retains clients, </span>{" "}
-              <span className={hoverSpanClass}>protects capital and delivers consistent results </span>{" "}
-              <span className={hoverSpanClass}>across market conditions — </span>{" "}
-              <span className={hoverSpanClass}>while fostering an environment </span>{" "}
-              <span className={hoverSpanClass}>where our teams are developed, </span>{" "}
-              <span className={hoverSpanClass}>empowered and held to the </span>{" "}
-              <span className={hoverSpanClass}> same standard of excellence.</span>
+            <p className="text-black/85 text-[clamp(13px,2.2vw,20px)] leading-[1.7] font-[var(--font-ibm-plex)] whitespace-nowrap">
+              To build a group of enduring businesses recognized for performance, trust and sustainable growth.
             </p>
           </div>
 
