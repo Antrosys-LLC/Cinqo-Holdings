@@ -249,7 +249,7 @@ export const businesses: BusinessData[] = [
     name: "CINQO FLOORING & COATING TECHNOLOGIES",
     heroImage: "/images/companies/c5.png",
     introBgImage: "/images/companies/ci5.png",
-    introHeading: "ENGINEERED\nFOR ENDURANCE",
+    introHeading: "ENGINEERED\nFOR\nENDURANCE",
     introText: "Cinqo Flooring & Coating Technologies delivers high-performance flooring, waterproofing and protective coating systems for environments where durability, hygiene and long-term performance are critical.\n\nThe company serves logistics facilities, healthcare and pharmaceutical environments, food production sites, car parks and industrial installations through technically engineered solutions and manufacturer-approved systems.",
     definesUs: [],
     capabilities: [],
