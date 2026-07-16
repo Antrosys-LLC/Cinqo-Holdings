@@ -23,6 +23,7 @@ export interface BusinessData {
   definesUs: DefineUsItem[];
   capabilities: CapabilityItem[];
   sectors: SectorItem[];
+  sectorFirstCardImage?: string;
 }
 
 export interface SectorsPageData {
@@ -128,7 +129,8 @@ export const businesses: BusinessData[] = [
         description: "Advanced medical facilities...",
         image: "/images/businesses/sector-healthcare.jpg"
       }
-    ]
+    ],
+    sectorFirstCardImage: "/images/sectors/card-1_contract.webp"
   },
   {
     slug: "thc-facilities-management",

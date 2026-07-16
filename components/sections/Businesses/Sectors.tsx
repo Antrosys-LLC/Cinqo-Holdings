@@ -11,7 +11,7 @@ const cardStyle: React.CSSProperties = {
   borderRadius: '5px'
 };
 
-export default function Page({ slug }: { slug?: string }) {
+export default function Page({ sectorFirstCardImage }: { sectorFirstCardImage?: string }) {
   return (
     <div className="min-h-screen bg-white text-ink font-sans p-4 md:p-8 pb-0 md:pb-0">
       <div className="max-w-[1200px] mx-auto">
@@ -28,7 +28,7 @@ export default function Page({ slug }: { slug?: string }) {
         <div className="flex flex-col md:flex-row items-center md:justify-center gap-[12px] mx-4">
           {sectorsShowcase.map((s: SectorItem, idx: number) => (
           <div key={s.title} className="group border border-muted" style={cardStyle}>
-            <img src={slug === 'cinqo-contracting' && idx === 0 ? '/images/sectors/card-1_contract.webp' : s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover" style={{ transform: 'scale(1.014)' }} />
+            <img src={idx === 0 && sectorFirstCardImage ? sectorFirstCardImage : s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover" style={{ transform: 'scale(1.014)' }} />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" style={{ transform: 'scale(1.014)' }}></div>
             <div className="absolute bottom-0 left-0 px-[14px] pt-4 pb-[15px] md:px-[22px] md:pt-5 md:pb-[23px] text-white">
               <h2 className="font-['Inter'] text-lg font-medium uppercase tracking-wider mb-2">{s.title}</h2>
