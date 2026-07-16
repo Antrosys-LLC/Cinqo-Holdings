@@ -1,37 +1,89 @@
+"use client";
 import Image from "next/image";
 import { logosData } from "@/data/logos.data";
 
-/**
- * Represented brands — infinite horizontal marquee.
- * The list is duplicated once so the CSS keyframe loop is seamless.
- */
-export default function LogosLoop() {
-  const loopLogos = [...logosData, ...logosData];
-
+export default function TrustedBySection() {
   return (
-    <section className="section bg-cream-50 py-18 relative">
-      <div className="container">
-        <p className="max-w-[700px] mx-auto mb-12 text-center text-muted text-body">
-          Exclusive and authorized representation of leading global
-          manufacturers, delivering world-class technical solutions across
-          coatings, chemicals, and infrastructure.
-        </p>
+    <section 
+      className="bg-white py-8 flex flex-col items-center w-full px-4 md:px-10 overflow-hidden"
+      aria-labelledby="trusted-by-heading"
+    >
+      {/* 1. Header Text Container */}
+      <div className="w-full max-w-[1400px] flex flex-col items-start mb-8 px-2">
+        <div className="relative">
+          <p id="trusted-by-heading" className="text-md md:text-md font-light text-slate-900">
+            Exclusive and authorized representation of leading global manufacturers, delivering world-class technical solutions across coatings, chemicals, and infrastructure.
+          </p>
+        </div>
       </div>
 
-      <div className="overflow-hidden relative">
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[150%] opacity-50">
-          <Image src="/images/logobg.png" alt="" fill className="object-cover" sizes="100vw" />
-        </div>
-        <div className="[mask-image:linear-gradient(90deg,transparent_0%,#000_10%,#000_90%,transparent_100%)]">
-          <div className="flex items-center w-max gap-16 min-h-[500px] animate-[scroll_30s_linear_infinite]">
-            {loopLogos.map((logo, i) => (
-              <div className="flex-none transition-all duration-300 ease-out hover:opacity-80" key={`${logo.id}-${i}`}>
-                <Image src={logo.logo} alt={logo.name} width={110} height={40} />
+      {/* 2. Main Cloud Container with background image and exact height */}
+      <div 
+        className="relative w-full max-w-[1400px] h-[400px] overflow-hidden rounded-[10px] flex flex-col justify-center"
+        style={{
+          backgroundImage: `url('/images/logobg.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Dull White Opacity Layer */}
+        <div className="absolute inset-0 bg-white/75 z-0 pointer-events-none rounded-[10px]" />
+
+        {/* Row: Smooth Marquee */}
+        <div 
+          className="relative z-10 flex overflow-x-hidden group w-full"
+          role="region" 
+          aria-label="Scrolling brand logos"
+        >
+          <div className="animate-marquee flex whitespace-nowrap gap-12 md:gap-16 items-center">
+            {[...logosData, ...logosData, ...logosData].map((logoItem, i) => (
+              <div 
+                key={`logo-${logoItem.id}-${i}`} 
+                className="mx-2 relative h-10 md:h-20 w-32 md:w-48 flex-shrink-0"
+              >
+                <Image 
+                  src={logoItem.logo} 
+                  alt={`${logoItem.name} logo`}
+                  fill
+                  sizes="(max-width: 768px) 128px, 192px"
+                  className="object-contain" 
+                  priority={i < logosData.length}
+                />
               </div>
             ))}
           </div>
         </div>
+
+        {/* Subtle Ring Overlay */}
+        <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-[40px] z-20"></div>
       </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.3333%); }
+        }
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+          will-change: transform;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .group:hover .animate-marquee {
+            animation-play-state: paused;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation: none;
+            overflow-x: auto;
+            white-space: normal;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

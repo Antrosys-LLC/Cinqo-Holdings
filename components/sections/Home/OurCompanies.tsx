@@ -6,9 +6,8 @@ import { motion } from "framer-motion";
 import { companiesData } from "@/data/companies.data";
 
 /**
- * Our Companies — 6-card grid. On hover, the card's bgImage is
- * revealed underneath a frosted-glass blur (see .glass-frost-hover
- * in globals.css combined with the local .card styles below).
+ * Our Companies — 6-card grid. 
+ * On hover, the box scales up slightly and transitions its border color.
  */
 export default function OurCompanies() {
   return (
@@ -39,27 +38,24 @@ export default function OurCompanies() {
               initial={{ opacity: 0, y: 40, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               whileHover={{ 
-                y: -8, 
-                scale: 1.02, 
+                scale: 1.04, 
+                borderColor: "var(--color-coral-500)",
                 boxShadow: "0px 20px 30px rgba(0, 0, 0, 0.08)",
-                transition: { type: "spring", stiffness: 400, damping: 25 }
+                transition: { type: "spring", stiffness: 400, damping:25 }
               }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{
                 type: "spring",
                 stiffness: 70,
                 damping: 15,
-                delay: index * 0.1, // Manual stagger
+                delay: index * 0.005, // Manual stagger
               }}
-              className="group relative overflow-hidden rounded border border-line bg-cream-50 min-h-[280px] isolate glass-frost-hover transition-colors duration-300"
+              className="group relative overflow-hidden rounded border border-line bg-cream-50 aspect-square isolate"
             >
               <Link
                 href={company.href}
-                className="flex flex-col justify-between p-5 sm:p-6 w-full h-full min-h-[280px]"
+                className="flex flex-col justify-between p-5 sm:p-6 w-full h-full"
               >
-                {/* Frosted Glass Overlay */}
-                <div className="absolute inset-0 -z-10 bg-white/55 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100" />
-
                 {/* Logo — Strictly Top Left */}
                 <div className="flex justify-start items-start w-full mb-6">
                   <Image

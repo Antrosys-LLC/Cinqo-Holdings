@@ -19,6 +19,8 @@ export interface BusinessData {
   slug: string;
   name: string;
   heroImage: string;
+  introBgImage: string;
+  introHeading?: string;
   introText: string;
   definesUs: DefineUsItem[];
   capabilities: CapabilityItem[];
@@ -51,37 +53,42 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-contracting",
     name: "CINQO CONTRACTING",
-    heroImage: "/images/sectors/sector-1.webp",
-    introText: "Cinqo Contracting is the Cinqo Flagship enterprise...",
+    heroImage: "/images/companies/c1.jpg",
+        introBgImage: "/images/companies/ci1.png",
+    introHeading: "BUILT ON\nCOMMITMENT",    introText: "Cinqo Contracting is the Group's flagship construction company, delivering civil and building projects across Bahrain's residential, commercial and industrial sectors.\n\nFor nearly two decades, the company has delivered luxury villas, residential developments, commercial facilities, warehouses and industrial assets. Through execution focused planning, experienced project leadership and rigorous commercial control, Cinqo Contracting provides confidence from mobilisation through final handover.",
     definesUs: [
       {
-        title: "MAXIMISING POTENTIAL",
-        description: "Value Engineering..."
+        title: "Executive Oversight",
+        description: "Projects operate with direct leadership visibility, ensuring accountability, timely decision-making and effective risk management throughout delivery."
       },
       {
-        title: "DELIVERING EXCELLENCE",
-        description: "Executing complex projects..."
+        title: "Quality & Compliance",
+        description: "Materials, workmanship and safety standards are maintained through inspections, testing and compliance monitoring throughout execution."
       },
       {
-        title: "EMPOWERING CAPABILITIES",
-        description: "Driving success..."
+        title: "Programme Control",
+        description: "Scheduling and sequencing are actively monitored across all project phases, supported by ERP-enabled tracking and reporting."
+      },
+      {
+        title: "Commercial Discipline",
+        description: "Cost exposure, variations and financial commitments are managed through structured controls and documented approval processes."
       }
     ],
     capabilities: [
       {
         title: "CIVIL & STRUCTURAL CONSTRUCTION",
-        description: "Ground-up structural engineering...",
-        image: "/images/sectors/sector-1.webp"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "MEP CONTRACTING",
-        description: "Mechanical, Electrical, and Plumbing...",
-        image: "/images/sectors/sector-2.webp"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "HIGH END FIT OUT & JOINERY",
-        description: "Premium interior fit-outs...",
-        image: "/images/sectors/sector-3.jpg"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       }
     ],
     sectorShowcase: [
@@ -110,8 +117,10 @@ export const businesses: BusinessData[] = [
   {
     slug: "thc-facilities-management",
     name: "THC FACILITIES MANAGEMENT",
-    heroImage: "/images/sectors/sector-2.webp",
-    introText: "THC Facilities Management helps clients protect, maintain and enhance the value of their assets through integrated facilities management solutions.",
+    heroImage: "/images/companies/c2.jpeg",
+    introBgImage: "/images/companies/ci2.png",
+    introHeading: "PRESERVING\nVALUE",
+    introText: "THC Facilities Management helps clients protect, maintain and enhance the value of their assets through integrated facilities management services.\n\nOperating across residential, hospitality, commercial and industrial environments, the company combines technical expertise, preventative maintenance and responsive support to ensure operational continuity and long-term asset performance.",
     definesUs: [
       {
         title: "ASSET PERFORMANCE",
@@ -128,20 +137,25 @@ export const businesses: BusinessData[] = [
     ],
     capabilities: [
       {
-        title: "PREVENTIVE MAINTENANCE PROGRAMMES",
-        description: "Comprehensive maintenance coverage including scheduled inspections, servicing and performance monitoring.",
-        image: "/images/sectors/sector-1.webp"
+        title: "Asset Preservation",
+        description: "Maintenance programmes are designed to maximise asset lifespan, reliability and operational performance.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "MEP SERVICING AND MAINTENANCE",
-        description: "Expert maintenance of mechanical, electrical and plumbing systems.",
-        image: "/images/sectors/sector-2.webp"
+        title: "Operational Continuity",
+        description: "Systems are monitored and maintained to minimise downtime and support uninterrupted operations.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "ON DEMAND CORRECTIVE MAINTENANCE",
-        description: "Rapid response repairs and issue resolution.",
-        image: "/images/sectors/sector-3.jpg"
-      }
+        title: "Lifecycle Focus",
+        description: "Maintenance decisions are guided by long-term asset performance and total cost of ownership.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "Transparent Reporting",
+        description: "Clients benefit from clear visibility across maintenance activities, compliance requirements and asset performance.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
     ],
     sectorShowcase: [
       {
@@ -169,8 +183,10 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-trading",
     name: "CINQO TRADING",
-    heroImage: "/images/sectors/sector-3.jpg",
-    introText: "Coming soon...",
+    heroImage: "/images/companies/h1.jpg",
+    introBgImage: "/images/companies/ci4.png",
+    introHeading: "STRUCTURED\nDISTRIBUTION",
+    introText: "Cinqo Trading serves as the commercial and technical bridge between leading international manufacturers and the GCC market.\n\nThrough exclusive and authorised partnerships with globally recognised brands, the division supplies paints, construction chemicals, building materials, acoustic systems and infrastructure technologies across Bahrain.\n\nBeyond distribution, Cinqo Trading supports specification development, technical evaluation, project execution and after-sales support, helping clients select and implement solutions with confidence.",
     definesUs: [],
     capabilities: [],
     sectorShowcase: [
@@ -198,9 +214,11 @@ export const businesses: BusinessData[] = [
   },
   {
     slug: "cinqo-fitout",
-    name: "CINQO FITOUT",
-    heroImage: "/images/sectors/sector-1.webp",
-    introText: "Coming soon...",
+    name: "THC FITOUT",
+    heroImage: "/images/companies/c3.JPG",
+    introBgImage: "/images/companies/ci3.png",
+    introHeading: "DELIVERED\nWITH\nPRECISION",
+    introText: "THC Fit Out delivers high-quality interior environments where design intent, technical coordination and execution excellence come together.\n\nFrom corporate offices and retail environments to hospitality venues and premium residential interiors, every project is delivered with a focus on quality, programmed control and attention to detail.",
     definesUs: [],
     capabilities: [],
     sectorShowcase: [
@@ -228,9 +246,11 @@ export const businesses: BusinessData[] = [
   },
   {
     slug: "cinqo-flooring-coating-technologies",
-    name: "CINQO FLOORING & COATING",
-    heroImage: "/images/sectors/sector-2.webp",
-    introText: "Coming soon...",
+    name: "CINQO FLOORING & COATING TECHNOLOGIES",
+    heroImage: "/images/companies/c5.png",
+    introBgImage: "/images/companies/ci4.png",
+    introHeading: "ENGINEERED\nFOR ENDURANCE",
+    introText: "Cinqo Flooring & Coating Technologies delivers high-performance flooring, waterproofing and protective coating systems for environments where durability, hygiene and long-term performance are critical.\n\nThe company serves logistics facilities, healthcare and pharmaceutical environments, food production sites, car parks and industrial installations through technically engineered solutions and manufacturer-approved systems.",
     definesUs: [],
     capabilities: [],
     sectorShowcase: [

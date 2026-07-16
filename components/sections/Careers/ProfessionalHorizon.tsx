@@ -21,8 +21,8 @@ export default function ProfessionalHorizon() {
 
   return (
     <section className="bg-white py-10 md:py-12 overflow-hidden min-h-[60vh] flex items-center">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="container mx-auto px-3 md:px-3">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-8 items-center">
           {/* Left Image Column */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}

@@ -50,18 +50,8 @@ export default function About() {
       })
       .to(overlay, { opacity: 0.15, duration: 0.48, ease: "power2.inOut" }, "<")
 
-      // Brief hold at fullscreen
-      .to({}, { duration: 0.04 })
-
-      // Zoom out: scale back, restore corners, restore shadow, fade overlay out
-      .to(wrap, {
-        scale: 1,
-        borderRadius: "16px",
-        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
-        duration: 0.48,
-        ease: "power2.inOut",
-      })
-      .to(overlay, { opacity: 0, duration: 0.48, ease: "power2.inOut" }, "<");
+      // We removed the zoom-out steps here so the image stays full-screen 
+      // as the user continues scrolling down.
     }, section);
 
     return () => ctx.revert();
@@ -250,9 +240,11 @@ export default function About() {
         />
         <div className="absolute inset-0 bg-white/75" />
         <div className="absolute inset-0 z-10 flex items-center pt-10">
-          <div className="ml-66 text-center font-[var(--font-ibm-plex)]">
-            <h2 className="text-[124px] font-normal mb-[-24px] text-black">20+</h2>
-            <p className="text-[30px] tracking-normal text-black font-bold pl-2">Years Of Deilvery</p>
+          <div className="relative w-full h-full">
+            <div className="absolute left-[265px] top-[45%] -translate-y-1/2 text-center font-[var(--font-ibm-plex)]">
+              <h2 className="text-[124px] font-normal mb-[-24px] text-black">20+</h2>
+              <p className="text-[30px] tracking-normal text-black font-bold pl-2">Years Of Deilvery</p>
+            </div>
           </div>
         </div>
         <div className="relative z-20 px-6 md:px-12 max-w-[1440px] mx-auto pt-10 flex justify-end">

@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface NewsItem {
   id: string;
   tag: string;
@@ -7,9 +9,9 @@ export interface NewsItem {
   href: string;
 }
 
-export interface ProjectImage {
+
+export interface GalleryImage {
   src: string;
-  video?: string; // shown on hover instead of the static image
   alt: string;
 }
 
@@ -19,10 +21,10 @@ export interface Project {
   location: string;
   category: string;
   heroImage: string;
+  description: string; // Added to support changing descriptions dynamically
   heroVideo?: string;
-  gallery: ProjectImage[];
+  gallery: GalleryImage[];
 }
-
 export interface CompanyCard {
   id: string;
   name: string;
@@ -49,4 +51,15 @@ export interface HeroSlide {
   id: string;
   image: string;
   alt: string;
+  headline1: ReactNode;
+  headline2: ReactNode;
+  subtitle?: string;
+}
+
+export interface HeroSlideV2 {
+  id: string;
+  image: string;
+  alt: string;
+  headline1: ReactNode;
+  subtitle?: string;
 }

@@ -69,7 +69,7 @@ function TeamCard({ image, name, role, linkedin }: { image: string; name: string
 export default function Leadership() {
   return (
     <section className="bg-white py-12">
-      <div className="mx-auto max-w-[1280px] px-6">
+      <div className="mx-auto max-w-full ">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-[46%_54%] xl:gap-12">
           <div>
             <Image
@@ -90,12 +90,12 @@ export default function Leadership() {
               CHAIRMAN&rsquo;S MESSAGE
             </h2>
 
-            <div className="max-w-[640px] space-y-2 text-left text-xl leading-[1.75] text-[#6A6A6A] [font-family:var(--font-body)]">
+            <div className="max-w-[640px] space-y-2 text-left text-md leading-[1.75] text-[#6A6A6A] [font-family:var(--font-body)]">
               <p>
-                <span className="text-black font-semibold">
+                
                   At Cingo, we do not see ourselves as a collection of separate
                 businesses.
-                  </span> We operate as one organisation built on a simple
+                 We operate as one organisation built on a simple
                 principle: take responsibility for what we commit, plan properly
                 and execute with discipline. When these foundations hold, results
                 follow.

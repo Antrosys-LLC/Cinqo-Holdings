@@ -5,7 +5,6 @@ export default function CareersHero() {
   return (
     <Hero
       slides={careersHeroSlidesData}
-      headline="CAREERS"
       showDots={false}
     />
   );

@@ -433,7 +433,7 @@ export default function JoinCinqo({
                   />
                   
                   {/* Envelope-style Vector SVG in Crimson matching layout */}
-                  <svg className="w-7 h-7 text-[#F5333F] mb-1.5 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[#F5333F] mb-1.5 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
                     <rect x="3" y="5" width="18" height="14" rx="1" />
                     <path d="M3 7l9 6 9-6" />
                   </svg>
