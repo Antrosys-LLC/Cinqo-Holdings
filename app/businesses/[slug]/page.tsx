@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { businesses } from "@/data/businesses.data";
+import { businesses, sectorsPage } from "@/data/businesses.data";
 import Intro from "@/components/sections/Businesses/Intro";
 import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
@@ -37,7 +37,10 @@ export default async function BusinessPage({
       <Capabilities capabilities={business.capabilities} />
       
       {/* Sectors grid */}
-      <Sectors />
+      <Sectors 
+        sectorShowcase={business.sectorShowcase}
+        sectorsPageData={sectorsPage}
+      />
 
       <News/>
     </main>

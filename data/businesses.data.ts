@@ -9,7 +9,7 @@ export interface CapabilityItem {
   image: string;
 }
 
-export interface SectorItem {
+export interface SectorShowcaseItem {
   title: string;
   description: string;
   image: string;
@@ -24,7 +24,7 @@ export interface BusinessData {
   introText: string;
   definesUs: DefineUsItem[];
   capabilities: CapabilityItem[];
-  sectors: SectorItem[];
+  sectorShowcase: SectorShowcaseItem[];
 }
 
 export interface SectorsPageData {
@@ -48,29 +48,6 @@ export const sectorsPage: SectorsPageData = {
   compositeDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   pipCount: 5
 };
-
-export const sectorsShowcase: SectorItem[] = [
-  {
-    title: "Corporate Offices",
-    description: "Interior construction aligned with functionality, acoustic performance and service integration.",
-    image: "/images/sectors/card-1.webp"
-  },
-  {
-    title: "Retail & F&B",
-    description: "Fast-track fit-out delivery focused on brand requirements and operational readiness.",
-    image: "/images/sectors/card-2.webp"
-  },
-  {
-    title: "Residential Interiors",
-    description: "Premium villa and apartment interior delivered with attention to detail and material quality.",
-    image: "/images/sectors/card-3.webp"
-  },
-  {
-    title: "Healthcare & Clinics",
-    description: "Fit-outs incorporating hygienic materials and coordinated building services.",
-    image: "/images/sectors/card-4.webp"
-  }
-];
 
 export const businesses: BusinessData[] = [
   {
@@ -114,28 +91,28 @@ export const businesses: BusinessData[] = [
         image: "/images/capabilities/HAWAR.jpg"
       }
     ],
-    sectors: [
+    sectorShowcase: [
       {
-        title: "RESIDENTIAL & COMMERCIAL COMPLEXES",
-        description: "High-rise towers and mixed-use developments...",
-        image: "/images/businesses/sector-residential.jpg"
+        title: "HIGH-END RESIDENTIAL VILLAS & COMPOUNDS",
+        description: "Delivery of luxury villas and gated communities with a focus on quality, coordination and finishing excellence.",
+        image: "/images/sectors/card-1_contract.webp"
       },
       {
-        title: "HOSPITALITY",
-        description: "Luxury hotels and resorts...",
-        image: "/images/businesses/sector-hospitality.jpg"
+        title: "RESIDENTIAL & COMMERCIAL TOWERS",
+        description: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
+        image: "/images/sectors/card-2.webp"
       },
       {
-        title: "RETAIL & SHOPPING MALLS",
-        description: "World-class retail destinations...",
-        image: "/images/businesses/sector-retail.jpg"
+        title: "COMMERCIAL MALLS & MIXED-USE DEVELOPMENTS",
+        description: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
+        image: "/images/sectors/card-3.webp"
       },
       {
-        title: "HEALTHCARE",
-        description: "Advanced medical facilities...",
-        image: "/images/businesses/sector-healthcare.jpg"
+        title: "WAREHOUSES & INDUSTRIAL FACILITIES",
+        description: "Development of industrial structures incorporating utility integration, fire safety systems and operational infrastructure.",
+        image: "/images/sectors/card-4.webp"
       }
-    ]
+    ],
   },
   {
     slug: "thc-facilities-management",
@@ -180,28 +157,28 @@ export const businesses: BusinessData[] = [
         image: "/images/capabilities/HAWAR.jpg"
       },
     ],
-    sectors: [
-      {
-        title: "RESIDENTIAL COMPLEXES",
-        description: "Maintaining premium residential communities.",
-        image: "/images/businesses/sector-residential.jpg"
-      },
-      {
-        title: "COMMERCIAL ASSETS",
-        description: "Ensuring optimal performance for commercial buildings.",
-        image: "/images/businesses/sector-commercial.jpg"
-      },
+    sectorShowcase: [
       {
         title: "HOSPITALITY",
-        description: "High-standard maintenance for hotels and resorts.",
-        image: "/images/businesses/sector-hospitality.jpg"
+        description: "Facilities management solutions supporting hotels and serviced residences where uninterrupted operations are essential.",
+        image: "/images/sectors/card-1.webp"
       },
       {
-        title: "RETAIL FACILITIES",
-        description: "Keeping retail environments safe and pristine.",
-        image: "/images/businesses/sector-retail.jpg"
+        title: "RESIDENTIAL TOWERS & COMPOUNDS",
+        description: "Maintenance of HVAC, fire systems, lifts and shared infrastructure to ensure consistent building performance.",
+        image: "/images/sectors/card-2.webp"
+      },
+      {
+        title: "OFFICE BUILDINGS",
+        description: "Preventive maintenance and system optimisation for corporate environments focused on uptime and efficiency.",
+        image: "/images/sectors/card-3.webp"
+      },
+      {
+        title: "INDUSTRIAL FACILITIES",
+        description: "Technical servicing of operational assets and infrastructure aligned with compliance and productivity requirements.",
+        image: "/images/sectors/card-4.webp"
       }
-    ]
+    ],
   },
   {
     slug: "cinqo-trading",
@@ -212,7 +189,28 @@ export const businesses: BusinessData[] = [
     introText: "Cinqo Trading serves as the commercial and technical bridge between leading international manufacturers and the GCC market.\n\nThrough exclusive and authorised partnerships with globally recognised brands, the division supplies paints, construction chemicals, building materials, acoustic systems and infrastructure technologies across Bahrain.\n\nBeyond distribution, Cinqo Trading supports specification development, technical evaluation, project execution and after-sales support, helping clients select and implement solutions with confidence.",
     definesUs: [],
     capabilities: [],
-    sectors: []
+    sectorShowcase: [
+      {
+        title: "CONSTRUCTION & CONTRACTING",
+        description: "Supply of coatings, construction chemicals and engineered systems supported by specification and application advisory services.",
+        image: "/images/sectors/card-1.webp"
+      },
+      {
+        title: "RETAIL DISTRIBUTION",
+        description: "Structured supply to retail channels supported by inventory management, pricing governance and brand development.",
+        image: "/images/sectors/card-2.webp"
+      },
+      {
+        title: "INDUSTRIAL & MANUFACTURING",
+        description: "Technical products and systems supporting operational efficiency, asset protection and facility performance.",
+        image: "/images/sectors/card-3.webp"
+      },
+      {
+        title: "INFRASTRUCTURE & UTILITIES",
+        description: "Specialised technologies and engineering solutions supporting municipal and large-scale infrastructure projects.",
+        image: "/images/sectors/card-4.webp"
+      }
+    ],
   },
   {
     slug: "cinqo-fitout",
@@ -223,7 +221,28 @@ export const businesses: BusinessData[] = [
     introText: "THC Fit Out delivers high-quality interior environments where design intent, technical coordination and execution excellence come together.\n\nFrom corporate offices and retail environments to hospitality venues and premium residential interiors, every project is delivered with a focus on quality, programmed control and attention to detail.",
     definesUs: [],
     capabilities: [],
-    sectors: []
+    sectorShowcase: [
+      {
+        title: "CORPORATE OFFICES",
+        description: "Interior construction aligned with functionality, acoustic performance and service integration.",
+        image: "/images/sectors/card-1.webp"
+      },
+      {
+        title: "RETAIL & F&B",
+        description: "Fast-track fit-out delivery focused on brand requirements and operational readiness.",
+        image: "/images/sectors/card-2.webp"
+      },
+      {
+        title: "RESIDENTIAL INTERIORS",
+        description: "Premium villa and apartment interior delivered with attention to detail and material quality.",
+        image: "/images/sectors/card-3.webp"
+      },
+      {
+        title: "HEALTHCARE & CLINICS",
+        description: "Fit-outs incorporating hygienic materials and coordinated building services.",
+        image: "/images/sectors/card-4.webp"
+      }
+    ],
   },
   {
     slug: "cinqo-flooring-coating-technologies",
@@ -234,6 +253,27 @@ export const businesses: BusinessData[] = [
     introText: "Cinqo Flooring & Coating Technologies delivers high-performance flooring, waterproofing and protective coating systems for environments where durability, hygiene and long-term performance are critical.\n\nThe company serves logistics facilities, healthcare and pharmaceutical environments, food production sites, car parks and industrial installations through technically engineered solutions and manufacturer-approved systems.",
     definesUs: [],
     capabilities: [],
-    sectors: []
+    sectorShowcase: [
+      {
+        title: "FOOD & BEVERAGE",
+        description: "Hygienic flooring systems designed for production, processing and wash-down environments.",
+        image: "/images/sectors/card-1.webp"
+      },
+      {
+        title: "HEALTHCARE & PHARMACEUTICAL",
+        description: "Seamless flooring solutions suitable for laboratories, cleanrooms and contamination-sensitive facilities.",
+        image: "/images/sectors/card-2.webp"
+      },
+      {
+        title: "WAREHOUSES & LOGISTICS",
+        description: "Heavy-duty flooring systems designed for continuous operational traffic and material handling.",
+        image: "/images/sectors/card-3.webp"
+      },
+      {
+        title: "CAR PARKS & PODIUMS",
+        description: "Protective coating systems engineered for vehicular traffic and environmental exposure.",
+        image: "/images/sectors/card-4.webp"
+      }
+    ],
   }
 ];
