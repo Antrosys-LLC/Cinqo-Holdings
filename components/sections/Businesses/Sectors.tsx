@@ -50,8 +50,8 @@ export default function Page({
           <div key={s.title} className="group border border-muted" style={cardStyle}>
              <img src={idx === 0 && sectorFirstCardImage ? sectorFirstCardImage : s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover" style={{ transform: 'scale(1.014)' }} />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" style={{ transform: 'scale(1.014)' }}></div>
-            <div className="absolute bottom-0 left-0 px-[14px] pt-4 pb-[15px] md:px-[22px] md:pt-5 md:pb-[23px] text-white">
-              <h2 className="font-['Inter'] text-lg font-medium uppercase tracking-wider mb-2">
+            <div className="absolute bottom-0 left-0 px-[8px] pt-2 pb-[8px] md:px-[12px] md:pt-3 md:pb-[12px] text-white">
+              <h2 className="font-['Inter'] text-[17px] font-medium uppercase tracking-wider mb-1">
                 {idx === 0 && sectorFirstCardTitle ? sectorFirstCardTitle : 
                  idx === 1 && sectorSecondCardTitle ? sectorSecondCardTitle :
                  idx === 2 && sectorThirdCardTitle ? sectorThirdCardTitle :
