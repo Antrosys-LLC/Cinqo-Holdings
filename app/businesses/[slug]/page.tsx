@@ -4,6 +4,7 @@ import Intro from "@/components/sections/Businesses/Intro";
 import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
 import Sectors from "@/components/sections/Businesses/Sectors";
+import News from "@/components/sections/Home/NewsSection";
 
 // Optional: statically generate these routes
 export function generateStaticParams() {
@@ -37,6 +38,8 @@ export default async function BusinessPage({
       
       {/* Sectors grid */}
       <Sectors sectors={business.sectors} />
+
+      <News/>
     </main>
   );
 }

@@ -3,8 +3,8 @@ import React from 'react';
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans p-4 md:p-8">
-      <div className="max-w-[1200px] mx-auto space-y-10">
+    <div className="min-h-screen bg-white text-gray-900 font-sans p-4 md:p-8 pb-0 md:pb-0">
+      <div className="max-w-[1200px] mx-auto">
         
         {/* Sectors Header + Cards (486px combined on md+) */}
         <div className="md:h-[486px] md:flex md:flex-col md:gap-4">
@@ -67,7 +67,7 @@ export default function Page() {
         </div>
 
         {/* Showcase Section */}
-        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 pt-4">
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 -mt-3">
           <div className="w-full md:w-[25%] flex flex-col justify-between">
             <p className="text-sm md:text-base leading-relaxed text-gray-800 font-medium">
               A showcase of absolute accountability in execution. We measure the success of these works by the frequency of repeat client engagement and a commitment to honoring obligations long after final handover.
