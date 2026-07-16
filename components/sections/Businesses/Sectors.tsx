@@ -100,19 +100,16 @@ export default function Page() {
 
       {/* Bottom Composite Section - full width */}
       <div className="-mr-4 md:-mr-8 flex justify-end">
-        <div className="relative" style={{ width: '1006px', height: '705px' }}>
+        <div className="relative overflow-visible" style={{ width: '1006px', height: '705px' }}>
           <img src="/images/sectors/sector-3.jpg" alt="Composite" className="w-full h-full object-cover" />
           <h2 className="absolute top-[18px] left-[18px] font-[var(--font-ibm-plex)] font-normal text-[20px] tracking-widest uppercase text-white">
             J003 FONTANA INFINITY
           </h2>
-          <div className="absolute left-0 top-1/2 -translate-y-1/2" style={{ width: '227px', height: '157px' }}>
-            <img src="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?auto=format&fit=crop&w=400&q=80" alt="" className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex gap-1" style={{ marginLeft: '227px' }}>
-              <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
-              <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
-              <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?auto=format&fit=crop&w=400&q=80" alt="" className="h-24 md:h-36 object-cover" />
+          <div className="absolute inset-0 flex items-center overflow-hidden">
+            <div className="flex gap-3 animate-scroll-right" style={{ flexShrink: 0 }}>
+              {[1,2,3,4,5,1,2,3,4,5].map((i, idx) => (
+                <img key={idx} src={`/images/sectors/pip-${i}.jpg`} alt="" className="flex-shrink-0" width="227" height="157" />
+              ))}
             </div>
           </div>
           <div className="absolute bottom-[18px] left-[18px]">
