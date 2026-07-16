@@ -222,7 +222,15 @@ export const businesses: BusinessData[] = [
     introText: "Coming soon...",
     definesUs: [],
     capabilities: [],
-    sectors: []
+    sectors: [],
+    sectorFirstCardTitle: "CONSTRUCTION & CONTRACTING",
+    sectorFirstCardDescription: "Supply of coatings, construction chemicals and engineered systems supported by specification and application advisory services.",
+    sectorSecondCardTitle: "RETAIL DISTRIBUTION",
+    sectorSecondCardDescription: "Structured supply to retail channels supported by inventory management, pricing governance and brand development.",
+    sectorThirdCardTitle: "INDUSTRIAL & MANUFACTURING",
+    sectorThirdCardDescription: "Technical products and systems supporting operational efficiency, asset protection and facility performance.",
+    sectorFourthCardTitle: "INFRASTRUCTURE & UTILITIES",
+    sectorFourthCardDescription: "Specialised technologies and engineering solutions supporting municipal and large-scale infrastructure projects.",
   },
   {
     slug: "cinqo-fitout",
@@ -240,6 +248,14 @@ export const businesses: BusinessData[] = [
     introText: "Coming soon...",
     definesUs: [],
     capabilities: [],
-    sectors: []
+    sectors: [],
+    sectorFirstCardTitle: "FOOD & BEVERAGE",
+    sectorFirstCardDescription: "Hygienic flooring systems designed for production, processing and wash-down environments.",
+    sectorSecondCardTitle: "HEALTHCARE & PHARMACEUTICAL",
+    sectorSecondCardDescription: "Seamless flooring solutions suitable for laboratories, cleanrooms and contamination-sensitive facilities.",
+    sectorThirdCardTitle: "WAREHOUSES & LOGISTICS",
+    sectorThirdCardDescription: "Heavy-duty flooring systems designed for continuous operational traffic and material handling.",
+    sectorFourthCardTitle: "CAR PARKS & PODIUMS",
+    sectorFourthCardDescription: "Protective coating systems engineered for vehicular traffic and environmental exposure.",
   }
 ];
