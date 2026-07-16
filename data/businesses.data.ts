@@ -29,7 +29,7 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-contracting",
     name: "CINQO CONTRACTING",
-    heroImage: "/images/businesses/cinqo-contracting-hero.jpg",
+    heroImage: "/images/companies/c1.jpg",
     introText: "Cinqo Contracting is the Cinqo Flagship enterprise...",
     definesUs: [
       {
@@ -88,7 +88,7 @@ export const businesses: BusinessData[] = [
   {
     slug: "thc-facilities-management",
     name: "THC FACILITIES MANAGEMENT",
-    heroImage: "/images/businesses/thc-facilities-hero.jpg",
+    heroImage: "/images/companies/c2.jpeg",
     introText: "THC Facilities Management helps clients protect, maintain and enhance the value of their assets through integrated facilities management solutions.",
     definesUs: [
       {
@@ -147,7 +147,7 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-trading",
     name: "CINQO TRADING",
-    heroImage: "/images/businesses/placeholder.jpg",
+    heroImage: "/images/companies/h1.jpg",
     introText: "Coming soon...",
     definesUs: [],
     capabilities: [],
@@ -156,7 +156,7 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-fitout",
     name: "CINQO FITOUT",
-    heroImage: "/images/businesses/placeholder.jpg",
+    heroImage: "/images/companies/c3.JPG",
     introText: "Coming soon...",
     definesUs: [],
     capabilities: [],
@@ -165,7 +165,7 @@ export const businesses: BusinessData[] = [
   {
     slug: "cinqo-flooring-coating-technologies",
     name: "CINQO FLOORING & COATING",
-    heroImage: "/images/businesses/placeholder.jpg",
+    heroImage: "/images/companies/c5.png",
     introText: "Coming soon...",
     definesUs: [],
     capabilities: [],
