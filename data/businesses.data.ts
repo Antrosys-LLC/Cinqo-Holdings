@@ -78,33 +78,37 @@ export const businesses: BusinessData[] = [
     introText: "Cinqo Contracting is the Cinqo Flagship enterprise...",
     definesUs: [
       {
-        title: "MAXIMISING POTENTIAL",
-        description: "Value Engineering..."
+        title: "Executive Oversight",
+        description: "Projects operate with direct leadership visibility, ensuring accountability, timely decision-making and effective risk management throughout delivery."
       },
       {
-        title: "DELIVERING EXCELLENCE",
-        description: "Executing complex projects..."
+        title: "Quality & Compliance",
+        description: "Materials, workmanship and safety standards are maintained through inspections, testing and compliance monitoring throughout execution."
       },
       {
-        title: "EMPOWERING CAPABILITIES",
-        description: "Driving success..."
+        title: "Programme Control",
+        description: "Scheduling and sequencing are actively monitored across all project phases, supported by ERP-enabled tracking and reporting."
+      },
+      {
+        title: "Commercial Discipline",
+        description: "Cost exposure, variations and financial commitments are managed through structured controls and documented approval processes."
       }
     ],
     capabilities: [
       {
         title: "CIVIL & STRUCTURAL CONSTRUCTION",
-        description: "Ground-up structural engineering...",
-        image: "/images/businesses/capability-civil.jpg"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "MEP CONTRACTING",
-        description: "Mechanical, Electrical, and Plumbing...",
-        image: "/images/businesses/capability-mep.jpg"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "HIGH END FIT OUT & JOINERY",
-        description: "Premium interior fit-outs...",
-        image: "/images/businesses/capability-fitout.jpg"
+        description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
+        image: "/images/capabilities/HAWAR.jpg"
       }
     ],
     sectors: [
@@ -153,17 +157,17 @@ export const businesses: BusinessData[] = [
       {
         title: "PREVENTIVE MAINTENANCE PROGRAMMES",
         description: "Comprehensive maintenance coverage including scheduled inspections, servicing and performance monitoring.",
-        image: "/images/businesses/capability-preventive.jpg"
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "MEP SERVICING AND MAINTENANCE",
         description: "Expert maintenance of mechanical, electrical and plumbing systems.",
-        image: "/images/businesses/capability-mep-maintenance.jpg"
+        image: "/images/capabilities/HAWAR.jpg"
       },
       {
         title: "ON DEMAND CORRECTIVE MAINTENANCE",
         description: "Rapid response repairs and issue resolution.",
-        image: "/images/businesses/capability-corrective.jpg"
+        image: "/images/capabilities/HAWAR.jpg"
       }
     ],
     sectors: [
