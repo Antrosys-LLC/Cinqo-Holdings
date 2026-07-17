@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Link from 'next/link';
 import { SectorShowcaseItem, SectorsPageData } from '@/data/businesses.data';
 import BrandPortfolio from './BrandPortfolio';
 
@@ -68,9 +69,9 @@ export default function Sectors({
                   <li key={i}>{p}</li>
                 ))}
               </ul>
-              <button className="border border-muted font-[var(--font-ibm-plex)] font-normal text-[16px] tracking-widest uppercase hover:bg-coral-100 transition-colors h-[34px] w-[170px] flex items-center justify-center py-0">
+              <Link href="/contact" className="border border-muted font-[var(--font-ibm-plex)] font-normal text-[16px] tracking-widest uppercase hover:bg-coral-100 transition-colors h-[34px] w-[170px] flex items-center justify-center py-0">
                 CONTACT
-              </button>
+              </Link>
             </div>
           </div>
           <div style={{ width: '972px', height: '693px', flexShrink: 0 }}>
