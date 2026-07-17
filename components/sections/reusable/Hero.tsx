@@ -127,7 +127,7 @@ export default function Hero({ slides, cta, id = "hero", showDots = true }: Hero
               fill
               priority={i === 0}
               quality={100}
-              className="object-cover"
+              className={`object-cover ${"imageClassName" in slide ? slide.imageClassName : ""}`}
               sizes="100vw"
             />
           </div>
