@@ -21,7 +21,7 @@ type ButtonProps = {
 
 const variantStyles: Record<string, string> = {
   "nav-ghost":
-    "rounded-none border-2 border-white/20 bg-transparent px-5 py-2 text-[10px] font-bold tracking-[0.18em] uppercase text-cream-50 transition-all duration-300 ease-out hover:border-white hover:bg-cream-50 hover:text-navy-950",
+    "rounded-none border-2 border-white/20 bg-transparent px-7 py-3 text-[12px] font-bold tracking-[0.18em] uppercase text-cream-50 transition-all duration-300 ease-out hover:border-white hover:bg-cream-50 hover:text-navy-950",
   primary:
     "btn btn-primary",
   outline:

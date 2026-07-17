@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[100] border-0 transition-all duration-500 ease-out glass will-change-transform
-        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-1.5" : "bg-navy-900/10 py-2.5"} 
+        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-3" : "bg-navy-900/10 py-5"}
         ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-12 relative">
@@ -59,13 +59,13 @@ export default function Navbar() {
             className="flex items-center transition-transform duration-200 hover:scale-103"
             aria-label="Cinqo Holdings Home"
           >
-            <svg 
-              width="45" 
-              height="46" 
-              viewBox="0 0 45 46" 
-              fill="none" 
+            <svg
+              width="45"
+              height="46"
+              viewBox="0 0 45 46"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8.5 w-auto"
+              className="h-12 w-auto"
             >
               <path d="M24.096 24.2551L45.0002 24.2551L24.096 45.3189L24.096 24.2551Z" fill="#231F20"/>
               <path d="M24.096 21.1562L45.0002 21.1562L24.096 0.09238L24.096 21.1562Z" fill="#808285"/>
@@ -87,11 +87,11 @@ export default function Navbar() {
                 <div key={link.href} className="group relative py-2">
                   <Link 
                     href={link.href} 
-                    className={`text-[11px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5
+                    className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5
                       ${isActive ? "opacity-100" : "opacity-75 group-hover:opacity-100"}`}
                   >
                     {link.label}
-                    <svg className="w-2.5 h-2.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                     {/* Active route accent underline */}
@@ -107,7 +107,7 @@ export default function Navbar() {
                         <Link 
                           key={b.slug}
                           href={`/businesses/${b.slug}`}
-                          className="px-6 py-3 text-[10px] font-semibold tracking-[0.15em] uppercase text-navy-900 hover:bg-gray-50 hover:text-red-500 transition-colors text-left whitespace-nowrap"
+                          className="px-6 py-3 text-[12px] font-semibold tracking-[0.15em] uppercase text-navy-900 hover:bg-gray-50 hover:text-red-500 transition-colors text-left whitespace-nowrap"
                         >
                           {b.name}
                         </Link>
@@ -122,7 +122,7 @@ export default function Navbar() {
               <Link 
                 key={link.href} 
                 href={link.href} 
-                className={`text-[11px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1
+                className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1
                   ${isActive ? "opacity-100" : "opacity-75 hover:opacity-100"}`}
               >
                 {link.label}
