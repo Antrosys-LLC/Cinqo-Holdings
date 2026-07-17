@@ -25,6 +25,7 @@ const FOOTER_COLUMNS = [
       { label: "Cinqo Flooring & Coating Technologies", href: "/businesses/cinqo-flooring-coating-technologies" },
       { label: "THC Facilities Management", href: "/businesses/thc-facilities-management" },
       { label: "THC Fitout", href: "/businesses/cinqo-fitout" },
+      { label: "Cinqo Holding Investments", href: "/businesses/cinqo-holding-investments" },
     ],
   },
 ];
