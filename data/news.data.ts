@@ -7,7 +7,7 @@ import type { NewsItem } from "@/types";
  */
 export const newsData: NewsItem[] = [
   // ==========================================
-  // HOME PAGE NEWS (Keep these as is)
+  // HOME PAGE NEWS (Keep them 4 only)
   // ==========================================
   {
     id: "news-1",
