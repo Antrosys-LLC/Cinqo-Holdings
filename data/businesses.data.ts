@@ -275,6 +275,35 @@ export const businesses: BusinessData[] = [
         image: "/images/sectors/card-4.webp"
       }
     ],
+  },
+
+  {
+    slug: "cinqo-holding-investments",
+    name: "CINQO HOLDING INVESTMENTS",
+    heroImage: "/images/companies/c5.png",
+    introBgImage: "/images/companies/ci5.png",
+    introHeading: "GOVERNANCE\nALIGNMENT\nLONG-TERM VALUE",
+    introText: "Cinqo Holding evaluates and manages investments aligned with the Group’s long-term vision, operational expertise and governance standards.\n\nThe portfolio spans real estate, strategic partnerships, technology ventures and growth-oriented businesses where the Group can contribute not only capital, but also commercial discipline, operational insight and strategic direction.",
+    definesUs: [
+      {
+        title: "INCOME-GENERATING REAL ESTATE",
+        description: "Commercial, residential and industrial assets with stable cash flows and long-term value creation potential."
+      },
+      {
+        title: "TECHNOLOGY VENTURES",
+        description: "Investments in scalable technology solutions driving efficiency within the Group's operations and target industries."
+      },
+      {
+        title: "GROWTH-ORIENTED BUSINESSES",
+        description: "Funding for mature operational businesses requiring capital to expand into new markets or scale operations."
+      },
+      {
+        title: "STRATEGIC PARTNERSHIPS & JOINT VENTURES",
+        description: "Collaborative projects and alliances leveraging Group capital and operational expertise."
+      }
+    ],
+    capabilities: [],
+    sectorShowcase: [],
   }
 ];
 
