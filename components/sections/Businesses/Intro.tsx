@@ -9,6 +9,7 @@ export default function Intro({ business }: { business: BusinessData }) {
     image: business.heroImage,
     alt: business.name,
     headline1: business.name,
+    ...((business.slug === "cinqo-holding-investments" || business.slug === "cinqo-contracting") && { imageClassName: "object-[center_15%]" }),
   };
 
   return (
