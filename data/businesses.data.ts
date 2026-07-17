@@ -279,9 +279,9 @@ export const businesses: BusinessData[] = [
 
   {
     slug: "cinqo-holding-investments",
-    name: "CINQO HOLDING INVESTMENTS",
-    heroImage: "/images/companies/c5.png",
-    introBgImage: "/images/companies/ci5.png",
+    name: "CINQO HOLDING\nINVESTMENTS",
+    heroImage: "/images/companies/c6.jpeg",
+    introBgImage: "/images/companies/ci6.png",
     introHeading: "GOVERNANCE\nALIGNMENT\nLONG-TERM VALUE",
     introText: "Cinqo Holding evaluates and manages investments aligned with the Group’s long-term vision, operational expertise and governance standards.\n\nThe portfolio spans real estate, strategic partnerships, technology ventures and growth-oriented businesses where the Group can contribute not only capital, but also commercial discipline, operational insight and strategic direction.",
     definesUs: [

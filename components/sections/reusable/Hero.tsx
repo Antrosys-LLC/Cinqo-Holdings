@@ -138,7 +138,7 @@ export default function Hero({ slides, cta, id = "hero", showDots = true }: Hero
 
       {/* Hero Content Container */}
       <div className="container relative z-20 pb-24 flex flex-col gap-6 !pl-[40px] select-none" ref={contentRef}>
-        <h1 className="animate-slide-item text-white text-4xl md:text-5xl lg:text-[4rem] font-semibold leading-[1.15] tracking-tight">
+        <h1 className="animate-slide-item text-white text-4xl md:text-5xl lg:text-[4rem] font-semibold leading-[1.15] tracking-tight whitespace-pre-line">
           {slides[activeIndex].headline1}
           {"headline2" in slides[activeIndex] && slides[activeIndex].headline2 && (
             <>
