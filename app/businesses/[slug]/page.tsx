@@ -5,6 +5,7 @@ import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
 import Sectors from "@/components/sections/Businesses/Sectors";
 import GovernanceGrid from "@/components/sections/About/Compliance";
+import Governance from "@/components/sections/Businesses/Governance";
 import News from "@/components/sections/Home/NewsSection";
 
 
@@ -33,17 +34,26 @@ export default async function BusinessPage({
       <Intro business={business} />
       
       {/* Define Us grid */}
-      <DefineUs definesUs={business.definesUs} />
+      <DefineUs 
+        definesUs={business.definesUs}
+        heading={slug === "cinqo-holding-investments" ? "INVESTMENT AREAS" : undefined}
+      />
       
+      {slug === "cinqo-holding-investments" && <Governance />}
+
       {/* Capabilities list/accordion */}
-      <Capabilities capabilities={business.capabilities} />
+      {slug !== "cinqo-holding-investments" && (
+        <Capabilities capabilities={business.capabilities} />
+      )}
       
       {/* Sectors grid */}
-      <Sectors 
-        sectorShowcase={business.sectorShowcase}
-        sectorsPageData={sectorsPage}
-        showBrandPortfolio={slug === "cinqo-trading"}
-      />
+      {slug !== "cinqo-holding-investments" && (
+        <Sectors 
+          sectorShowcase={business.sectorShowcase}
+          sectorsPageData={sectorsPage}
+          showBrandPortfolio={slug === "cinqo-trading"}
+        />
+      )}
 
       <News/>
     </main>
