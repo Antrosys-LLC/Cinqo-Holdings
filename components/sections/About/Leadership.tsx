@@ -1,24 +1,24 @@
 import Image from "next/image";
 
 const directors = [
-  { name: "Junaid Usman", role: "" },
-  { name: "Sufyan Usman", role: "" },
-  { name: "Uzair Usman", role: "" },
+  { name: "Junaid Usman", role: "", linkedin: "", image: "/images/about/Junaid.png" },
+  { name: "Sufyan Usman", role: "", linkedin: "", image: "/images/about/Sufyan.png" },
+  { name: "Uzair Usman", role: "", linkedin: "", image: "/images/about/Uzair.png" },
 ];
 
 const executives = [
-  { name: "Siby", role: "General Manager – Cingo Contracting" },
-  { name: "Salman", role: "Operations Manager – Cingo Contracting" },
-  { name: "Ranjith", role: "General Manager – Cingo Trading" },
-  { name: "Mohd Ali", role: "General Manager – Head of Operations" },
-  { name: "Collins", role: "General Manager – C T Co WLL" },
-  { name: "Prakash", role: "Group Financial Manager" },
-  { name: "Satish", role: "Technical Manager" },
-  { name: "Alok", role: "Group Business Development Manager" },
-  { name: "Selina", role: "Group HR Manager" },
+  { name: "Siby", role: "General Manager – Cingo Contracting", linkedin: "", image: "/images/about/Siby.png" },
+  { name: "Salman", role: "Operations Manager – Cingo Contracting", linkedin: "", image: "/images/about/Salman.png" },
+  { name: "Ranjith", role: "General Manager – Cingo Trading", linkedin: "", image: "/images/about/Ranjith.png" },
+  { name: "Mohd Ali", role: "General Manager – Head of Operations", linkedin: "", image: "/images/about/Ali.png" },
+  { name: "Collins", role: "General Manager – C T Co WLL", linkedin: "", image: "/images/about/Collins.png" },
+  { name: "Prakash", role: "Group Financial Manager", linkedin: "", image: "/images/about/Prakash.png" },
+  { name: "Satish", role: "Technical Manager", linkedin: "", image: "/images/about/Satish.png" },
+  { name: "Alok", role: "Group Business Development Manager", linkedin: "", image: "/images/about/Alok.png" },
+  { name: "Selina", role: "Group HR Manager", linkedin: "", image: "/images/about/Selina.png" },
 ];
 
-function TeamCard({ image, name, role, linkedin }: { image: string; name: string; role: string; linkedin?: boolean }) {
+function TeamCard({ image, name, role, linkedin }: { image: string; name: string; role: string; linkedin?: boolean | string }) {
   return (
     <div className="flex flex-col items-center bg-white max-w-[400px]">
       <Image
@@ -35,7 +35,7 @@ function TeamCard({ image, name, role, linkedin }: { image: string; name: string
               {name}
             </h3>
             <a
-              href="#"
+              href={typeof linkedin === 'string' && linkedin ? linkedin : "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#111111] hover:opacity-60 transition-opacity"
@@ -139,7 +139,7 @@ export default function Leadership() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-[15px] gap-y-8 justify-items-center">
           {directors.map((person) => (
-            <TeamCard key={person.name} image="/images/about/director.png" name={person.name} role={person.role} linkedin />
+            <TeamCard key={person.name} image={person.image} name={person.name} role={person.role} linkedin={person.linkedin || true} />
           ))}
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function Leadership() {
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
           {executives.map((person, i) => (
             <div key={person.name} className={i === executives.length - 1 ? "xl:col-span-4 xl:flex xl:justify-center" : ""}>
-              <TeamCard image="/images/about/director.png" name={person.name} role={person.role} linkedin />
+              <TeamCard image={person.image} name={person.name} role={person.role} linkedin={person.linkedin || true} />
             </div>
           ))}
         </div>
