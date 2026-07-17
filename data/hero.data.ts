@@ -41,3 +41,8 @@ export const contactHeroSlidesData: HeroSlideV2[] = [
   { id: "contact1", image: "/images/hero/h1.jpg", alt: "Contact Cinqo Holdings",  headline1: "Contact Us.",
    },
 ];
+
+export const newsHeroSlidesData: HeroSlideV2[] = [
+  { id: "news1", image: "/images/hero/h1.jpg", alt: "News at Cinqo Holdings", headline1: "CINQO News",
+    },
+];

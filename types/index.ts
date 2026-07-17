@@ -7,6 +7,8 @@ export interface NewsItem {
   date: string;
   image: string;
   href: string;
+  detailedHeadline?: string;
+  content?: string[];
 }
 
 
