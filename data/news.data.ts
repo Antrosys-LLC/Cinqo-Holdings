@@ -6,9 +6,10 @@ import type { NewsItem } from "@/types";
  * items here and the UI updates automatically.
  */
 export const newsData: NewsItem[] = [
-  // ==========================================
-  // HOME PAGE NEWS (Keep them 4 only)
-  // ==========================================
+  // ==========================================================
+  // These below 4 news will be displayed on other pages,
+  // So Keep them 4 only, and replace the content frequently
+  // ==========================================================
   {
     id: "news-1",
     tag: "News",
@@ -42,9 +43,9 @@ export const newsData: NewsItem[] = [
     href: "/news/strategic-group-restructuring-4",
   },
 
-  // ==========================================
+  // ==============================================
   // NEWS PAGE DYNAMIC CONTENT (Add new news here)
-  // ==========================================
+  // ==============================================
   {
     id: "news-page-1",
     tag: "News",
