@@ -240,7 +240,7 @@ export default function Credibility() {
       />
 
       {/* Cinematic vignette overlay */}
-      <div className="absolute -inset-px bg-gradient-to-b from-slate-950/55 via-slate-950/25 to-slate-950/60 pointer-events-none z-[1]" />
+      <div className="absolute -inset-px bg-gradient-to-b from-slate-950/55 via-slate-950/25 to-slate-950/60 pointer-events-none z-0" />
 
       {/* Cursor-tracking spotlight for a live, reactive feel */}
       <div
