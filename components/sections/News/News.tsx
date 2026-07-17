@@ -1,14 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { newsData } from "@/data/news.data";
 import Image from "next/image";
 
 export default function NewsSection() {
-  // Use news items specifically added for the news page (index 4 onwards)
   const pageNews = newsData.slice(4);
   const [activeNews, setActiveNews] = useState(pageNews[0] || newsData[0]);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+      const scrollingUpAtTop = atTop && e.deltaY < 0;
+      const scrollingDownAtBottom = atBottom && e.deltaY > 0;
+
+      if (scrollingUpAtTop || scrollingDownAtBottom) {
+        // let this event fall through to Lenis so the page scrolls
+        el.removeAttribute("data-lenis-prevent");
+      } else {
+        // keep it locked to internal scroll
+        el.setAttribute("data-lenis-prevent", "");
+      }
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: true });
+    return () => el.removeEventListener("wheel", handleWheel);
+  }, []);
 
   return (
     <section className="py-20 lg:py-32 bg-white relative">
@@ -115,7 +140,11 @@ export default function NewsSection() {
               }
             `}</style>
             
-            <div className="overflow-y-auto overscroll-contain w-full max-h-[800px] flex flex-col gap-6 pr-4 custom-scrollbar lg:-mr-4 sticky top-32">
+            <div 
+              ref={listRef}
+              className="overflow-y-auto overscroll-contain w-full max-h-[800px] flex flex-col gap-6 pr-4 custom-scrollbar lg:-mr-4 sticky top-32"
+              data-lenis-prevent
+            >
               {pageNews.map((newsItem, index) => {
                 const isActive = activeNews.id === newsItem.id;
                 
