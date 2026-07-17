@@ -287,22 +287,22 @@ export const businesses: BusinessData[] = [
     ],
     capabilities: [
       {
-        title: "INTERIOR CONSTRUCTION",
+        title: "INTERIOR FIT-OUT & FINISHING",
         description: "Spaces are constructed in line with technical drawings and quality standards.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Ceiling Systems",
+        title: "JOINERY & CUSTOM FABRICATION",
         description: "Installation and finishing of ceiling systems with attention to acoustics, aesthetics and service integration.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Wall Panels",
+        title: "MEP INTEGRATION",
         description: "Installation of wall panels, claddings and decorative finishes in accordance with project specifications.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Partitions & Glazing",
+        title: "DESIGN COORDINATION",
         description: "Construction of internal partitions, glazed systems and space-division elements using contemporary materials.",
         image: "/images/capabilities/HAWAR.jpg"
       }
@@ -337,8 +337,46 @@ export const businesses: BusinessData[] = [
     introBgImage: "/images/companies/ci5.png",
     introHeading: "ENGINEERED\nFOR\nENDURANCE",
     introText: "Cinqo Flooring & Coating Technologies delivers high-performance flooring, waterproofing and protective coating systems for environments where durability, hygiene and long-term performance are critical.\n\nThe company serves logistics facilities, healthcare and pharmaceutical environments, food production sites, car parks and industrial installations through technically engineered solutions and manufacturer-approved systems.",
-    definesUs: [],
-    capabilities: [],
+    definesUs: [
+      {
+        title: "SYSTEM-BASED APPROACH",
+        description: "Solutions are specified as complete systems tailored to operational, chemical and mechanical performance requirements."
+      },
+      {
+        title: "PREPARATION INTEGRITY",
+        description: "Substrates are assessed and prepared to ensure optimal adhesion and long-term performance of flooring and coating systems."
+      },
+      {
+        title: "APPLICATION CONTROL",
+        description: "Environmental conditions, application parameters and quality standards are monitored throughout installation."
+      },
+      {
+        title: "PERFORMANCE DURABILITY",
+        description: "Systems are selected to withstand operational demands while maximising service life and reliability."
+      },
+    ],
+    capabilities: [
+      {
+        title: "EPOXY & POLYURETHANE SYSTEMS",
+        description: "Concrete remediation, levelling and coating installation executed to meet performance and durability requirements.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "PROTECTIVE COATINGS",
+        description: "Waterproofing systems, chemical-resistant coatings and protective barriers for concrete and steel substrates.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "WATERPROOFING SYSTEMS",
+        description: "Installation of Vinyl, Epoxy and Polyurethane flooring systems with material selection supported by CSIRO product approvals.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "SURFACE PREPARATION",
+        description: "Durable deck and surface coatings designed for high-wear, high-traffic conditions including ramps, parking bays and pedestrian zones.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+    ],
     sectorShowcase: [
       {
         title: "FOOD & BEVERAGE",
@@ -377,15 +415,15 @@ export const businesses: BusinessData[] = [
       },
       {
         title: "TECHNOLOGY VENTURES",
-        description: "Investments in scalable technology solutions driving efficiency within the Group's operations and target industries."
+        description: "Investments in scalable technology businesses supported by disciplined governance and structured growth strategies."
       },
       {
-        title: "GROWTH-ORIENTED BUSINESSES",
-        description: "Funding for mature operational businesses requiring capital to expand into new markets or scale operations."
+        title: "EARLY-STAGE BUSINESSES",
+        description: "Investments in scalable technology businesses supported by disciplined governance and structured growth strategies."
       },
       {
-        title: "STRATEGIC PARTNERSHIPS & JOINT VENTURES",
-        description: "Collaborative projects and alliances leveraging Group capital and operational expertise."
+        title: "INDUSTRIAL PARTNERSHIPS & DISTRIBUTION RIGHTS",
+        description: "Strategic investments in industries focused on innovation and value addition. "
       }
     ],
     capabilities: [],
