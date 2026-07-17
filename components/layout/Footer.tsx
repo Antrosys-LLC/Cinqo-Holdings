@@ -21,11 +21,11 @@ const FOOTER_COLUMNS = [
   {
     title: "Divisions",
     links: [
-      { label: "Cinqo Contracting", href: "/companies/cinqo-contracting" },
-      { label: "Cinqo Trading", href: "/companies/cinqo-trading" },
-      { label: "Cinqo Coatings & Coating Technologies", href: "/companies/cinqo-coatings" },
-      { label: "THC Facilities Management", href: "/companies/thc-facilities" },
-      { label: "THC Fitout", href: "/companies/thc-fitout" },
+      { label: "Cinqo Contracting", href: "/businesses/cinqo-contracting" },
+      { label: "Cinqo Trading", href: "/businesses/cinqo-trading" },
+      { label: "Cinqo Coatings & Coating Technologies", href: "/businesses/cinqo-coatings" },
+      { label: "THC Facilities Management", href: "/businesses/thc-facilities" },
+      { label: "THC Fitout", href: "/businesses/thc-fitout" },
     ],
   },
 ];
