@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { SectorShowcaseItem, SectorsPageData } from '@/data/businesses.data';
+import BrandPortfolio from './BrandPortfolio';
 
 const cardStyle: React.CSSProperties = {
   width: '285px',
@@ -13,10 +14,12 @@ const cardStyle: React.CSSProperties = {
 
 export default function Sectors({ 
   sectorShowcase,
-  sectorsPageData
+  sectorsPageData,
+  showBrandPortfolio
 }: { 
   sectorShowcase: SectorShowcaseItem[];
   sectorsPageData: SectorsPageData;
+  showBrandPortfolio?: boolean;
 }) {
   return (
     <div className="min-h-screen bg-white text-ink font-sans p-4 md:p-8 pb-0 md:pb-0">
@@ -49,6 +52,8 @@ export default function Sectors({
         </div>
         </div>
       </div>
+
+      {showBrandPortfolio && <BrandPortfolio />}
 
       {/* Showcase Section - full width */}
       <div className="-mr-4 md:-mr-8 md:flex md:justify-end mb-4">

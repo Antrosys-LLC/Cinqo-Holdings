@@ -4,7 +4,9 @@ import Intro from "@/components/sections/Businesses/Intro";
 import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
 import Sectors from "@/components/sections/Businesses/Sectors";
+import GovernanceGrid from "@/components/sections/About/Compliance";
 import News from "@/components/sections/Home/NewsSection";
+
 
 // Optional: statically generate these routes
 export function generateStaticParams() {
@@ -40,6 +42,7 @@ export default async function BusinessPage({
       <Sectors 
         sectorShowcase={business.sectorShowcase}
         sectorsPageData={sectorsPage}
+        showBrandPortfolio={slug === "cinqo-trading"}
       />
 
       <News/>
