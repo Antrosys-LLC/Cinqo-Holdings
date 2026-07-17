@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[100] border-0 transition-all duration-500 ease-out glass will-change-transform
-        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-3" : "bg-navy-900/10 py-5"}
+        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-1" : "bg-navy-900/10 py-2"}
         ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-12 relative">
@@ -85,9 +85,8 @@ export default function Navbar() {
             if (link.label === "Companies") {
               return (
                 <div key={link.href} className="group relative py-2">
-                  <Link 
-                    href={link.href} 
-                    className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5
+                  <button 
+                    className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5 cursor-pointer
                       ${isActive ? "opacity-100" : "opacity-75 group-hover:opacity-100"}`}
                   >
                     {link.label}
@@ -98,7 +97,7 @@ export default function Navbar() {
                     {isActive && (
                       <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-cream-50 motion-safe:animate-fade-in" />
                     )}
-                  </Link>
+                  </button>
                   
                   {/* Dropdown Menu */}
                   <div className="absolute top-[120%] left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200]">
