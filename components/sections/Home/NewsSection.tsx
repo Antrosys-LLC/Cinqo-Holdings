@@ -24,7 +24,7 @@ export default function NewsSection() {
         </div>
 
         <div className="grid grid-cols-4 gap-6">
-          {newsData.map((item, i) => (
+          {newsData.slice(0, 4).map((item, i) => (
             <motion.div
               key={item.id}
               initial={{ scale: 0.85, opacity: 0 }}
