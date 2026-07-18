@@ -9,7 +9,7 @@ export const companiesData: CompanyCard[] = [
     id: "cinqo-holdings",
     name: "Cinqo Holdings",
     logo: "/images/companies/cinqo-holding.png",
-    bgImage: "/images/companies/cinqo-holdings-bg.jpg",
+    bgImage: "/images/hero/h3.png",
     description:
       "Cinqo Holding is the investment and strategic parent company that provides the governance, leadership and long-term vision behind the Group's portfolio of its operating businesses and investments.",
     href: "/businesses/cinqo-holding-investments",
@@ -18,7 +18,7 @@ export const companiesData: CompanyCard[] = [
     id: "cinqo-trading",
     name: "Cinqo Trading",
     logo: "/images/companies/cinqo-trading.png",
-    bgImage: "/images/companies/cinqo-trading-bg.jpg",
+    bgImage: "/images/companies/h1.jpg",
     description:
       "Structured technical distribution, inventory management, and specification support for nine of the world's leading building and coating brands.",
     href: "/businesses/cinqo-trading",
@@ -27,7 +27,7 @@ export const companiesData: CompanyCard[] = [
     id: "cinqo-coatings",
     name: "Cinqo Coatings",
     logo: "/images/companies/cinqo-floor.png",
-    bgImage: "/images/companies/cinqo-coatings-bg.jpg",
+    bgImage: "/images/companies/c5.png",
     description:
       "Specialists in epoxy flooring, polyurethane systems, waterproofing and protective coatings engineered for demanding industrial and commercial environments.",
     href: "/businesses/cinqo-flooring-coating-technologies",
@@ -36,7 +36,7 @@ export const companiesData: CompanyCard[] = [
     id: "cinqo-contracting",
     name: "Cinqo Contracting",
     logo: "/images/companies/cinqo-contracting.png",
-    bgImage: "/images/companies/cinqo-contracting-bg.jpg",
+    bgImage: "/images/companies/c1.jpg",
     description:
       "Delivering civil and building construction across various sectors — shaping communities, businesses and infrastructure.",
     href: "/businesses/cinqo-contracting",
@@ -45,7 +45,7 @@ export const companiesData: CompanyCard[] = [
     id: "thc-facility-management",
     name: "THC Facility Management",
     logo: "/images/companies/cinqo-facility.png",
-    bgImage: "/images/companies/thc-facility-bg.jpg",
+    bgImage: "/images/companies/c2.jpeg",
     description:
       "Provider of integrated hard and soft facilities management services supporting residential, commercial, hospitality and industrial assets.",
     href: "/businesses/thc-facilities-management",
@@ -54,7 +54,7 @@ export const companiesData: CompanyCard[] = [
     id: "thc-fitout",
     name: "THC Fitout",
     logo: "/images/companies/cinqo-fitout.png",
-    bgImage: "/images/companies/thc-fitout-bg.jpg",
+    bgImage: "/images/companies/c3.JPG",
     description:
       "Interior construction specialists delivering corporate, hospitality and residential fit-out projects with a focus on quality, coordination and finish excellence.",
     href: "/businesses/cinqo-fitout",
