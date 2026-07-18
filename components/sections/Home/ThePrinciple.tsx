@@ -33,8 +33,8 @@ export default function ThePrinciple() {
     offset: ["start start", "end end"],
   });
 
-  // Map scroll progress (0 to 1) directly to frame numbers (1 to 300)
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [1, 300]);
+  // Map scroll progress (0 to 1) directly to frame numbers (1 to 56)
+  const frameIndex = useTransform(scrollYProgress, [0, 1], [1, 56]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -45,8 +45,10 @@ export default function ThePrinciple() {
     // Helper to format the frame name matching your folder structure
     const getFrameUrl = (index: number) => {
       const paddedIndex = String(index).padStart(3, "0");
-      return `/videos/principle/theprincipleVideo/ezgif-frame-${paddedIndex}.jpg`;
+      return `/videos/principle/Frames/Frame${paddedIndex}.jpg`;
     };
+
+  
 
     // Preload images into memory for zero lag during scroll
     const images: HTMLImageElement[] = [];
@@ -166,7 +168,6 @@ export default function ThePrinciple() {
               fontWeight: 500, 
               fontSize: "clamp(32px, 5vw, 64px)", 
               lineHeight: "1.1",
-              textShadow: "0px 11px 19px rgba(255, 0, 0, 0.5)"
             }}
           >
             Clarity Before Commitment
@@ -180,7 +181,6 @@ export default function ThePrinciple() {
               fontWeight: 700, 
               fontSize: "clamp(18px, 3vw, 24px)", 
               lineHeight: "1.2",
-              textShadow: "0px 9px 51px #F5333F"
             }}
           >
             Accountability at every level.
@@ -194,7 +194,6 @@ export default function ThePrinciple() {
               fontWeight: 500, 
               fontSize: "clamp(16px, 2vw, 20px)", 
               lineHeight: "1.5",
-              textShadow: "0px 5px 51px #F5333F"
             }}
           >
             Every engagement begins with a clear understanding of scope,
