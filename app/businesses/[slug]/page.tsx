@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { businesses, sectorsPage } from "@/data/businesses.data";
+import { businesses } from "@/data/businesses.data";
 import Intro from "@/components/sections/Businesses/Intro";
 import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
 import Sectors from "@/components/sections/Businesses/Sectors";
+import Projects from "@/components/sections/Businesses/Projects";
 import News from "@/components/sections/Home/NewsSection";
 
 // Optional: statically generate these routes
@@ -37,10 +38,10 @@ export default async function BusinessPage({
       <Capabilities capabilities={business.capabilities} />
       
       {/* Sectors grid */}
-      <Sectors 
-        sectorShowcase={business.sectorShowcase}
-        sectorsPageData={sectorsPage}
-      />
+      <Sectors sectorShowcase={business.sectorShowcase} />
+
+      {/* Project showcase for this business */}
+      <Projects data={business} />
 
       <News/>
     </main>

@@ -25,6 +25,30 @@ export const homeHeroSlidesData: HeroSlide[] = [
     headline2: "DRIVEN BY PERFORMANCE.",
     subtitle: "Built on over two decades of operational excellence, Cinqo Holding is a diversified Bahrain-based group operating across construction, technical distribution, specialist coatings, and facilities management."
   },
+  {
+    id: "slide4",
+    image: "/images/hero/h3.png",
+    alt: "Cinqo Holdings construction and infrastructure",
+    headline1: "BUILT ON COMMITMENT.",
+    headline2: "DRIVEN BY PERFORMANCE.",
+    subtitle: "Built on over two decades of operational excellence, Cinqo Holding is a diversified Bahrain-based group operating across construction, technical distribution, specialist coatings, and facilities management."
+  },
+  {
+    id: "slide5",
+    image: "/images/hero/h3.png",
+    alt: "Cinqo Holdings construction and infrastructure",
+    headline1: "BUILT ON COMMITMENT.",
+    headline2: "DRIVEN BY PERFORMANCE.",
+    subtitle: "Built on over two decades of operational excellence, Cinqo Holding is a diversified Bahrain-based group operating across construction, technical distribution, specialist coatings, and facilities management."
+  },
+  {
+    id: "slide6",
+    image: "/images/hero/h3.png",
+    alt: "Cinqo Holdings construction and infrastructure",
+    headline1: "BUILT ON COMMITMENT.",
+    headline2: "DRIVEN BY PERFORMANCE.",
+    subtitle: "Built on over two decades of operational excellence, Cinqo Holding is a diversified Bahrain-based group operating across construction, technical distribution, specialist coatings, and facilities management."
+  },
   
 ];
 export const aboutHeroSlidesData: HeroSlideV2[] = [
@@ -39,5 +63,23 @@ export const careersHeroSlidesData: HeroSlideV2[] = [
 
 export const contactHeroSlidesData: HeroSlideV2[] = [
   { id: "contact1", image: "/images/hero/h1.jpg", alt: "Contact Cinqo Holdings",  headline1: "Contact Us.",
+   },
+];
+
+export const newsHeroSlidesData: HeroSlideV2[] = [
+  { id: "contact1", image: "/images/hero/h1.jpg", alt: "Contact Cinqo Holdings",  headline1: "Cinqo News.",
+   },
+];
+
+
+
+export const newsSlugHeroSlidesData: HeroSlideV2[] = [
+  { id: "contact1", image: "/images/hero/h1.jpg", alt: "Contact Cinqo Holdings",  headline1: "News.",
+   },
+];
+
+
+export const projectsHeroSlidesData: HeroSlideV2[] = [
+  { id: "contact1", image: "/images/hero/h1.jpg", alt: "Contact Cinqo Holdings",  headline1: "Cinqo Projects",
    },
 ];

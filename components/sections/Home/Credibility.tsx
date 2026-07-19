@@ -224,20 +224,20 @@ export default function Credibility() {
 
   return (
     <section
-      className="relative overflow-hidden text-cream-50 flex items-center justify-center py-20 min-[1024px]:py-0 min-h-[560px] min-[1024px]:aspect-video font-body"
-      ref={sectionRef}
-    >
-      {/* Uses global .bg-media class for absolute positioning, object-cover, and z-index */}
-      <video
-        ref={videoRef}
-        className="absolute -inset-px w-full h-full object-cover z-0 scale-133 origin-center will-change-transform"
-        src="/videos/credibility/CredibilityDrone-shot.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      />
+    className="relative overflow-hidden text-cream-50 flex items-center justify-center py-12 min-[1024px]:py-24 font-body"
+    ref={sectionRef}
+  >
+    {/* Uses global .bg-media class for absolute positioning, object-cover, and z-index */}
+    <video
+      ref={videoRef}
+      className="absolute inset-0 w-full h-full object-cover z-0 scale-133 origin-center will-change-transform"
+      src="/videos/credibility/CredibilityDrone-shot.mp4"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+    />
 
       {/* Cinematic vignette overlay */}
       <div className="absolute -inset-px bg-gradient-to-b from-slate-950/55 via-slate-950/25 to-slate-950/60 pointer-events-none z-[1]" />

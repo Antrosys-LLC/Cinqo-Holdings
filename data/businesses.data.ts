@@ -1,6 +1,7 @@
 export interface DefineUsItem {
   title: string;
   description: string;
+  bgimage:string;
 }
 
 export interface CapabilityItem {
@@ -15,63 +16,59 @@ export interface SectorShowcaseItem {
   image: string;
 }
 
+export interface ShowcaseProject {
+  title: string;                // e.g., "J003 FONTANA INFINITY" (Left list & Top-left on hover)
+  mainImage: string;            // The default right-side image (e.g., the building with the pool)
+  hoverThumbnails: string[];    // Array of the 5 smaller images shown in the middle on hover
+  hoverDescription: string;     // The descriptive text shown at the bottom on hover
+}
+
 export interface BusinessData {
   slug: string;
   name: string;
   heroImage: string;
   introBgImage: string;
+  /** Optional looping background video for the intro section (falls back to introBgImage when omitted). */
+  introBgVideo?: string;
   introHeading?: string;
   introText: string;
   definesUs: DefineUsItem[];
   capabilities: CapabilityItem[];
   sectorShowcase: SectorShowcaseItem[];
-}
 
-export interface SectorsPageData {
-  showcaseText: string;
-  projects: string[];
-  showcaseImage: string;
-  aerialImage: string;
-  compositeImage: string;
-  compositeTitle: string;
-  compositeDescription: string;
-  pipCount: number;
+  // --- Integrated Showcase Section Data ---
+  showcaseText: string;                // The static upper paragraph on the left
+  showcaseProjects: ShowcaseProject[]; // The list of projects containing data for both states
 }
-
-export const sectorsPage: SectorsPageData = {
-  showcaseText: "A showcase of absolute accountability in execution. We measure the success of these works by the frequency of repeat client engagement and a commitment to honoring obligations long after final handover.",
-  projects: ["J003 FONTANA INFINITY", "J003 FONTANA INFINITY", "J003 FONTANA INFINITY"],
-  showcaseImage: "/images/sectors/sector-1.webp",
-  aerialImage: "/images/sectors/sector-2.webp",
-  compositeImage: "/images/sectors/sector-3.jpg",
-  compositeTitle: "J003 FONTANA INFINITY",
-  compositeDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  pipCount: 5
-};
 
 export const businesses: BusinessData[] = [
   {
     slug: "cinqo-contracting",
     name: "CINQO CONTRACTING",
     heroImage: "/images/companies/c1.jpg",
-        introBgImage: "/images/companies/ci1.png",
-    introHeading: "BUILT ON\nCOMMITMENT",    introText: "Cinqo Contracting is the Group's flagship construction company, delivering civil and building projects across Bahrain's residential, commercial and industrial sectors.\n\nFor nearly two decades, the company has delivered luxury villas, residential developments, commercial facilities, warehouses and industrial assets. Through execution focused planning, experienced project leadership and rigorous commercial control, Cinqo Contracting provides confidence from mobilisation through final handover.",
+    introBgImage: "/images/companies/ci1.png",
+    introHeading: "BUILT ON\nCOMMITMENT",
+    introText: "Cinqo Contracting is the Group's flagship construction company, delivering civil and building projects across Bahrain's residential, commercial and industrial sectors.\n\nFor nearly two decades, the company has delivered luxury villas, residential developments, commercial facilities, warehouses and industrial assets. Through execution focused planning, experienced project leadership and rigorous commercial control, Cinqo Contracting provides confidence from mobilisation through final handover.",
     definesUs: [
       {
         title: "Executive Oversight",
-        description: "Projects operate with direct leadership visibility, ensuring accountability, timely decision-making and effective risk management throughout delivery."
+        description: "Projects operate with direct leadership visibility, ensuring accountability, timely decision-making and effective risk management throughout delivery.",
+        bgimage: "/images/companies/ci1.png",
       },
       {
         title: "Quality & Compliance",
-        description: "Materials, workmanship and safety standards are maintained through inspections, testing and compliance monitoring throughout execution."
+        description: "Materials, workmanship and safety standards are maintained through inspections, testing and compliance monitoring throughout execution.",
+        bgimage: "/images/companies/ci1.png",
       },
       {
         title: "Programme Control",
-        description: "Scheduling and sequencing are actively monitored across all project phases, supported by ERP-enabled tracking and reporting."
+        description: "Scheduling and sequencing are actively monitored across all project phases, supported by ERP-enabled tracking and reporting.",
+        bgimage: "/images/companies/ci1.png",
       },
       {
         title: "Commercial Discipline",
-        description: "Cost exposure, variations and financial commitments are managed through structured controls and documented approval processes."
+        description: "Cost exposure, variations and financial commitments are managed through structured controls and documented approval processes.",
+        bgimage: "/images/companies/ci1.png",
       }
     ],
     capabilities: [
@@ -93,26 +90,60 @@ export const businesses: BusinessData[] = [
     ],
     sectorShowcase: [
       {
-        title: "HIGH-END RESIDENTIAL VILLAS & COMPOUNDS",
-        description: "Delivery of luxury villas and gated communities with a focus on quality, coordination and finishing excellence.",
-        image: "/images/sectors/card-1_contract.webp"
+        title: "Residential",
+        description: "Luxury villas and residential developments delivered with disciplined project execution.",
+        image: "/images/sectors/sector-1.webp",
       },
       {
-        title: "RESIDENTIAL & COMMERCIAL TOWERS",
-        description: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
-        image: "/images/sectors/card-2.webp"
+        title: "Commercial",
+        description: "Commercial facilities built to rigorous quality, safety and programme standards.",
+        image: "/images/sectors/sector-2.webp",
       },
       {
-        title: "COMMERCIAL MALLS & MIXED-USE DEVELOPMENTS",
-        description: "Construction of mid- and high-rise developments with strong emphasis on programme control, logistics and safety compliance.",
-        image: "/images/sectors/card-3.webp"
+        title: "Industrial",
+        description: "Warehouses and industrial assets delivered from mobilisation through final handover.",
+        image: "/images/sectors/sector-3.jpg",
       },
-      {
-        title: "WAREHOUSES & INDUSTRIAL FACILITIES",
-        description: "Development of industrial structures incorporating utility integration, fire safety systems and operational infrastructure.",
-        image: "/images/sectors/card-4.webp"
-      }
     ],
+    showcaseText: "Explore our portfolio of landmark civil and building projects across Bahrain's residential, commercial, and industrial sectors, demonstrating our commitment to quality, safety, and precision.",
+    showcaseProjects: [
+      {
+        title: "J003 FONTANA INFINITY",
+        mainImage: "/images/companies/c1.jpg",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "A premier luxury residential development featuring twin towers, exceptional resort-style amenities, and meticulous structural execution."
+      },
+      {
+        title: "J003 FONTANA INFINITY",
+        mainImage: "/images/companies/c1.jpg",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "A premier luxury residential development featuring twin towers, exceptional resort-style amenities, and meticulous structural execution."
+      },
+      {
+        title: "J003 FONTANA INFINITY",
+        mainImage: "/images/companies/c1.jpg",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "A premier luxury residential development featuring twin towers, exceptional resort-style amenities, and meticulous structural execution."
+      },
+    ]
   },
   {
     slug: "thc-facilities-management",
@@ -124,15 +155,18 @@ export const businesses: BusinessData[] = [
     definesUs: [
       {
         title: "ASSET PERFORMANCE",
-        description: "Maximizing the lifespan and performance of your assets."
+        description: "Maximizing the lifespan and performance of your assets.",
+        bgimage: "/images/companies/ci1.png",
       },
       {
         title: "OPERATIONAL EFFICIENCY",
-        description: "Optimizing operations to reduce costs and improve service delivery."
+        description: "Optimizing operations to reduce costs and improve service delivery.",
+        bgimage: "/images/companies/ci1.png",
       },
       {
         title: "STRATEGIC PARTNERS",
-        description: "Working closely with clients to achieve their facility goals."
+        description: "Working closely with clients to achieve their facility goals.",
+        bgimage: "/images/companies/ci1.png",
       }
     ],
     capabilities: [
@@ -159,26 +193,36 @@ export const businesses: BusinessData[] = [
     ],
     sectorShowcase: [
       {
-        title: "HOSPITALITY",
-        description: "Facilities management solutions supporting hotels and serviced residences where uninterrupted operations are essential.",
-        image: "/images/sectors/card-1.webp"
+        title: "Residential",
+        description: "Preventative maintenance programmes that protect long-term residential asset value.",
+        image: "/images/sectors/sector-1.webp",
       },
       {
-        title: "RESIDENTIAL TOWERS & COMPOUNDS",
-        description: "Maintenance of HVAC, fire systems, lifts and shared infrastructure to ensure consistent building performance.",
-        image: "/images/sectors/card-2.webp"
+        title: "Hospitality",
+        description: "Responsive facilities support tailored to hospitality service standards.",
+        image: "/images/sectors/sector-2.webp",
       },
       {
-        title: "OFFICE BUILDINGS",
-        description: "Preventive maintenance and system optimisation for corporate environments focused on uptime and efficiency.",
-        image: "/images/sectors/card-3.webp"
+        title: "Commercial",
+        description: "Integrated facilities management for commercial towers and mixed-use assets.",
+        image: "/images/sectors/sector-3.jpg",
       },
-      {
-        title: "INDUSTRIAL FACILITIES",
-        description: "Technical servicing of operational assets and infrastructure aligned with compliance and productivity requirements.",
-        image: "/images/sectors/card-4.webp"
-      }
     ],
+    showcaseText: "Discover how we maintain and elevate the value of premier properties through our comprehensive and responsive facilities management solutions.",
+    showcaseProjects: [
+      {
+        title: "COMMERCIAL PLAZA OVERSIGHT",
+        mainImage: "/images/companies/c2.jpeg",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "Complete lifecycle management and preventative maintenance operations for a 50-story commercial hub."
+      }
+    ]
   },
   {
     slug: "cinqo-trading",
@@ -191,26 +235,36 @@ export const businesses: BusinessData[] = [
     capabilities: [],
     sectorShowcase: [
       {
-        title: "CONSTRUCTION & CONTRACTING",
-        description: "Supply of coatings, construction chemicals and engineered systems supported by specification and application advisory services.",
-        image: "/images/sectors/card-1.webp"
+        title: "Infrastructure",
+        description: "Technical distribution supporting national infrastructure development.",
+        image: "/images/sectors/sector-1.webp",
       },
       {
-        title: "RETAIL DISTRIBUTION",
-        description: "Structured supply to retail channels supported by inventory management, pricing governance and brand development.",
-        image: "/images/sectors/card-2.webp"
+        title: "Construction",
+        description: "Paints, chemicals and building materials sourced from authorised global brands.",
+        image: "/images/sectors/sector-2.webp",
       },
       {
-        title: "INDUSTRIAL & MANUFACTURING",
-        description: "Technical products and systems supporting operational efficiency, asset protection and facility performance.",
-        image: "/images/sectors/card-3.webp"
+        title: "Industrial",
+        description: "Acoustic systems and specification support for industrial-scale projects.",
+        image: "/images/sectors/sector-3.jpg",
       },
-      {
-        title: "INFRASTRUCTURE & UTILITIES",
-        description: "Specialised technologies and engineering solutions supporting municipal and large-scale infrastructure projects.",
-        image: "/images/sectors/card-4.webp"
-      }
     ],
+    showcaseText: "A curated look at the high-grade materials and exclusive technologies we have distributed to Bahrain's most significant infrastructural projects.",
+    showcaseProjects: [
+      {
+        title: "BAHRAIN INFRASTRUCTURE SUPPLY",
+        mainImage: "/images/companies/h1.jpg",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "Supplied advanced construction chemicals and acoustic systems for a major national infrastructure development."
+      }
+    ]
   },
   {
     slug: "cinqo-fitout",
@@ -223,26 +277,36 @@ export const businesses: BusinessData[] = [
     capabilities: [],
     sectorShowcase: [
       {
-        title: "CORPORATE OFFICES",
-        description: "Interior construction aligned with functionality, acoustic performance and service integration.",
-        image: "/images/sectors/card-1.webp"
+        title: "Corporate",
+        description: "Office interiors coordinated across design intent, MEP and joinery.",
+        image: "/images/sectors/sector-1.webp",
       },
       {
-        title: "RETAIL & F&B",
-        description: "Fast-track fit-out delivery focused on brand requirements and operational readiness.",
-        image: "/images/sectors/card-2.webp"
+        title: "Hospitality",
+        description: "Hospitality venues fitted out with meticulous attention to detail.",
+        image: "/images/sectors/sector-2.webp",
       },
       {
-        title: "RESIDENTIAL INTERIORS",
-        description: "Premium villa and apartment interior delivered with attention to detail and material quality.",
-        image: "/images/sectors/card-3.webp"
+        title: "Residential",
+        description: "Premium residential interiors delivered under programmed quality control.",
+        image: "/images/sectors/sector-3.jpg",
       },
-      {
-        title: "HEALTHCARE & CLINICS",
-        description: "Fit-outs incorporating hygienic materials and coordinated building services.",
-        image: "/images/sectors/card-4.webp"
-      }
     ],
+    showcaseText: "Step inside our completed interior environments, where uncompromising design intent meets precise technical execution.",
+    showcaseProjects: [
+      {
+        title: "CORPORATE HQ MANAMA",
+        mainImage: "/images/companies/c3.JPG",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "A turnkey interior fit-out for a multinational headquarters, featuring custom joinery and highly coordinated MEP integration."
+      }
+    ]
   },
   {
     slug: "cinqo-flooring-coating-technologies",
@@ -255,26 +319,36 @@ export const businesses: BusinessData[] = [
     capabilities: [],
     sectorShowcase: [
       {
-        title: "FOOD & BEVERAGE",
-        description: "Hygienic flooring systems designed for production, processing and wash-down environments.",
-        image: "/images/sectors/card-1.webp"
+        title: "Healthcare",
+        description: "Ultra-hygienic, chemically resistant flooring for pharmaceutical environments.",
+        image: "/images/sectors/sector-1.webp",
       },
       {
-        title: "HEALTHCARE & PHARMACEUTICAL",
-        description: "Seamless flooring solutions suitable for laboratories, cleanrooms and contamination-sensitive facilities.",
-        image: "/images/sectors/card-2.webp"
+        title: "Logistics",
+        description: "Durable protective systems engineered for high-traffic logistics facilities.",
+        image: "/images/sectors/sector-2.webp",
       },
       {
-        title: "WAREHOUSES & LOGISTICS",
-        description: "Heavy-duty flooring systems designed for continuous operational traffic and material handling.",
-        image: "/images/sectors/card-3.webp"
+        title: "Industrial",
+        description: "Manufacturer-approved coating systems for demanding industrial installations.",
+        image: "/images/sectors/sector-3.jpg",
       },
-      {
-        title: "CAR PARKS & PODIUMS",
-        description: "Protective coating systems engineered for vehicular traffic and environmental exposure.",
-        image: "/images/sectors/card-4.webp"
-      }
     ],
+    showcaseText: "Review our specialized applications of high-performance flooring and coating systems across challenging industrial and healthcare environments.",
+    showcaseProjects: [
+      {
+        title: "PHARMA LOGISTICS HUB",
+        mainImage: "/images/companies/c5.png",
+        hoverThumbnails: [
+          "/images/sectors/pip-1.jpg",
+          "/images/sectors/pip-2.jpg",
+          "/images/sectors/pip-3.jpg",
+          "/images/sectors/pip-4.jpg",
+          "/images/sectors/pip-5.jpg"
+        ],
+        hoverDescription: "Installation of ultra-hygienic, chemically resistant flooring solutions designed to withstand rigorous pharmaceutical standards."
+      }
+    ]
   }
 ];
 

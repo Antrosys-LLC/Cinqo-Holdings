@@ -6,6 +6,7 @@ export default function ContactHero() {
     <Hero
       slides={contactHeroSlidesData}
       showDots={false}
+      variant="compact"
     />
   );
 }

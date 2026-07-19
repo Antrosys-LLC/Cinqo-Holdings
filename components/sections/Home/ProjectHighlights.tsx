@@ -1,220 +1,141 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projectsData } from "@/data/projects.data";
+import Image from "next/image";
+import { PROJECTS } from "@/data/projects.data";
 
 export default function ProjectHighlights() {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  
-  // Track the exact sequence of all 4 images for the current project.
-  // Index 0 is the Main Hero Box. Indexes 1, 2, and 3 are the thumbnails.
-  const [orderedImages, setOrderedImages] = useState<string[]>([]);
-  const [hovering, setHovering] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const playPromise = useRef<Promise<void> | null>(null);
+  // Filter projects to only show those flagged for the home page carousel
+  const [projects, setProjects] = useState(
+    PROJECTS.filter((p) => p.highlighted)
+  );
 
-  const project = projectsData[activeProjectIndex];
-  const totalProjects = projectsData.length;
-
-  // Initialize or reset the sequence of images when the project changes
-  useEffect(() => {
-    if (project) {
-      setOrderedImages([
-        project.heroImage,
-        ...project.gallery.map((img) => img.src),
-      ]);
-    }
-  }, [activeProjectIndex, project]);
-
-  const goToProject = (index: number) => {
-    const next = (index + totalProjects) % totalProjects;
-    setActiveProjectIndex(next);
-  };
-
-  // Shift logic: Clickey thumb index moves to position 0. All preceding items shift right.
-  const handleThumbClick = (clickedIndex: number) => {
-    if (clickedIndex === 0) return; // Already the main image
-
-    setOrderedImages((prev) => {
-      const nextOrder = [...prev];
-      const clickedItem = nextOrder[clickedIndex];
-
-      // Shift elements to the right up to the clicked position
-      for (let i = clickedIndex; i > 0; i--) {
-        nextOrder[i] = nextOrder[i - 1];
-      }
-      // Place the clicked item in the main spotlight slot (position 0)
-      nextOrder[0] = clickedItem;
-
-      return nextOrder;
+  const handleNext = useCallback(() => {
+    setProjects((prev) => {
+      const copy = [...prev];
+      const first = copy.shift();
+      if (first) copy.push(first);
+      return copy;
     });
-  };
+  }, []);
 
-  const handleMouseEnter = () => {
-    setHovering(true);
-    if (videoRef.current) {
-      playPromise.current = videoRef.current.play();
-      if (playPromise.current !== undefined) {
-        playPromise.current.catch(() => {});
-      }
-    }
-  };
+  const handlePrev = useCallback(() => {
+    setProjects((prev) => {
+      const copy = [...prev];
+      const last = copy.pop();
+      if (last) copy.unshift(last);
+      return copy;
+    });
+  }, []);
 
-  const handleMouseLeave = () => {
-    setHovering(false);
-    if (videoRef.current) {
-      if (playPromise.current !== undefined && playPromise.current !== null) {
-        playPromise.current
-          .then(() => {
-            videoRef.current?.pause();
-          })
-          .catch(() => {});
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  };
+  const activeProject = projects[0];
+  const thumbnails = projects.slice(1);
 
-  if (orderedImages.length === 0) return null;
+  if (!activeProject) return null;
 
   return (
-    <section className="section bg-white py-16 md:py-24" id="projects">
-      <div className="container grid gap-12 items-center min-[900px]:grid-cols-[1fr_1fr]">
+    <section className="w-full max-w-7xl mx-auto px-6 py-16 bg-white font-sans select-none">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        {/* Left Side: Main Large Box */}
-        <div
-          className="relative aspect-square w-full rounded-2xl overflow-hidden bg-zinc-100"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {/* Framer Motion layoutId handles the smooth layout transition */}
-          <motion.div
-            layoutId={`img-${orderedImages[0]}`}
-            className="absolute inset-0 z-10"
-            transition={{ type: "spring", stiffness: 180, damping: 25 }}
-          >
-            <Image
-              src={orderedImages[0]}
-              alt={project.name}
-              fill
-              className={`object-cover ${hovering && project.heroVideo ? "opacity-0" : ""}`}
-              priority
-            />
-          </motion.div>
-
-          {project.heroVideo && (
-            <video
-              ref={videoRef}
-              className={`absolute inset-0 w-full h-full object-cover z-20 transition-opacity duration-700 ease-out ${hovering ? "opacity-100" : "opacity-0"}`}
-              src={project.heroVideo}
-              muted
-              loop
-              playsInline
-            />
-          )}
+        {/* Left Side: Large Featured Image */}
+        <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 shadow-sm">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={activeProject.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={activeProject.image}
+                alt={activeProject.name}
+                fill
+                priority
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Right Side: Text & Interactive Elements */}
-        <div className="flex flex-col h-full justify-between py-2">
-          
-          {/* Title and Description */}
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+        {/* Right Side: Content and Thumbnails */}
+        <div className="flex flex-col justify-between h-full py-4 min-h-[450px]">
+          <div>
+            <h2 className="text-4xl font-bold text-black tracking-tight mb-6">
               Project Highlights
             </h2>
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={activeProjectIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="text-zinc-600 max-w-[480px] text-base leading-relaxed"
-              >
-                A portfolio of projects that demonstrates our commitment to
-                excellence, innovation and successful delivery across diverse
-                sectors.
-              </motion.p>
-            </AnimatePresence>
+            <p className="text-gray-600 text-base leading-relaxed max-w-md">
+              {activeProject.description}
+            </p>
           </div>
 
-          {/* Bottom alignment area for Thumbnails and Navigation Arrows */}
-          <div className="flex items-end justify-between mt-12 md:mt-20">
-            
-            {/* Gallery Thumbnails */}
-            <div className="flex flex-col gap-4">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={activeProjectIndex}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-xl font-semibold text-zinc-900"
-                >
-                  {project.name}
-                </motion.span>
-              </AnimatePresence>
+          <div className="mt-12 lg:mt-auto">
+            <h3 className="text-2xl font-semibold text-black mb-4 transition-colors duration-300">
+              {activeProject.name}
+            </h3>
 
-              <div className="flex items-center gap-3">
-                {/* 
-                  Render positions 1, 2, and 3 as the small boxes.
-                  Clicking one triggers the smooth physical layout swap.
-                */}
-                {orderedImages.slice(1).map((src, sliceIdx) => {
-                  const actualIdx = sliceIdx + 1;
-                  return (
-                    <button
-                      key={src}
-                      className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden opacity-60 hover:opacity-100 scale-95 active:scale-90 transition-all duration-300"
-                      onClick={() => handleThumbClick(actualIdx)}
-                      aria-label={`Show image ${actualIdx}`}
-                    >
-                      <motion.div
-                        layoutId={`img-${src}`}
-                        className="absolute inset-0"
-                        transition={{ type: "spring", stiffness: 180, damping: 25 }}
-                      >
-                        <Image src={src} alt="" fill className="object-cover" />
-                      </motion.div>
-                    </button>
-                  );
-                })}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <motion.div layout className="flex items-center gap-3">
+                {thumbnails.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    layoutId={`thumb-${project.id}`}
+                    transition={{
+                      type: "spring",
+                      stiffness: 180,
+                      damping: 24,
+                    }}
+                    className="relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer shadow-sm bg-gray-200 flex-shrink-0"
+                    onClick={() => {
+                      const index = projects.findIndex((p) => p.id === project.id);
+                      setProjects((prev) => {
+                        const copy = [...prev];
+                        const itemsToMove = copy.splice(0, index);
+                        return [...copy, ...itemsToMove];
+                      });
+                    }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <div className="flex items-center gap-2 ml-auto">
+                <button
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-full bg-neutral-800 text-white flex items-center justify-center hover:bg-neutral-700 active:scale-95 transition-all"
+                  aria-label="Previous project"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="h-10 px-5 rounded-full bg-neutral-800 text-white flex items-center justify-center hover:bg-neutral-700 active:scale-95 transition-all"
+                  aria-label="Next project"
+                >
+                  
+  <Image 
+    src="/arrow.svg" /* Replace with your actual image path */
+    alt="Right arrow" 
+    width={20} 
+    height={20} 
+    className="w-5 h-5" /* Optional: keeps the exact same styling footprint */
+  />
+
+                </button>
               </div>
             </div>
-
-            {/* Navigation Arrows */}
-            <div className="flex items-center gap-3">
-              {/* Previous Button */}
-              <button
-                onClick={() => goToProject(activeProjectIndex - 1)}
-                className="w-10 h-10 rounded-full bg-[#333333] text-white flex items-center justify-center hover:bg-black transition-colors duration-200"
-                aria-label="Previous project"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-              </button>
-              
-              {/* Next Button */}
-              <button
-                onClick={() => goToProject(activeProjectIndex + 1)}
-                className="w-16 h-10 rounded-full bg-[#333333] text-white flex items-center justify-center hover:bg-black transition-colors duration-200"
-                aria-label="Next project"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -16,10 +16,13 @@ type HeroProps = {
   };
   id?: string;
   showDots?: boolean;
+  /** "full" = full-viewport home carousel. "compact" = short banner (matches the news article hero). */
+  variant?: "full" | "compact";
 };
 
 
-export default function Hero({ slides, cta, id = "hero", showDots = true }: HeroProps) {
+export default function Hero({ slides, cta, id = "hero", showDots = true, variant = "full" }: HeroProps) {
+  const isCompact = variant === "compact";
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -111,7 +114,13 @@ export default function Hero({ slides, cta, id = "hero", showDots = true }: Hero
   }, [activeIndex]); // Re-runs animation gracefully when slide index updates
 
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden text-cream-50" id={id} ref={containerRef}>
+    <section
+      className={`relative flex items-end overflow-hidden text-cream-50 ${
+        isCompact ? "w-full h-[360px] md:h-[440px] lg:h-[500px]" : "min-h-screen"
+      }`}
+      id={id}
+      ref={containerRef}
+    >
       {/* Background Images */}
       <div className="absolute inset-0 z-0 bg-black">
         {slides.map((slide, i) => (
@@ -133,12 +142,27 @@ export default function Hero({ slides, cta, id = "hero", showDots = true }: Hero
           </div>
         ))}
         {/* Subtle, premium linear gradient overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+        <div
+          className={`absolute inset-0 z-10 bg-gradient-to-t ${
+            isCompact ? "from-black/85 via-black/35 to-black/10" : "from-black/90 via-black/40 to-black/20"
+          }`}
+        />
       </div>
 
       {/* Hero Content Container */}
-      <div className="container relative z-20 pb-24 flex flex-col gap-6 !pl-[40px] select-none" ref={contentRef}>
-        <h1 className="animate-slide-item text-white text-4xl md:text-5xl lg:text-[4rem] font-semibold leading-[1.15] tracking-tight">
+      <div
+        className={`container relative z-20 flex flex-col !pl-[40px] select-none ${
+          isCompact ? "pb-10 md:pb-14 gap-3" : "pb-24 gap-6"
+        }`}
+        ref={contentRef}
+      >
+        <h1
+          className={`animate-slide-item text-white leading-[1.15] tracking-tight ${
+            isCompact
+              ? "text-2xl md:text-4xl lg:text-[2.75rem] font-bold uppercase max-w-4xl"
+              : "text-4xl md:text-5xl lg:text-[4rem] font-semibold"
+          }`}
+        >
           {slides[activeIndex].headline1}
           {"headline2" in slides[activeIndex] && slides[activeIndex].headline2 && (
             <>

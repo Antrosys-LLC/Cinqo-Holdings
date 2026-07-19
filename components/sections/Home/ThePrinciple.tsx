@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /**
@@ -20,8 +20,6 @@ const PIN_VH_MULTIPLIER = 3.2; // total pinned scroll runway, in viewport height
 
 const frameUrl = (dir: string, n: number) => `${dir}/frame-${String(n).padStart(4, "0")}.webp`;
 
-// Blocks 2 & 3 are placeholder editorial copy in the same voice as the
-// original block — swap in final client copy when available.
 const TEXT_BLOCKS = [
   {
     eyebrow: "The Principle",
@@ -47,15 +45,6 @@ export default function ThePrinciple() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textBlockRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const audioButtonRef = useRef<HTMLButtonElement>(null);
-
-  const [audioOn, setAudioOn] = useState(false);
-  const audioOnRef = useRef(false);
-
-  useEffect(() => {
-    audioOnRef.current = audioOn;
-  }, [audioOn]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -168,8 +157,6 @@ export default function ThePrinciple() {
     handleResize();
     requestFrame(1);
 
-    // Text-block sequencing — stacked in the DOM, swapped via refs only
-    // (no React state), so scroll updates never trigger a re-render.
     let activeBlock = 0;
     const showTextBlock = (index: number) => {
       if (index === activeBlock) return;
@@ -185,16 +172,10 @@ export default function ThePrinciple() {
         gsap.fromTo(
           nextEl,
           { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: "power3.out" }, // Added delay so they don't overlap
         );
         nextEl.removeAttribute("aria-hidden");
       }
-    };
-
-    const fadeAudio = (target: number, onComplete?: () => void) => {
-      const audio = audioRef.current;
-      if (!audio) return;
-      gsap.to(audio, { volume: target, duration: 0.7, ease: "power1.out", onComplete });
     };
 
     const ctxGsap = gsap.context(() => {
@@ -216,26 +197,6 @@ export default function ThePrinciple() {
           );
           showTextBlock(segment);
         },
-        onEnter: () => {
-          if (audioButtonRef.current) {
-            gsap.to(audioButtonRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
-          }
-        },
-        onLeave: () => {
-          if (audioOnRef.current) fadeAudio(0, () => audioRef.current?.pause());
-        },
-        onEnterBack: () => {
-          if (audioOnRef.current) {
-            audioRef.current?.play().catch(() => {});
-            fadeAudio(0.28);
-          }
-        },
-        onLeaveBack: () => {
-          if (audioButtonRef.current) {
-            gsap.to(audioButtonRef.current, { opacity: 0, y: 12, duration: 0.4, ease: "power2.in" });
-          }
-          if (audioOnRef.current) fadeAudio(0, () => audioRef.current?.pause());
-        },
       });
     }, wrap);
 
@@ -243,32 +204,15 @@ export default function ThePrinciple() {
       window.removeEventListener("resize", handleResize);
       ctxGsap.revert();
       cache.clear();
-      audioRef.current?.pause();
     };
   }, []);
-
-  const toggleAudio = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (audioOnRef.current) {
-      gsap.to(audio, { volume: 0, duration: 0.5, onComplete: () => audio.pause() });
-      audioOnRef.current = false;
-      setAudioOn(false);
-    } else {
-      audio.volume = 0;
-      audio.play().catch(() => {});
-      gsap.to(audio, { volume: 0.28, duration: 0.9 });
-      audioOnRef.current = true;
-      setAudioOn(true);
-    }
-  };
 
   return (
     <div ref={wrapRef} className="relative h-screen w-full bg-black">
       <section className="relative h-screen w-full overflow-hidden">
         <canvas ref={canvasRef} aria-hidden className="absolute inset-0 h-full w-full" />
 
-        {/* Legibility scrim so overlay text stays readable over any frame */}
+        {/* Legibility scrim */}
         <div
           aria-hidden
           className="absolute inset-0 z-10"
@@ -278,8 +222,9 @@ export default function ThePrinciple() {
           }}
         />
 
-        <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
-          <div className="relative w-full max-w-[1290px] mx-auto text-center">
+        {/* Text Container: Locked completely flat centered layout */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
+          <div className="relative w-full max-w-[1290px] h-full flex items-center justify-center mx-auto text-center">
             {TEXT_BLOCKS.map((block, i) => (
               <div
                 key={block.heading}
@@ -287,15 +232,19 @@ export default function ThePrinciple() {
                   textBlockRefs.current[i] = el;
                 }}
                 aria-hidden={i === 0 ? undefined : "true"}
-                className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col items-center"
-                style={i === 0 ? undefined : { opacity: 0, transform: "translate(0, 40px)" }}
+                className="absolute w-full flex flex-col items-center justify-center transform"
+                style={{
+                  opacity: i === 0 ? 1 : 0,
+                  transform: i === 0 ? "translateY(0px)" : "translateY(40px)",
+                  pointerEvents: i === 0 ? "auto" : "none",
+                }}
               >
                 <span
-                  className="uppercase text-white mb-2 sm:mb-[16px]"
+                  className="uppercase text-white mb-2 sm:mb-[16px] tracking-[0.12em]"
                   style={{
                     fontFamily: "'IBM Plex Sans', sans-serif",
                     fontWeight: 500,
-                    fontSize: "20px",
+                    fontSize: "14px",
                     lineHeight: "1.2",
                   }}
                 >
@@ -303,7 +252,7 @@ export default function ThePrinciple() {
                 </span>
 
                 <h2
-                  className="uppercase text-white mb-6 sm:mb-[47px]"
+                  className="uppercase text-white mb-4 sm:mb-[24px] tracking-tight"
                   style={{
                     fontFamily: "'IBM Plex Sans', sans-serif",
                     fontWeight: 500,
@@ -315,24 +264,24 @@ export default function ThePrinciple() {
                 </h2>
 
                 <h3
-                  className="uppercase text-white mb-4 sm:mb-[16px]"
+                  className="uppercase text-white/90 mb-3 sm:mb-[16px] tracking-wide"
                   style={{
                     fontFamily: "'IBM Plex Sans', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "clamp(18px, 3vw, 24px)",
-                    lineHeight: "1.2",
+                    fontWeight: 600,
+                    fontSize: "clamp(16px, 2.5vw, 20px)",
+                    lineHeight: "1.3",
                   }}
                 >
                   {block.subheading}
                 </h3>
 
                 <p
-                  className="text-white max-w-[650px] mx-auto"
+                  className="text-white/80 max-w-[620px] mx-auto antialiased"
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontWeight: 500,
-                    fontSize: "clamp(16px, 2vw, 20px)",
-                    lineHeight: "1.5",
+                    fontWeight: 400,
+                    fontSize: "clamp(15px, 1.8vw, 17px)",
+                    lineHeight: "1.6",
                   }}
                 >
                   {block.body}
@@ -341,32 +290,6 @@ export default function ThePrinciple() {
             ))}
           </div>
         </div>
-
-        <audio ref={audioRef} src="/audios/ThePrinciple.mp3" loop preload="none" />
-
-        <button
-          ref={audioButtonRef}
-          type="button"
-          onClick={toggleAudio}
-          aria-label={audioOn ? "Mute ambient sound" : "Play ambient sound"}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2.5 text-white opacity-0 backdrop-blur-md transition-colors duration-300 hover:border-white/50 hover:bg-white/15"
-          style={{ transform: "translateX(-50%) translateY(12px)" }}
-        >
-          {audioOn ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-              <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-              <path d="m16 9 5 6M21 9l-5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          )}
-          <span className="text-[0.7rem] font-medium uppercase tracking-[0.14em]">
-            Sound {audioOn ? "On" : "Off"}
-          </span>
-        </button>
       </section>
     </div>
   );

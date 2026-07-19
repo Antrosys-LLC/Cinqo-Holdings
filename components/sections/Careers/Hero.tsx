@@ -6,6 +6,7 @@ export default function CareersHero() {
     <Hero
       slides={careersHeroSlidesData}
       showDots={false}
+      variant="compact"
     />
   );
 }

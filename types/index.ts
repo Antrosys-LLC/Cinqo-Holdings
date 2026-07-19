@@ -1,12 +1,31 @@
 import type { ReactNode } from "react";
 
+export interface ContentLink {
+  text: string;
+  url: string;
+}
+
+export interface ContentBlock {
+  type: "paragraph" | "image" | "heading";
+  // Used for text or headings. Supports tracking text with specific links.
+  text?: string;
+  links?: ContentLink[]; 
+  // Used for images inserted mid-content
+  src?: string;
+  alt?: string;
+  caption?: string;
+}
+
 export interface NewsItem {
   id: string;
-  tag: string;
+  slug: string;        // The clean URL identifier (e.g., "strategic-group-restructuring")
+  tag: "News" | "Latest" | "Top";
   title: string;
   date: string;
-  image: string;
-  href: string;
+  featuredImage: string; // The main card image
+  href: string;        // The actual constructed link route
+  excerpt: string;     // Brief summary for listings
+  content: ContentBlock[]; // The rich text body array
 }
 
 
@@ -15,16 +34,24 @@ export interface GalleryImage {
   alt: string;
 }
 
+export type ProjectStatus = "ongoing" | "completed";
+
 export interface Project {
   id: string;
   name: string;
-  location: string;
-  category: string;
-  heroImage: string;
-  description: string; // Added to support changing descriptions dynamically
-  heroVideo?: string;
-  gallery: GalleryImage[];
+  subheading: string;
+  date: string;
+  status: ProjectStatus;
+  /** Featured on the home page's Project Highlights carousel. */
+  highlighted?: boolean;
+  image: string;
+  logo?: string;
+  description: string;
+  bullets?: string[];
+  thumbnails?: string[];
 }
+
+
 export interface CompanyCard {
   id: string;
   name: string;
