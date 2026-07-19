@@ -22,6 +22,7 @@ export default function Home() {
       <LogosLoop />
       <NewsSection />
       <SubscribeNow />
+      
     </main>
   );
 }

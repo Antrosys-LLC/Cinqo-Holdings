@@ -24,13 +24,13 @@ export default function GuidingPrinciples() {
       gsap.utils.toArray<HTMLElement>(".principle-card").forEach((el, i) => {
         gsap.from(el, {
           opacity: 0,
-          y: 30,
-          duration: 1.2,
-          delay: i * 0.06,
-          ease: "power2.out",
+          y: 80, // Increased from 30 for a more dramatic rise
+          duration: 1.4, // Slightly longer for a premium feel
+          delay: i * 0.1, // Increased stagger slightly
+          ease: "power3.out", // Smoother corporate-style easing
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
+            start: "top 85%", // Starts a bit earlier so it rises into view naturally
             toggleActions: "play none none reverse",
           },
         });
@@ -63,12 +63,12 @@ export default function GuidingPrinciples() {
         aria-hidden
         style={{
           background: "linear-gradient(to right, #F5333F, transparent)",
-          WebkitMaskImage: 'url("/pattern.svg")',
+          WebkitMaskImage: 'url("/")',
           WebkitMaskSize: "65%",
           WebkitMaskRepeat: "no-repeat",
           WebkitMaskPosition: "center",
           maskImage: 'url("/pattern.svg")',
-          maskSize: "65%",
+          maskSize: "45%",
           maskRepeat: "no-repeat",
           maskPosition: "center",
           opacity: 0.5,
@@ -89,20 +89,22 @@ export default function GuidingPrinciples() {
           {principlesData.map((principle, i) => (
             <div
               key={principle.id}
-              className={`principle-card relative overflow-hidden rounded-md h-[500px] isolate glass-frost-hover ${i % 3 === 1 ? "translate-y-5" : ""}`}
+              className={`principle-card group relative overflow-hidden rounded-md h-[500px] isolate glass-frost-hover cursor-pointer transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] ${
+                i % 3 === 1 ? "mt-0 min-[1100px]:mt-6" : ""
+              }`}
             >
               <Image
                 src={cardImages[i] || principle.image}
                 alt={principle.title}
                 fill
-                className="object-cover -z-20"
+                className="object-cover -z-20 transition-transform duration-700 ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-navy-950/90" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-1">
+              <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-navy-950/10 to-navy-950/90 transition-opacity duration-500 group-hover:opacity-90" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-1 transition-transform duration-500 ease-out group-hover:-translate-y-2">
                 <h4 className="text-white uppercase text-base tracking-[0.04em]">
                   {principle.title}
                 </h4>
-                <p className="text-white/70 text-sm">
+                <p className="text-white/70 text-sm transition-colors duration-500 group-hover:text-white/95">
                   {principle.description}
                 </p>
               </div>

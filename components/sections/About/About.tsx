@@ -17,17 +17,66 @@ export default function About() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const textSectionRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  
+  // New Refs for animations
+  const countRef = useRef<HTMLSpanElement>(null);
+  const textRiseRef = useRef<HTMLDivElement>(null);
+  const centerTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const wrap = imageWrapRef.current;
     const overlay = overlayRef.current;
-    if (!section || !wrap || !overlay) return;
-
+    
     const ctx = gsap.context(() => {
+      // 1. Text Rise Up Animation (First Section)
+      if (textRiseRef.current) {
+        gsap.fromTo(
+          textRiseRef.current.children,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: textRiseRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+
+      // 2. Count Up Animation (First Section)
+      if (countRef.current) {
+        gsap.fromTo(
+          countRef.current,
+          { innerText: 0 },
+          {
+            innerText: 20,
+            duration: 2,
+            ease: "power2.out",
+            snap: { innerText: 1 },
+            scrollTrigger: {
+              trigger: countRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+
+      // 3. Fullscreen Scroll Reveal & Center Text Animation (Second Section)
+      if (!section || !wrap || !overlay) return;
+
       const scaleX = window.innerWidth / wrap.offsetWidth;
       const scaleY = window.innerHeight / wrap.offsetHeight;
       const scale = Math.max(scaleX, scaleY) * 1.05;
+
+      // Set initial state for center text
+      if (centerTextRef.current) {
+        gsap.set(centerTextRef.current, { y: 30, opacity: 0 });
+      }
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -48,15 +97,19 @@ export default function About() {
         duration: 0.48,
         ease: "power2.inOut",
       })
-      .to(overlay, { opacity: 0.15, duration: 0.48, ease: "power2.inOut" }, "<")
+      .to(overlay, { opacity: 0.4, duration: 0.48, ease: "power2.inOut" }, "<")
 
-      // We removed the zoom-out steps here so the image stays full-screen 
-      // as the user continues scrolling down.
-    }, section);
+      // Reveal text in the center
+      if (centerTextRef.current) {
+        tl.to(centerTextRef.current, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, "-=0.24");
+      }
+      // `section` is nullable; gsap's scope param takes an element or nothing.
+    }, section ?? undefined);
 
     return () => ctx.revert();
   }, []);
 
+  // -- EXISTING UNTOUCHED LOGIC FOR 3RD SECTION --
   useEffect(() => {
     if (!lenis) return;
 
@@ -164,7 +217,6 @@ export default function About() {
       window.removeEventListener("keydown", onKeyDown);
       lenis.start();
 
-      // Wait for the section to leave the viewport center before re-arming
       canLock = false;
       const exitObserver = new IntersectionObserver(
         ([e]) => {
@@ -230,41 +282,58 @@ export default function About() {
 
   return (
     <div className="bg-white">
-      <section className="relative pt-12 pb-2 min-h-[600px] overflow-hidden">
-        <Image
-          src="/images/about/a2.jpeg"
-          alt="About Cinqo Holding"
-          fill
-          className="object-cover brightness-100 saturate-[0.5] contrast-[0.85]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-white/75" />
-        <div className="absolute inset-0 z-10 flex items-center pt-10">
-          <div className="relative w-full h-full">
-            <div className="absolute left-[265px] top-[45%] -translate-y-1/2 text-center font-[var(--font-ibm-plex)]">
-              <h2 className="text-[124px] font-normal mb-[-24px] text-black">20+</h2>
-              <p className="text-[30px] tracking-normal text-black font-bold pl-2">Years Of Deilvery</p>
+      {/* SECTION 1 - Refactored to match image_8647e4.jpg EXACTLY */}
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-24">
+        {/* Video Background with Image Fallback via 'poster' */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/images/about/a2.jpeg"
+            className="w-full h-full object-cover opacity-40"
+          >
+            <source src="/videos/your-background-video.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay to ensure text readability matches the light tone of the image */}
+          <div className="absolute inset-0 bg-[#f8f8f8]/85" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center">
+          
+          {/* Left Column: 20+ Years */}
+          <div className="md:col-span-5 flex justify-center md:justify-end font-[var(--font-ibm-plex)]">
+            <div className="flex flex-col items-center">
+              <h2 className="text-[140px] md:text-[160px] leading-[0.8] font-normal text-black tracking-tighter">
+                <span ref={countRef}>0</span>+
+              </h2>
+              <p className="text-[20px] md:text-[22px] font-semibold text-black tracking-wide mt-3">
+                Years Of Delivery
+              </p>
             </div>
           </div>
-        </div>
-        <div className="relative z-20 px-6 md:px-12 max-w-[1440px] mx-auto pt-10 flex justify-end">
-          <div className="max-w-xl mr-4">
-            <p className="text-xl leading-relaxed text-black/80">
+
+          {/* Right Column: Paragraph Text */}
+          <div ref={textRiseRef} className="md:col-span-7 flex flex-col gap-6 text-[17px] md:text-[19px] leading-[1.6] text-black/80">
+            <p>
               Since its inception, Cinqo Holding has evolved from a construction-focused business into a diversified group of more than 600 professionals serving clients across Bahrain&rsquo;s public and private sectors.
-              <br />
-              <br />
+            </p>
+            <p>
               The Group comprises five specialised operating companies operating under a unified framework of governance, financial oversight and strategic direction, enabling each business to maintain its technical focus while benefiting from shared leadership and systems.
-              <br />
-              <br />
+            </p>
+            <p>
               Growth is pursued selectively, guided by capability, operational readiness and long-term sustainability.
             </p>
           </div>
         </div>
       </section>
+
+      {/* SECTION 2 - Fullscreen Image Growth */}
       <section ref={sectionRef} className="relative flex items-center justify-center min-h-screen bg-white overflow-hidden">
         <div
           ref={imageWrapRef}
-          className="relative w-[75%] h-[500px] z-50 rounded-2xl overflow-hidden"
+          className="relative w-[75%] h-[500px] z-10 rounded-2xl overflow-hidden"
           style={{ boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)" }}
         >
           <Image
@@ -276,8 +345,17 @@ export default function About() {
           />
           <div ref={overlayRef} className="absolute inset-0 bg-black opacity-0 z-10 pointer-events-none" />
         </div>
+        
+        {/* NEW Center Text Reveal (Overlays the zoomed-in image) */}
+        <div ref={centerTextRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <h2 className="text-4xl md:text-6xl text-white font-bold tracking-wider text-center px-4 drop-shadow-lg">
+            Cinqo Holding
+          </h2>
+        </div>
       </section>
-      <section ref={textSectionRef} className="relative flex items-start justify-center bg-white px-6 pt-12 z-30">
+
+      {/* SECTION 3 - Untouched Highlight Scroll Text */}
+      <section ref={textSectionRef} className="relative flex items-start justify-center bg-white px-6 py-24 z-30">
         <p className="max-w-3xl text-center text-[2rem] leading-relaxed text-black/80">
           {words.map((word, i) => (
             <span key={i}>

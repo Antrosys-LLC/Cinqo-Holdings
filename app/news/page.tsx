@@ -1,19 +1,16 @@
-import Hero from "@/components/sections/reusable/Hero";
-import NewsSection from "@/components/sections/News/News";
-import SocialCard from "@/components/sections/News/SocialCard";
-import SubscribeNow from "@/components/sections/Home/SubscribeNow";
-import { newsHeroSlidesData } from "@/data/hero.data";
+import Hero from "@/components/sections/News/Hero";
+import NewsPage from "@/components/sections/News/NewsPage";
+import NewsFollow from "@/components/sections/News/NewsFollow";
+import NewsGrid from "@/components/sections/News/NewsGrid";
 
-export default function NewsPage() {
+export default function AboutPage() {
   return (
     <main>
-      <Hero
-        slides={newsHeroSlidesData}
-        showDots={false}
-      />
-      <NewsSection />
-      <SocialCard />
-      <SubscribeNow />
+      <Hero />
+      <NewsPage/>
+      <NewsFollow/>
+      <NewsGrid/>
     </main>
+    
   );
 }

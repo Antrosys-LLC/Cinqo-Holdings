@@ -6,8 +6,23 @@ import Link from "next/link";
 import { newsData } from "@/data/news.data";
 
 export default function NewsSection() {
+  // 1. Reverse array to get "last added" items first
+  const reversedNews = [...newsData].reverse();
+
+  // 2. Filter out by priorities
+  const topPriority = reversedNews.filter(
+    (item) => item.tag.toLowerCase() === "top"
+  );
+  const secondPriority = reversedNews.filter(
+    (item) => item.tag.toLowerCase() === "latest"
+  );
+
+  // 3. Combine priorities and slice to only get 4 items max
+  const displayNews = [...topPriority, ...secondPriority].slice(0, 4);
+
   return (
-    <section className="section bg-white overflow-hidden" id="news">
+    <section className="section bg-white overflow-hidden hidden md:block" id="news">
+      {/* Added 'hidden md:block' to hide on mobile/mobile-like views */}
       <div className="container !px-[35px]">
         <div className="flex items-start justify-between mb-12">
           <h2 className="font-[var(--font-ibm-plex)] font-semibold text-[24px] tracking-wide">
@@ -17,14 +32,22 @@ export default function NewsSection() {
             <span className="block text-small text-muted tracking-widest font-semibold group-hover:text-ink transition-colors">
               Show All
             </span>
-            <svg className="w-10 h-3 mt-1 ml-auto text-muted group-hover:text-ink transition-colors" viewBox="0 0 40 12" fill="none">
-              <path d="M0 6h33M33 1l5 5-5 5" stroke="currentColor" strokeWidth="1"/>
+            <svg
+              className="w-10 h-3 mt-1 ml-auto text-muted group-hover:text-ink transition-colors"
+              viewBox="0 0 40 12"
+              fill="none"
+            >
+              <path
+                d="M0 6h33M33 1l5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
             </svg>
           </Link>
         </div>
 
         <div className="grid grid-cols-4 gap-6">
-          {newsData.slice(0, 4).map((item, i) => (
+          {displayNews.map((item, i) => (
             <motion.div
               key={item.id}
               initial={{ scale: 0.85, opacity: 0 }}
@@ -33,9 +56,10 @@ export default function NewsSection() {
               transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
             >
               <Link href={item.href} className="flex flex-col gap-2 group">
+                {/* Next.js Image requires parent to have position: relative and define dimensions */}
                 <div className="relative aspect-[4/3] rounded-[10px] overflow-hidden bg-navy-900">
                   <Image
-                    src={item.image}
+                    src={item.featuredImage}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -44,7 +68,9 @@ export default function NewsSection() {
                     {item.tag}
                   </span>
                 </div>
-                <h4 className="text-body leading-[1.5]">{item.title}</h4>
+                <h4 className="text-body leading-[1.5] line-clamp-2">
+                  {item.title}
+                </h4>
                 <span className="text-small text-muted">{item.date}</span>
               </Link>
             </motion.div>

@@ -1,30 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
 import Button from "@/components/ui/Button";
 import { businesses } from "@/data/businesses.data";
 
-const NAV_LINKS = [
-  { label: "Home", href: "/home" },
-  { label: "About", href: "/about" },
-  { label: "Companies", href: "/companies" },
-  { label: "News", href: "/news" },
-  { label: "Careers", href: "/careers" },
-  { label: "Projects", href: "/projects" },
+type DropdownLink = { label: string; href: string };
+type NavLink = { label: string; href: string; dropdown?: DropdownLink[] };
+
+const ABOUT_DROPDOWN: DropdownLink[] = [
+  { label: "Leadership", href: "/about#leadership" },
+  { label: "Directors", href: "/about#directors" },
+  { label: "Executives", href: "/about#executives" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const pathname = usePathname();
+
+  const NAV_LINKS: NavLink[] = [
+    { label: "Home", href: "/home" },
+    { label: "About", href: "/about", dropdown: ABOUT_DROPDOWN },
+    {
+      label: "Companies",
+      href: "/companies",
+      dropdown: businesses.map((b) => ({ label: b.name, href: `/businesses/${b.slug}` })),
+    },
+    { label: "News", href: "/news" },
+    { label: "Careers", href: "/careers" },
+    { label: "Projects", href: "/projects" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // 1. Evaluate scroll threshold for glassmorphism density
       setScrolled(currentScrollY > 24);
 
@@ -36,7 +53,7 @@ export default function Navbar() {
         // User scrolling up -> Reveal
         setVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -44,18 +61,94 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Close the mobile menu whenever the route changes
+  useEffect(() => {
+    setMobileOpen(false);
+    setOpenAccordion(null);
+  }, [pathname]);
+
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  const topBarRef = useRef<HTMLSpanElement>(null);
+  const midBarRef = useRef<HTMLSpanElement>(null);
+  const bottomBarRef = useRef<HTMLSpanElement>(null);
+  const isFirstRender = useRef(true);
+
+  // Hamburger <-> close icon morph + full-screen menu reveal
+  useGSAP(() => {
+    if (!menuRef.current || !panelRef.current) return;
+
+    // Skip the very first run: the menu is already closed via its Tailwind
+    // classes, so there's nothing to animate from until the user toggles it.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    const items = linksRef.current?.querySelectorAll(".mobile-nav-item");
+    const tl = gsap.timeline();
+
+    if (mobileOpen) {
+      tl.set(menuRef.current, { pointerEvents: "auto" })
+        .fromTo(menuRef.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out" })
+        .fromTo(
+          panelRef.current,
+          { xPercent: 6, autoAlpha: 0 },
+          { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" },
+          "-=0.25"
+        )
+        .fromTo(
+          items ?? [],
+          { y: 24, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.06, ease: "power3.out" },
+          "-=0.3"
+        );
+
+      gsap.to(topBarRef.current, { y: 6, rotate: 45, duration: 0.35, ease: "power2.inOut" });
+      gsap.to(midBarRef.current, { autoAlpha: 0, duration: 0.2 });
+      gsap.to(bottomBarRef.current, { y: -6, rotate: -45, duration: 0.35, ease: "power2.inOut" });
+    } else {
+      tl.to(menuRef.current, {
+        autoAlpha: 0,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          gsap.set(menuRef.current, { pointerEvents: "none" });
+        },
+      });
+
+      gsap.to(topBarRef.current, { y: 0, rotate: 0, duration: 0.3, ease: "power2.inOut" });
+      gsap.to(midBarRef.current, { autoAlpha: 1, duration: 0.2, delay: 0.1 });
+      gsap.to(bottomBarRef.current, { y: 0, rotate: 0, duration: 0.3, ease: "power2.inOut" });
+    }
+  }, [mobileOpen]);
+
+  const toggleAccordion = (label: string) => {
+    setOpenAccordion((prev) => (prev === label ? null : label));
+  };
+
   return (
-    <header 
+    <>
+    <header
       className={`fixed top-0 left-0 right-0 z-[100] border-0 transition-all duration-500 ease-out glass will-change-transform
-        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-1" : "bg-navy-900/10 py-2"}
+        ${scrolled ? "bg-navy-900/60 shadow-lg shadow-black/10 py-1.5" : "bg-navy-900/10 py-2.5"}
         ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 md:px-12 relative">
-        
+
         {/* Left: Aligned completely to the left margin */}
         <div className="flex z-10">
-          <Link 
-            href="/home" 
+          <Link
+            href="/home"
             className="flex items-center transition-transform duration-200 hover:scale-103"
             aria-label="Cinqo Holdings Home"
           >
@@ -80,13 +173,16 @@ export default function Navbar() {
         {/* Center: True Screen Absolute Layout Center with custom target gap spacing */}
         <nav className="hidden min-[900px]:flex items-center gap-7 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href || (link.label === "Companies" && pathname.startsWith("/businesses/"));
-            
-            if (link.label === "Companies") {
+            const isActive =
+              pathname === link.href ||
+              (link.label === "Companies" && pathname.startsWith("/businesses/"));
+
+            if (link.dropdown) {
               return (
                 <div key={link.href} className="group relative py-2">
-                  <button 
-                    className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5 cursor-pointer
+                  <Link
+                    href={link.href}
+                    className={`text-[11px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1 flex items-center gap-1.5
                       ${isActive ? "opacity-100" : "opacity-75 group-hover:opacity-100"}`}
                   >
                     {link.label}
@@ -97,18 +193,18 @@ export default function Navbar() {
                     {isActive && (
                       <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-cream-50 motion-safe:animate-fade-in" />
                     )}
-                  </button>
-                  
+                  </Link>
+
                   {/* Dropdown Menu */}
                   <div className="absolute top-[120%] left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[200]">
                     <div className="bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 py-3 rounded-sm min-w-[280px] flex flex-col">
-                      {businesses.map((b) => (
-                        <Link 
-                          key={b.slug}
-                          href={`/businesses/${b.slug}`}
-                          className="px-6 py-3 text-[12px] font-semibold tracking-[0.15em] uppercase text-navy-900 hover:bg-gray-50 hover:text-red-500 transition-colors text-left whitespace-nowrap"
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="px-6 py-3 text-[10px] font-semibold tracking-[0.15em] uppercase text-navy-900 hover:bg-gray-50 hover:text-red-500 transition-colors text-left whitespace-nowrap"
                         >
-                          {b.name}
+                          {item.label}
                         </Link>
                       ))}
                     </div>
@@ -118,10 +214,10 @@ export default function Navbar() {
             }
 
             return (
-              <Link 
-                key={link.href} 
-                href={link.href} 
-                className={`text-[13px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[11px] font-semibold tracking-[0.16em] uppercase text-cream-50 transition-all duration-300 ease-out relative py-1
                   ${isActive ? "opacity-100" : "opacity-75 hover:opacity-100"}`}
               >
                 {link.label}
@@ -134,14 +230,142 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right: Aligned completely to the right margin */}
-        <div className="flex z-10">
-          <Button href="/contact">
-            Contact
-          </Button>
-        </div>
+        {/* Right: Contact CTA on desktop, hamburger toggle on mobile */}
+        <div className="flex items-center z-10 gap-4">
+          <div className="hidden min-[900px]:flex">
+            <Button href="/contact">
+              Contact
+            </Button>
+          </div>
 
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            className="flex min-[900px]:hidden relative w-[28px] h-[18px] flex-col justify-between"
+          >
+            <span ref={topBarRef} className="block h-[2px] w-full rounded-full bg-cream-50 origin-center" />
+            <span ref={midBarRef} className="block h-[2px] w-full rounded-full bg-cream-50 origin-center" />
+            <span ref={bottomBarRef} className="block h-[2px] w-full rounded-full bg-cream-50 origin-center" />
+          </button>
+        </div>
       </div>
     </header>
+
+      {/* Mobile full-screen menu (rendered outside <header> so its fixed
+          positioning is relative to the viewport, not the header's own
+          will-change-transform containing block) */}
+      <div
+        ref={menuRef}
+        className="invisible opacity-0 fixed inset-0 z-[150] min-[900px]:hidden pointer-events-none"
+      >
+        <div className="absolute inset-0 bg-navy-950/95 backdrop-blur-md" onClick={() => setMobileOpen(false)} />
+
+        <div
+          ref={panelRef}
+          className="relative h-full w-full flex flex-col overflow-y-auto px-6 pt-24 pb-10"
+        >
+          <div ref={linksRef} className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => {
+              const isActive =
+                pathname === link.href ||
+                (link.label === "Companies" && pathname.startsWith("/businesses/"));
+
+              if (link.dropdown) {
+                const isOpen = openAccordion === link.label;
+                return (
+                  <div key={link.href} className="mobile-nav-item border-b border-white/10">
+                    <div className="flex items-center justify-between py-4">
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={`text-2xl font-semibold uppercase tracking-wide text-cream-50 ${isActive ? "opacity-100" : "opacity-85"}`}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => toggleAccordion(link.label)}
+                        aria-label={`Toggle ${link.label} submenu`}
+                        aria-expanded={isOpen}
+                        className="p-2 -mr-2 text-cream-50"
+                      >
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                    <MobileAccordion isOpen={isOpen}>
+                      <div className="flex flex-col gap-1 pb-4">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="py-2.5 pl-4 text-sm font-medium uppercase tracking-[0.1em] text-cream-50/75 hover:text-cream-50 transition-colors"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </MobileAccordion>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={link.href} className="mobile-nav-item border-b border-white/10">
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`block py-4 text-2xl font-semibold uppercase tracking-wide text-cream-50 ${isActive ? "opacity-100" : "opacity-85"}`}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mobile-nav-item mt-10">
+            <Button href="/contact" className="w-full justify-center text-center">
+              Contact
+            </Button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function MobileAccordion({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+
+  useGSAP(() => {
+    if (!contentRef.current) return;
+
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    gsap.to(contentRef.current, {
+      height: isOpen ? "auto" : 0,
+      duration: 0.4,
+      ease: "power2.inOut",
+    });
+  }, [isOpen]);
+
+  return (
+    <div ref={contentRef} className="overflow-hidden h-0">
+      {children}
+    </div>
   );
 }

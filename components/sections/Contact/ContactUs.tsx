@@ -36,8 +36,37 @@ const Clock = (p: { className?: string; size?: number; strokeWidth?: number }) =
   </svg>
 );
 
-const ArrowDownRight = (p: { className?: string; size?: number; strokeWidth?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size ?? 24} height={p.size ?? 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={p.strokeWidth ?? 2} strokeLinecap="round" strokeLinejoin="round" className={p.className}>
+const LocationPin = (p: { className?: string; size?: number; strokeWidth?: number }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={p.size ?? 24} 
+    height={p.size ?? 24} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth={p.strokeWidth ?? 2} 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={p.className}
+  >
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+const ArrowDownRight = (p: { className?: string; size?: number; strokeWidth?: number; color?: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={p.size ?? 24} 
+    height={p.size ?? 24} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke={p.color ?? "#ea5a42"} 
+    strokeWidth={p.strokeWidth ?? 2} 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={p.className}
+  >
     <path d="M7 7l10 10" />
     <path d="M17 7v10H7" />
   </svg>
@@ -221,7 +250,7 @@ export default function ContactForm() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="w-full border-2 border-[#E03A3E] bg-white h-10 px-3 focus:outline-none rounded-none"
+                className="w-full border-2 border-[var(--color-coral-500)] bg-white h-10 px-3 focus:outline-none rounded-none"
               />
             </div>
             <div className="flex flex-col">
@@ -231,7 +260,7 @@ export default function ContactForm() {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="w-full border-2 border-[#E03A3E] bg-white h-10 px-3 focus:outline-none rounded-none"
+                className="w-full border-2 border-[var(--color-coral-500)] bg-white h-10 px-3 focus:outline-none rounded-none"
               />
             </div>
           </div>
@@ -245,17 +274,17 @@ export default function ContactForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full border-2 border-[#E03A3E] bg-white h-10 px-3 focus:outline-none rounded-none"
+                className="w-full border-2 border-[var(--color-coral-500)] bg-white h-10 px-3 focus:outline-none rounded-none"
               />
             </div>
             <div className="flex flex-col">
               <label className="text-xs text-gray-700 mb-1">Phone Number</label>
-              <div className="flex border-2 border-[#E03A3E] bg-white h-10 relative" ref={dropdownRef}>
+              <div className="flex border-2 border-[var(--color-coral-500)] bg-white h-10 relative" ref={dropdownRef}>
                 <div
                   tabIndex={0}
                   onClick={() => { setDropdownOpen(!dropdownOpen); }}
                   onKeyDown={handleDropdownKeyDown}
-                  className="flex items-center gap-1 border-r-2 border-[#E03A3E] px-3 bg-white text-sm text-gray-700 cursor-pointer select-none shrink-0 focus:outline-none"
+                  className="flex items-center gap-1 border-r-2 border-[var(--color-coral-500)] px-3 bg-white text-sm text-gray-700 cursor-pointer select-none shrink-0 focus:outline-none"
                 >
                   <span className={`fi fi-${selectedCountry?.code?.toLowerCase() ?? ''}`}></span>
                   <span className="font-semibold">{selectedCountry?.dial}</span>
@@ -306,7 +335,7 @@ export default function ContactForm() {
               {/* General Card */}
               <div
                 onClick={() => setEnquiryPurpose('general')}
-                className={`border-2 ${enquiryPurpose === 'general' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
+                className={`border-2 ${enquiryPurpose === 'general' ? 'border-[var(--color-coral-500)]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
               >
                 <Mail className="text-[#E03A3E] mb-4" size={18} strokeWidth={1.5} />
                 <h4 className="text-[12px] font-bold text-[#1A1A1A] mb-1">General enquiries</h4>
@@ -318,7 +347,7 @@ export default function ContactForm() {
               {/* Partnerships Card */}
               <div
                 onClick={() => setEnquiryPurpose('partnerships')}
-                className={`border-2 ${enquiryPurpose === 'partnerships' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
+                className={`border-2 ${enquiryPurpose === 'partnerships' ? 'border-[var(--color-coral-500)]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
               >
                 <Building2 className="text-[#E03A3E] mb-4" size={18} strokeWidth={1.5} />
                 <h4 className="text-[12px] font-bold text-[#1A1A1A] mb-1">Partnerships</h4>
@@ -330,7 +359,7 @@ export default function ContactForm() {
               {/* Projects Card */}
               <div
                 onClick={() => setEnquiryPurpose('projects')}
-                className={`border-2 ${enquiryPurpose === 'projects' ? 'border-[#E03A3E]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
+                className={`border-2 ${enquiryPurpose === 'projects' ? 'border-[var(--color-coral-500)]' : 'border-gray-300'} bg-white px-3 pt-[19px] pb-[16px] cursor-pointer min-h-[150px] rounded-none flex flex-col`}
               >
                 <Compass className="text-[#E03A3E] mb-4" size={18} strokeWidth={1.5} />
                 <h4 className="text-[12px] font-bold text-[#1A1A1A] mb-1">Projects Introductions</h4>
@@ -350,7 +379,7 @@ export default function ContactForm() {
               onChange={handleInputChange}
               placeholder="Message (350 characters max)"
               rows={3}
-              className="w-full border-2 border-[#E03A3E] bg-white p-3 focus:outline-none resize-none placeholder-gray-500 text-xs rounded-none"
+              className="w-full border-2 border-[var(--color-coral-500)] bg-white p-3 focus:outline-none resize-none placeholder-gray-500 text-xs rounded-none"
               required
             />
           </div>
@@ -366,14 +395,14 @@ export default function ContactForm() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="px-8 py-2 border-2 border-[#E03A3E] bg-white text-[#1A1A1A] font-medium text-sm cursor-pointer hover:opacity-80 active:opacity-50 focus:outline-none rounded-none"
+            className="px-8 py-2 border-2 border-[var(--color-coral-500)] bg-white text-[#1A1A1A] font-medium text-sm cursor-pointer hover:opacity-80 active:opacity-50 focus:outline-none rounded-none"
           >
             Submit Now
           </button>
         </form>
 
         {/* RIGHT COLUMN: Info Panel */}
-        <div className="lg:w-[34%] w-full border-t lg:border-t-0 lg:border-l border-black flex flex-col">
+        <div className="lg:w-[34%] w-full border-t-[0.5px] lg:border-t-0 lg:border-l-[0.5px] border-black flex flex-col">
           
           {/* Top Cell */}
             <div className="border-t-0 pt-4 pr-5 pb-4 w-full flex-1 relative">
@@ -388,7 +417,7 @@ export default function ContactForm() {
           </div>
 
           {/* Business Hours Segment */}
-          <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
+          <div className="border-t-[0.5px]  border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
             <Clock className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
             <h4 className="text-[11px] font-medium text-gray-600 pl-3">Business Hours</h4>
             <div className="absolute bottom-4 left-3 text-left">
@@ -402,8 +431,8 @@ export default function ContactForm() {
           </div>
 
           {/* Postal Address Segment */}
-          <div className="border-t border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
-            <Clock className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
+          <div className="border-t-[0.5px]  border-black pt-4 pr-5 pb-4 w-full flex-1 relative">
+            <LocationPin className="absolute top-4 right-3 text-[#E03A3E]" size={16} strokeWidth={1.5} />
             <h4 className="text-[11px] font-medium text-gray-600 pl-3">Postal Address:</h4>
             <div className="absolute bottom-4 left-3 text-left">
                <ArrowDownRight className="text-gray-800 mb-1" size={21} strokeWidth={1.5} />

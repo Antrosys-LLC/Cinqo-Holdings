@@ -6,6 +6,7 @@ export default function AboutHero() {
     <Hero
       slides={aboutHeroSlidesData}
       showDots={false}
+      variant="compact"
     />
   );
 }

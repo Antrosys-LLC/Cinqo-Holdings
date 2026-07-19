@@ -33,7 +33,12 @@ export default function RootLayout({
       <body className={`${inter.variable} ${ibmPlexSans.variable}`}>
         <SmoothScrollProvider>
           <Navbar />
-          {children}
+          <div
+            className="relative z-[1] bg-white-100"
+            style={{ marginBottom: "var(--footer-height, 780px)" }}
+          >
+            {children}
+          </div>
           <Footer />
         </SmoothScrollProvider>
       </body>

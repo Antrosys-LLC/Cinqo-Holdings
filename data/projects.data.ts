@@ -1,60 +1,66 @@
-import type { Project } from "@/types";
-
 // projects.data.ts
+import { Project } from "@/types"; // Adjust the import path based on your folder structure
 
-
-
-export const projectsData: Project[] = [
+export const PROJECTS: Project[] = [
   {
-    id: "project-1",
-    name: "Bahrain Residential Haven",
-    location: "Bahrain",
-    category: "Residential",
-    heroImage: "/images/projects/1.jpg",
-    description: "A portfolio of projects that demonstrates our commitment to residential excellence, innovation, and successful delivery across modern estates.",
-    gallery: [
-      { src: "/images/projects/2.jpg", alt: "Project Name — view 1" },
-      { src: "/images/projects/3.jpg", alt: "Project Name — view 2" },
-      { src: "/images/projects/4.jpg", alt: "Project Name — view 3" },
+    id: "j003",
+    name: "J003 FONTANA INFINITY",
+    subheading: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    date: "1 Jan, 2026",
+    status: "ongoing",
+    highlighted: true,
+    image: "/images/projects/1.jpg",
+    logo: "/images/companies/cinqo-trading.png",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    bullets: [
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     ],
+    thumbnails: [
+      "/images/projects/2.jpg",
+      "/images/projects/3.jpg",
+      "/images/projects/4.jpg"
+    ]
   },
   {
-    id: "project-2",
-    name: "Commercial Hub Bahrain",
-    location: "Bahrain",
-    category: "Commercial",
-    heroImage: "/images/projects/4.jpg",
-    description: "An elegant showcase of state-of-the-art commercial architecture engineered for seamless operation, performance, and elite enterprise standards.",
-    gallery: [
-      { src: "/images/projects/1.jpg", alt: "Project Name — view 1" },
-      { src: "/images/projects/2.jpg", alt: "Project Name — view 2" },
-      { src: "/images/projects/3.jpg", alt: "Project Name — view 3" },
+    id: "j004",
+    name: "J004 AZURE HORIZON",
+    subheading: "Premium overwater residential spaces engineered with sustainable materials.",
+    date: "15 Feb, 2026",
+    status: "ongoing",
+    highlighted: true,
+    image: "/images/projects/2.jpg",
+    logo: "/images/companies/cinqo-contracting.png",
+    description: "Our upcoming waterfront living experience pushes the boundaries of modern architecture.",
+    bullets: [
+      "Eco-friendly building materials.",
+      "Smart-home integrations built-in.",
+      "Exclusive marina access for residents."
     ],
+    thumbnails: [
+      "/images/projects/3.jpg",
+      "/images/projects/4.jpg"
+    ]
   },
   {
-    id: "project-3",
-    name: "Commercial Hub Bahrain",
-    location: "Bahrain",
-    category: "Commercial",
-    heroImage: "/images/projects/3.jpg",
-    description: "An elegant showcase of state-of-the-art commercial architecture engineered for seamless operation, performance, and elite enterprise standards.",
-    gallery: [
-      { src: "/images/projects/4.jpg", alt: "Project Name — view 1" },
-      { src: "/images/projects/1.jpg", alt: "Project Name — view 2" },
-      { src: "/images/projects/2.jpg", alt: "Project Name — view 3" },
+    id: "j005",
+    name: "J005 AZURE HORIZON COMPLETED",
+    subheading: "Premium overwater residential spaces engineered with sustainable materials.",
+    date: "15 Feb, 2026",
+    status: "completed",
+    highlighted: true,
+    image: "/images/projects/3.jpg",
+    logo: "/images/companies/cinqo-contracting.png",
+    description: "Our upcoming waterfront living experience pushes the boundaries of modern architecture.",
+    bullets: [
+      "Eco-friendly building materials.",
+      "Smart-home integrations built-in.",
+      "Exclusive marina access for residents."
     ],
-  },
-  {
-    id: "project-3",
-    name: "Commercial Hub Bahrain",
-    location: "Bahrain",
-    category: "Commercial",
-    heroImage: "/images/projects/2.jpg",
-    description: "An elegant showcase of state-of-the-art commercial architecture engineered for seamless operation, performance, and elite enterprise standards.",
-    gallery: [
-      { src: "/images/projects/3.jpg", alt: "Project Name — view 1" },
-      { src: "/images/projects/4.jpg", alt: "Project Name — view 2" },
-      { src: "/images/projects/1.jpg", alt: "Project Name — view 3" },
-    ],
+    thumbnails: [
+      "/images/projects/4.jpg",
+      "/images/projects/1.jpg"
+    ]
   },
 ];

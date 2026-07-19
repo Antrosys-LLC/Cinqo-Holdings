@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
-import { businesses, sectorsPage } from "@/data/businesses.data";
+import { businesses } from "@/data/businesses.data";
 import Intro from "@/components/sections/Businesses/Intro";
 import DefineUs from "@/components/sections/Businesses/DefineUs";
 import Capabilities from "@/components/sections/Businesses/Capabilities";
 import Sectors from "@/components/sections/Businesses/Sectors";
-import GovernanceGrid from "@/components/sections/About/Compliance";
-import Governance from "@/components/sections/Businesses/Governance";
+import Projects from "@/components/sections/Businesses/Projects";
 import News from "@/components/sections/Home/NewsSection";
 
 
@@ -47,13 +46,10 @@ export default async function BusinessPage({
       )}
       
       {/* Sectors grid */}
-      {slug !== "cinqo-holding-investments" && (
-        <Sectors 
-          sectorShowcase={business.sectorShowcase}
-          sectorsPageData={sectorsPage}
-          showBrandPortfolio={slug === "cinqo-trading"}
-        />
-      )}
+      <Sectors sectorShowcase={business.sectorShowcase} />
+
+      {/* Project showcase for this business */}
+      <Projects data={business} />
 
       <News/>
     </main>
