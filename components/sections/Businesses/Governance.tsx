@@ -47,7 +47,7 @@ const governanceItems = [
 const investmentCards = [
   {
     id: "ilium",
-    name: "ilium",
+    name: "ilium composites",
     image: null as string | null,
   },
   {
@@ -57,24 +57,20 @@ const investmentCards = [
   },
   {
     id: "arooj",
-    name: "AROOJ",
+    name: "AROOJ development company",
     image: "/images/investments/arooj.png",
   },
   {
+    id: "al-rashid",
+    name: "Al Rashid Health Center",
+    image: null as string | null,
+  },
+  {
     id: "tsma",
-    name: "TSMA",
+    name: "ETSMA",
     image: "/images/investments/tsma.png",
   },
 ] as const;
-
-function DiamondIcon() {
-  return (
-    <span
-      aria-hidden="true"
-      className="relative z-10 mt-[3px] h-2 w-2 shrink-0 rotate-45 bg-[#C0392B]"
-    />
-  );
-}
 
 export default function Governance() {
   const listRef = useRef<HTMLUListElement>(null);
@@ -97,38 +93,41 @@ export default function Governance() {
       className={`${inter.className} bg-white px-6 pb-10 pt-8`}
       aria-labelledby="governance-oversight-heading"
     >
-      <div className="mx-auto flex w-full max-w-[720px] flex-col items-center">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center">
         <h2
           id="governance-oversight-heading"
-          className="mb-[22px] mt-[28px] text-center text-[10px] font-semibold uppercase tracking-[1.5px] text-[#222222]"
+          className="mb-[36px] mt-[46px] text-center text-[18px] md:text-[20px] font-bold uppercase tracking-[2px] text-[#222222]"
         >
           Governance &amp; Oversight
         </h2>
 
         <ul
           ref={listRef}
-          className="relative flex w-full max-w-[560px] flex-col gap-[18px]"
+          className="relative flex w-full max-w-[600px] flex-col gap-[22px]"
         >
           {/* Track line */}
           <span
             aria-hidden="true"
-            className="absolute bottom-[6px] left-[3px] top-[6px] w-px bg-[#E5E5E5]"
+            className="absolute bottom-[8px] left-[5px] top-[8px] w-px bg-[#E5E5E5]"
           />
           {/* Scroll-fill line */}
           <motion.span
             aria-hidden="true"
-            className="absolute left-[3px] top-[6px] bottom-[6px] w-px origin-top bg-coral-600"
+            className="absolute left-[5px] top-[8px] bottom-[8px] w-px origin-top bg-coral-600"
             style={{ scaleY: lineScale }}
           />
 
           {governanceItems.map((item) => (
-            <li key={item.heading} className="relative flex items-start gap-3">
-              <DiamondIcon />
-              <div className="flex min-w-0 flex-col gap-1">
-                <h3 className="text-[11px] font-bold uppercase leading-none text-[#333333]">
+            <li key={item.heading} className="relative flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                className="relative z-10 mt-[4px] h-3 w-3 shrink-0 rotate-45 bg-[#C0392B]"
+              />
+              <div className="flex min-w-0 flex-col gap-1.5">
+                <h3 className="text-[14px] font-bold uppercase leading-none text-[#333333]">
                   {item.heading}
                 </h3>
-                <p className="max-w-[520px] text-[10px] font-normal leading-[1.5] text-[#777777]">
+                <p className="max-w-[520px] text-[14px] font-normal leading-[1.6] text-[#666666]">
                   {item.description}
                 </p>
               </div>
@@ -136,31 +135,52 @@ export default function Governance() {
           ))}
         </ul>
 
-        <div className="mt-10 w-full">
-          <h2 className="mb-[22px] text-center text-[10px] font-semibold uppercase tracking-[2px] text-[#333333]">
+        <div className="mt-20 w-full">
+          <h2 className="mb-[36px] text-center text-[18px] md:text-[20px] font-bold uppercase tracking-[2px] text-[#333333]">
             Investments
           </h2>
 
-          <ul className="mx-auto grid w-fit grid-cols-2 gap-5 md:gap-6">
-            {investmentCards.map(({ id, name, image }) => (
-              <li
+          <ul className="mx-auto flex max-w-[900px] flex-wrap justify-center gap-6 pb-20">
+            {investmentCards.map(({ id, name, image }, idx) => (
+              <motion.li
                 key={id}
-                className="relative flex h-[140px] w-[184px] items-center justify-center overflow-hidden rounded-[2px] bg-black/30"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0,0,0,0.08)" }}
+                className="relative flex h-[220px] w-[260px] flex-col items-center justify-center rounded-[4px] bg-[#CFCFCF] p-6 text-center cursor-default"
               >
-                {image ? (
-                  <Image
-                    src={image}
-                    alt={name}
-                    fill
-                    sizes="184px"
-                    className="object-contain p-3"
-                  />
-                ) : (
-                  <span className="text-[22px] font-semibold lowercase tracking-tight text-white">
-                    {name}
-                  </span>
-                )}
-              </li>
+                <div className="relative mb-5 flex h-[70px] w-full items-center justify-center">
+                  {image ? (
+                    <Image
+                      src={image}
+                      alt={name}
+                      fill
+                      sizes="260px"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <span className="text-[20px] font-bold leading-tight text-black">
+                      {name === "Al Rashid Health Center" ? (
+                        <>
+                          Al Rashid <br /> Health Center
+                        </>
+                      ) : name === "ilium composites" ? (
+                        <>
+                          ilium <br /> composites
+                        </>
+                      ) : (
+                        name
+                      )}
+                    </span>
+                  )}
+                </div>
+                
+                <p className="max-w-[200px] text-[11px] font-medium leading-[1.4] text-[#555555]">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+              </motion.li>
             ))}
           </ul>
         </div>

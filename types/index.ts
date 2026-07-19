@@ -89,4 +89,5 @@ export interface HeroSlideV2 {
   alt: string;
   headline1: ReactNode;
   subtitle?: string;
+  imageClassName?: string;
 }

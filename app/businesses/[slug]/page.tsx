@@ -7,6 +7,7 @@ import Sectors from "@/components/sections/Businesses/Sectors";
 import Projects from "@/components/sections/Businesses/Projects";
 import News from "@/components/sections/Home/NewsSection";
 
+
 // Optional: statically generate these routes
 export function generateStaticParams() {
   return businesses.map((b) => ({
@@ -32,10 +33,17 @@ export default async function BusinessPage({
       <Intro business={business} />
       
       {/* Define Us grid */}
-      <DefineUs definesUs={business.definesUs} />
+      <DefineUs 
+        definesUs={business.definesUs}
+        heading={slug === "cinqo-holding-investments" ? "INVESTMENT AREAS" : undefined}
+      />
       
+      {slug === "cinqo-holding-investments" && <Governance />}
+
       {/* Capabilities list/accordion */}
-      <Capabilities capabilities={business.capabilities} />
+      {slug !== "cinqo-holding-investments" && (
+        <Capabilities capabilities={business.capabilities} />
+      )}
       
       {/* Sectors grid */}
       <Sectors sectorShowcase={business.sectorShowcase} />

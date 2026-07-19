@@ -83,10 +83,16 @@ export const businesses: BusinessData[] = [
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "HIGH END FIT OUT & JOINERY",
+        title: "FULL PROJECT DELIVERY",
+        description: "Turnkey project execution from initial concept through to handover and commissioning, ensuring a single point of accountability and coordinated delivery across all project phases.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "PROGRAMME OVERSIGHT",
         description: "Scheduling review and progress tracking to safeguard timelines and milestone commitments.",
         image: "/images/capabilities/HAWAR.jpg"
-      }
+      },
+
     ],
     sectorShowcase: [
       {
@@ -171,22 +177,22 @@ export const businesses: BusinessData[] = [
     ],
     capabilities: [
       {
-        title: "Asset Preservation",
+        title: "PREVENTIVE MAINTENANCE PROGRAMMES",
         description: "Maintenance programmes are designed to maximise asset lifespan, reliability and operational performance.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Operational Continuity",
+        title: "MEP SERVICING & DIAGNOSTICS",
         description: "Systems are monitored and maintained to minimise downtime and support uninterrupted operations.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Lifecycle Focus",
+        title: "SOFT SERVICES & PROPERTY CARE",
         description: "Maintenance decisions are guided by long-term asset performance and total cost of ownership.",
         image: "/images/capabilities/HAWAR.jpg"
       },
       {
-        title: "Transparent Reporting",
+        title: "ANNUAL MAINTENANCE CONTRACTS",
         description: "Clients benefit from clear visibility across maintenance activities, compliance requirements and asset performance.",
         image: "/images/capabilities/HAWAR.jpg"
       },
@@ -231,8 +237,46 @@ export const businesses: BusinessData[] = [
     introBgImage: "/images/companies/ci4.png",
     introHeading: "STRUCTURED\nDISTRIBUTION",
     introText: "Cinqo Trading serves as the commercial and technical bridge between leading international manufacturers and the GCC market.\nThrough exclusive and authorised partnerships with globally recognised brands, the division supplies paints, construction chemicals, building materials, acoustic systems and infrastructure technologies across Bahrain.\n\nBeyond distribution, Cinqo Trading supports specification development, technical evaluation, project execution and after-sales support, helping clients select and implement solutions with confidence.",
-    definesUs: [],
-    capabilities: [],
+    definesUs: [
+      {
+        title: "PRINCIPAL ALIGNMENT",
+        description: "Manufacturer relationships are built on long-term partnerships, commercial integrity and consistent market representation."
+      },
+      {
+        title: "TECHNICAL DISTRIBUTION",
+        description: "Specification guidance, application support and technical advisory services form an integral part of the distribution model."
+      },
+      {
+        title: "INVENTORY & LOGISTICS",
+        description: "ERP-managed inventory, batch traceability and real-time stock visibility support reliable supply across retail and project channels."
+      },
+      {
+        title: "AFTER-SALES SUPPORT",
+        description: "Technical support from initial specification through to installation guidance and after-sales service across all delivered product lines."
+      },
+    ],
+    capabilities: [
+      {
+        title: "TECHNICAL ADVISORY",
+        description: "Technical information, product evaluation and application guidance help project teams select and specify materials effectively.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "SYSTEM DESIGN SUPPORT",
+        description: "Material selection is supported by technical data, performance benchmarks and application guidelines to ensure effective integration with project requirements.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "AFTER-SALES & FIELD SUPPORT",
+        description: "Technical support from initial specification through to installation guidance and after-sales service across all delivered product lines.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "INVENTORY & LOGISTICS",
+        description: "Structured inventory management, quality assurance and on-time delivery supported by warehousing and logistics infrastructure.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+    ],
     sectorShowcase: [
       {
         title: "Infrastructure",
@@ -273,8 +317,46 @@ export const businesses: BusinessData[] = [
     introBgImage: "/images/companies/ci3.png",
     introHeading: "DELIVERED\nWITH\nPRECISION",
     introText: "THC Fit Out delivers high-quality interior environments where design intent, technical coordination and execution excellence come together.\n\nFrom corporate offices and retail environments to hospitality venues and premium residential interiors, every project is delivered with a focus on quality, programmed control and attention to detail.",
-    definesUs: [],
-    capabilities: [],
+    definesUs: [
+      {
+        title: "DESIGN INTEGRITY",
+        description: "Projects are executed in accordance with approved designs while maintaining alignment with architectural intent."
+      },
+      {
+        title: "CONTROLLED EXECUTION",
+        description: "Trade coordination, sequencing and finish management are carefully supervised throughout delivery."
+      },
+      {
+        title: "MATERIAL OVERSIGHT",
+        description: "Specifications and finishes are monitored through structured reviews and on-site quality control."
+      },
+      {
+        title: "DETAIL ORIENTATION",
+        description: "Precision in finishing, alignment and coordination defines the quality of the final outcome."
+      },
+    ],
+    capabilities: [
+      {
+        title: "INTERIOR FIT-OUT & FINISHING",
+        description: "Spaces are constructed in line with technical drawings and quality standards.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "JOINERY & CUSTOM FABRICATION",
+        description: "Installation and finishing of ceiling systems with attention to acoustics, aesthetics and service integration.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "MEP INTEGRATION",
+        description: "Installation of wall panels, claddings and decorative finishes in accordance with project specifications.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "DESIGN COORDINATION",
+        description: "Construction of internal partitions, glazed systems and space-division elements using contemporary materials.",
+        image: "/images/capabilities/HAWAR.jpg"
+      }
+    ],
     sectorShowcase: [
       {
         title: "Corporate",
@@ -315,8 +397,46 @@ export const businesses: BusinessData[] = [
     introBgImage: "/images/companies/ci5.png",
     introHeading: "ENGINEERED\nFOR\nENDURANCE",
     introText: "Cinqo Flooring & Coating Technologies delivers high-performance flooring, waterproofing and protective coating systems for environments where durability, hygiene and long-term performance are critical.\n\nThe company serves logistics facilities, healthcare and pharmaceutical environments, food production sites, car parks and industrial installations through technically engineered solutions and manufacturer-approved systems.",
-    definesUs: [],
-    capabilities: [],
+    definesUs: [
+      {
+        title: "SYSTEM-BASED APPROACH",
+        description: "Solutions are specified as complete systems tailored to operational, chemical and mechanical performance requirements."
+      },
+      {
+        title: "PREPARATION INTEGRITY",
+        description: "Substrates are assessed and prepared to ensure optimal adhesion and long-term performance of flooring and coating systems."
+      },
+      {
+        title: "APPLICATION CONTROL",
+        description: "Environmental conditions, application parameters and quality standards are monitored throughout installation."
+      },
+      {
+        title: "PERFORMANCE DURABILITY",
+        description: "Systems are selected to withstand operational demands while maximising service life and reliability."
+      },
+    ],
+    capabilities: [
+      {
+        title: "EPOXY & POLYURETHANE SYSTEMS",
+        description: "Concrete remediation, levelling and coating installation executed to meet performance and durability requirements.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "PROTECTIVE COATINGS",
+        description: "Waterproofing systems, chemical-resistant coatings and protective barriers for concrete and steel substrates.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "WATERPROOFING SYSTEMS",
+        description: "Installation of Vinyl, Epoxy and Polyurethane flooring systems with material selection supported by CSIRO product approvals.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+      {
+        title: "SURFACE PREPARATION",
+        description: "Durable deck and surface coatings designed for high-wear, high-traffic conditions including ramps, parking bays and pedestrian zones.",
+        image: "/images/capabilities/HAWAR.jpg"
+      },
+    ],
     sectorShowcase: [
       {
         title: "Healthcare",

@@ -158,7 +158,7 @@ export default function Navbar() {
               viewBox="0 0 45 46"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8.5 w-auto"
+              className="h-12 w-auto"
             >
               <path d="M24.096 24.2551L45.0002 24.2551L24.096 45.3189L24.096 24.2551Z" fill="#231F20"/>
               <path d="M24.096 21.1562L45.0002 21.1562L24.096 0.09238L24.096 21.1562Z" fill="#808285"/>
@@ -186,7 +186,7 @@ export default function Navbar() {
                       ${isActive ? "opacity-100" : "opacity-75 group-hover:opacity-100"}`}
                   >
                     {link.label}
-                    <svg className="w-2.5 h-2.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                     {/* Active route accent underline */}
